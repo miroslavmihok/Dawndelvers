@@ -32,7 +32,7 @@ function ProductItem({
         }}
       >
         {/* Product content */}
-        {/* <div
+        <div
           className={`absolute left-0 top-0 z-20 flex h-[300px] flex-col items-start justify-between p-4`}
           style={{
             borderRadius: `inherit`,
@@ -53,7 +53,7 @@ function ProductItem({
               <span className={`text-xl font-bold`}>{price}</span>
             </div>
           </div>
-        </div> */}
+        </div>
         {/* Linear gradient overlay */}
         <div
           className={`absolute inset-0 z-10 h-full w-full`}
