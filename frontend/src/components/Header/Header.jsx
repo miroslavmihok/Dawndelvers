@@ -14,7 +14,7 @@ import { useData } from "../../dataContext/dataCtx";
 
 const Header = () => {
   const { setIsShown, setHeading } = useHeaderData();
-  const { isVisible, setIsVisible, currency } = useData();
+  const { isCurrencyVisible, setIsCurrencyVisible, currency } = useData();
 
   const clickHandler = () => {
     setIsShown(true);
@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   const currencyClickHandler = () => {
-    setIsVisible(!isVisible);
+    setIsCurrencyVisible(!isCurrencyVisible);
   };
 
   return (
@@ -57,11 +57,11 @@ const Header = () => {
             </button>
             {/* Search form on > 1280px */}
             <form className="hidden xl:block">
-              <div className="relative flex items-center justify-between ">
+              <div className="text-sepiaGray relative flex items-center justify-between">
                 <input
                   type="search"
                   placeholder="Search"
-                  className="focus:border-lightPurple h-[42px] rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium  outline-0"
+                  className="h-[42px] rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium outline-0  focus:border-lightPurple"
                 />
                 <button className="absolute right-[12px]" type="submit">
                   <FaMagnifyingGlass size="21px" />
@@ -92,17 +92,17 @@ const Header = () => {
                 onClick={() => currencyClickHandler()}
               >
                 <div className="flex gap-1">
-                  <div className="flex gap-1 text-[lightGrey] hover:text-white">
+                  <div className="flex gap-1 text-fontCoolGray hover:text-white">
                     <span>{currency.curSymbol}</span>
                     <span>{currency.cur}</span>
                   </div>
                   <FaCaretDown />
                 </div>
               </button>
-              <Tooltip list={["USD", "Euro"]} />
+              <Tooltip list={["USD", "EUR"]} />
             </div>
             {/* user icons on > 1280px */}
-            <button className="mx-3 hidden text-[lightGrey] hover:text-white xl:block">
+            <button className="mx-3 hidden text-fontLightGray hover:text-white xl:block">
               <span>Log in</span>
             </button>
             <button className="mx-3 hidden rounded-md hover:bg-mediumPurple md:bg-lightPurple md:px-[16px] md:py-[10px] xl:block">

@@ -7,7 +7,7 @@ export const products = [
         id: 0,
         title: "WoW Gold",
         url: "wowgold",
-        imgSrc: "/assets/products/wow.png",
+        imgSrc: "./assets/products/wow.png",
         category: "WoW Gold",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
@@ -18,7 +18,7 @@ export const products = [
         id: 1,
         title: "Raids",
         url: "raids",
-        imgSrc: "/assets/products/wow.png",
+        imgSrc: "./assets/products/wow.png",
         category: "Raids",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
@@ -29,7 +29,7 @@ export const products = [
         id: 2,
         title: "Mythic Dungeons",
         url: "dungeons",
-        imgSrc: "/assets/products/wow.png",
+        imgSrc: "./assets/products/wow.png",
         category: "Dunegons",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
@@ -40,7 +40,7 @@ export const products = [
         id: 3,
         title: "PvP",
         url: "pvp",
-        imgSrc: "/assets/products/wow.png",
+        imgSrc: "./assets/products/wow.png",
         category: "PvP",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
@@ -51,7 +51,7 @@ export const products = [
         id: 4,
         title: "Leveling",
         url: "leveling",
-        imgSrc: "/assets/products/wow.png",
+        imgSrc: "./assets/products/wow.png",
         category: "Leveling",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",

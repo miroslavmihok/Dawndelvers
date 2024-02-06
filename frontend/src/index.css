@@ -23,6 +23,10 @@ body {
   word-break: break-word;
 }
 
+input::placeholder {
+  color: #676b8b;
+}
+
 .scrolling-wrapper {
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */

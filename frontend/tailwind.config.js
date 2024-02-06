@@ -13,13 +13,13 @@ module.exports = {
       veryDarkGrey: "#6C757D",
       darkGrey: "#776d79",
       lightGrey: "#EDEDF5",
-      ghostWhite: "EDEDF5",
       white: "#ffffff",
     }),
     textColor: (theme) => ({
       ...theme("colors"),
       fontLavenderGray: "#DBDBE9",
       fontLightGray: "#C0C0D6",
+      sepiaGray: "#676B8B",
       fontCoolGray: "#A7A7C8",
     }),
     borderColor: (theme) => ({

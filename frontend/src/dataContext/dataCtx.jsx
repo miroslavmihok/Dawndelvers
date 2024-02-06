@@ -8,9 +8,9 @@ export const useData = () => {
 };
 
 export const DataProvider = ({ children }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isCurrencyVisible, setIsCurrencyVisible] = useState(false);
   const [currency, setIsCurrency] = useState({
-    cur: "Euro",
+    cur: "EUR",
     curSymbol: "€",
   });
   const [currentGame, setCurrentGame] = useState(products[0].title);
@@ -19,8 +19,8 @@ export const DataProvider = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
-        isVisible,
-        setIsVisible,
+        isCurrencyVisible,
+        setIsCurrencyVisible,
         currency,
         setIsCurrency,
         currentGame,
