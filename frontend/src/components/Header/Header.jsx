@@ -32,19 +32,23 @@ const Header = () => {
       >
         <div className="flex w-full justify-between px-2 py-3 xl:px-8">
           {/* HEADER LEFT */}
-          <div className="flex w-[28%] items-center justify-start gap-4 sm:w-[25%] xl:max-h-[42px] xl:w-fit">
+          <div className="flex w-[28%] items-center justify-start sm:w-[25%] xl:max-h-[42px] xl:w-fit xl:gap-4">
             {/* Logo > 1280px */}
-            <img
-              src={Logo}
-              alt="logo"
-              className="icon hidden aspect-square w-[32px] xl:block"
-            />
+            <a href="/">
+              <img
+                src={Logo}
+                alt="logo"
+                className="icon hidden aspect-square w-[32px] xl:block"
+              />
+            </a>
             {/* Logoname > 1536px */}
-            <img
-              src={Logoname}
-              alt="logoname"
-              className="icon hidden h-[22px] 2xl:block"
-            />
+            <a href="/">
+              <img
+                src={Logoname}
+                alt="logoname"
+                className="icon hidden h-[22px] 2xl:block"
+              />
+            </a>
             {/* Catalog Btn */}
             <button
               onClick={() => clickHandler()}
@@ -57,7 +61,7 @@ const Header = () => {
             </button>
             {/* Search form on > 1280px */}
             <form className="hidden xl:block">
-              <div className="text-sepiaGray relative flex items-center justify-between">
+              <div className="relative flex items-center justify-between text-sepiaGray">
                 <input
                   type="search"
                   placeholder="Search"
