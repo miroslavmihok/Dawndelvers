@@ -136,7 +136,7 @@ function Products() {
               ref={focusRef}
               autoFocus
               className="inline-flex items-center whitespace-nowrap rounded-md border border-transparent bg-sepiaPurple px-3 py-2 font-medium text-fontCoolGray 
-              transition-all duration-300 ease-in-out hover:bg-lightSepiaPurple hover:text-fontLightGray active:focus:border-lightPurple active:focus:bg-darkPurple active:focus:text-white active:focus:outline-0 active:focus:outline-transparent"
+              outline-0 transition-all duration-300 ease-in-out hover:bg-lightSepiaPurple hover:text-fontLightGray focus:border-lightPurple focus:bg-darkPurple focus:text-white focus:outline-0 focus:outline-transparent"
               onClick={() => setCurrentCategory("All Categories")}
             >
               All Categories
