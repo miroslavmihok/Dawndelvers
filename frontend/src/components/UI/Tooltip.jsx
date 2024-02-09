@@ -38,7 +38,7 @@ function Tooltip({ list }) {
   return (
     <>
       <div
-        className={`absolute z-40 flex w-full items-center justify-center transition-all duration-500 ease-in-out ${isCurrencyVisible ? "top-[150%] opacity-100" : "top-[200%] opacity-0"}`}
+        className={`absolute z-40 flex w-full items-center justify-center transition-all duration-500 ease-in-out ${isCurrencyVisible ? "top-[150%] block" : "top-[200%] hidden"}`}
         ref={wrapperRef}
       >
         <div className="absolute top-[-5%] aspect-square h-[10%] rotate-45 bg-lightGrey"></div>

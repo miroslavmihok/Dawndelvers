@@ -13,7 +13,8 @@ export const DataProvider = ({ children }) => {
     cur: "EUR",
     curSymbol: "€",
   });
-  const [currentGame, setCurrentGame] = useState(products[0].title);
+  const [currentGame, setCurrentGame] = useState(products[0]);
+  const [currentGameTitle, setCurrentGameTitle] = useState(products[0].title);
   const [currentCategory, setCurrentCategory] = useState("All Categories");
 
   const toggleScroll = () => {
@@ -30,6 +31,8 @@ export const DataProvider = ({ children }) => {
         setIsCurrency,
         currentGame,
         setCurrentGame,
+        currentGameTitle,
+        setCurrentGameTitle,
         currentCategory,
         setCurrentCategory,
         toggleScroll,

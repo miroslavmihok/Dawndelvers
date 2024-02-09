@@ -2,6 +2,8 @@ export const products = [
   {
     title: "World of Warcraft",
     url: "/worldofwarcraft",
+    bg: "./assets/games/wow.jpg",
+    logo: "./assets/games/wowlogo.png",
     productList: [
       {
         id: 0,
@@ -96,6 +98,8 @@ export const products = [
   {
     title: "Diablo 4",
     url: "/diablo4",
+    bg: "./assets/games/diablo4.jpg",
+    logo: "./assets/games/diablo4logo.png",
     productList: [
       {
         id: 8,
@@ -146,6 +150,8 @@ export const products = [
   {
     title: "Call of Duty",
     url: "/callofduty",
+    bg: "./assets/games/cod.jpg",
+    logo: "./assets/games/codlogo.png",
     productList: [
       {
         id: 12,
@@ -174,6 +180,8 @@ export const products = [
   {
     title: "League of Legends",
     url: "/lol",
+    bg: "./assets/games/lol.jpg",
+    logo: "./assets/games/lollogo.png",
     productList: [
       {
         id: 14,
@@ -235,6 +243,8 @@ export const products = [
   {
     title: "Apex Legends",
     url: "/apex",
+    bg: "./assets/games/apex.jpg",
+    logo: "./assets/games/apexlogo.png",
     productList: [
       {
         id: 19,

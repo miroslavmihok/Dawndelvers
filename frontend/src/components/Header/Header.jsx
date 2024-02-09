@@ -31,44 +31,45 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 z-30 flex w-full flex-col items-center bg-darkPurple font-semibold tracking-[0.01rem] text-[#fdfdfd]`}
+        className={`header fixed top-0 z-30 flex w-full items-center bg-darkPurple font-semibold tracking-[0.01rem] text-[#fdfdfd] xl:h-screen xl:w-[300px] xl:flex-col`}
       >
-        <div className="flex w-full justify-between px-2 py-3 xl:px-8">
+        <div className="flex w-full justify-between px-8 py-3 xl:h-full xl:flex-col xl:px-3">
           {/* HEADER LEFT */}
-          <div className="flex w-[28%] items-center justify-start sm:w-[25%] xl:max-h-[42px] xl:w-fit xl:gap-4">
+          <div className="flex items-center justify-start gap-4 xl:h-[25%] xl:w-full xl:flex-col xl:justify-between xl:py-5">
             {/* Logo > 1280px */}
-            <a href="/">
-              <img
-                src={Logo}
-                alt="logo"
-                className="icon hidden aspect-square w-[32px] xl:block"
-              />
-            </a>
-            {/* Logoname > 1536px */}
-            <a href="/">
-              <img
-                src={Logoname}
-                alt="logoname"
-                className="icon hidden h-[22px] 2xl:block"
-              />
-            </a>
-            {/* Catalog Btn */}
-            <button
-              onClick={() => clickHandler()}
-              className="flex items-center justify-start rounded-sm bg-lightPurple p-[3px] hover:bg-mediumPurple md:rounded-md md:p-[10px] xl:p-[12px]"
-            >
-              <FaBars className="size-[22px] xl:mr-2 xl:size-[18px]" />
-              <span className="hidden h-[22px] items-center xl:flex xl:h-[18px]">
-                Catalog
-              </span>
-            </button>
-            {/* Search form on > 1280px */}
-            <form className="hidden xl:block">
-              <div className="relative flex items-center justify-between text-sepiaGray">
+            <div className="flex items-center justify-start gap-4 xl:flex-col xl:justify-center">
+              {/* Catalog Btn */}
+              <button
+                onClick={() => clickHandler()}
+                className="flex items-center justify-start rounded-sm bg-lightPurple p-[3px] hover:bg-mediumPurple md:rounded-md md:p-[8px] xl:hidden"
+              >
+                <FaBars className="size-[26px] xl:mr-2 xl:size-[18px]" />
+                <span className="hidden h-[22px] items-center xl:flex xl:h-[18px]">
+                  Catalog
+                </span>
+              </button>
+              <a href="/">
+                <img
+                  src={Logo}
+                  alt="logo"
+                  className="icon block aspect-square w-[32px] xl:w-[64px]"
+                />
+              </a>
+              {/* Logoname > 1536px */}
+              <a href="/">
+                <img
+                  src={Logoname}
+                  alt="logoname"
+                  className="icon hidden h-[26px] sm:block"
+                />
+              </a>
+            </div>
+            <form className="hidden w-full px-4 xl:block">
+              <div className="relative flex w-full items-center justify-between text-sepiaGray">
                 <input
                   type="search"
                   placeholder="Search"
-                  className="h-[42px] rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium outline-0  focus:border-lightPurple"
+                  className="h-[42px] w-full rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium outline-0  focus:border-lightPurple"
                 />
                 <button className="absolute right-[12px]" type="submit">
                   <FaMagnifyingGlass size="21px" />
@@ -76,23 +77,73 @@ const Header = () => {
               </div>
             </form>
           </div>
-          {/* HEADER MIDDLE */}
-          {/* Logo on < 1280px */}
-          <div className="flex w-[44%] items-center justify-center sm:w-[50%] xl:hidden xl:max-h-[42px]">
-            <img
-              src={Logo}
-              alt="logo"
-              className="icon aspect-square w-[32px]"
-            />
+          <div className="hidden w-full items-center justify-center xl:flex xl:h-[50%]">
+            <ul className="menus flex w-full flex-col items-start justify-center  text-3xl uppercase leading-8">
+              <li className="w-full">
+                <a
+                  href="/"
+                  className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
+                >
+                  <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
+                  <span className="z-30 text-fontLavenderGray group-hover:text-white">
+                    home
+                  </span>
+                </a>
+              </li>
+              <li className="w-full">
+                <a
+                  href="/"
+                  className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
+                >
+                  <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
+                  <span className="z-30 text-fontLavenderGray group-hover:text-white">
+                    boosting
+                  </span>
+                </a>
+              </li>
+              <li className="w-full">
+                <a
+                  href="/"
+                  className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
+                >
+                  <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
+                  <span className="z-30 text-fontLavenderGray group-hover:text-white">
+                    about us
+                  </span>
+                </a>
+              </li>
+              <li className="w-full">
+                <a
+                  href="/"
+                  className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
+                >
+                  <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
+                  <span className="z-30 text-fontLavenderGray group-hover:text-white">
+                    work with us
+                  </span>
+                </a>
+              </li>
+              <li className="w-full">
+                <a
+                  href="/"
+                  className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
+                >
+                  <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
+                  <span className="z-30 text-fontLavenderGray group-hover:text-white">
+                    faq
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
           {/* HEADER RIGHT*/}
           {/* three icons < 1280px , two icons > 1280px */}
-          <div className="flex w-[28%] items-center justify-end sm:w-[25%] xl:max-h-[42px]">
+          <div className="flex w-[28%] items-center justify-end sm:w-[25%] xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
             <button className="block xl:hidden">
-              <FaMagnifyingGlass size="21px" />
+              <FaMagnifyingGlass size="26px" />
             </button>
             {/* currency and currency dropdown on > 1280px */}
-            <div className="relative">
+            <div className="relative xl:flex xl:w-full xl:items-center xl:justify-center">
               <button
                 className="mx-[12px] hidden xl:block"
                 type="button"
@@ -109,18 +160,16 @@ const Header = () => {
               <Tooltip list={["USD", "EUR"]} />
             </div>
             {/* user icons on > 1280px */}
-            <button className="mx-3 hidden text-fontLightGray hover:text-white xl:block">
-              <span>Log in</span>
-            </button>
-            <button className="mx-3 hidden rounded-md hover:bg-mediumPurple md:bg-lightPurple md:px-[16px] md:py-[10px] xl:block">
-              <span>Sign up</span>
+            <button className="mx-3 hidden rounded-md border border-lightPurple hover:bg-lightPurple md:px-[16px] md:py-[10px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2">
+              <span>Login / Sign Up</span>
             </button>
             {/* user icon on < 1280px */}
             <button className="mx-3 block xl:hidden">
-              <FaRegUser size="22px" />
+              <FaRegUser size="26px" />
             </button>
-            <button className="rounded-md hover:bg-mediumPurple md:bg-lightPurple md:p-[10px]">
-              <FaCartShopping size="22px" />
+            <button className="rounded-md hover:bg-lightPurple md:bg-mediumPurple md:p-[8px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2">
+              <FaCartShopping size="26px" />
+              <span className="hidden xl:block">Cart</span>
             </button>
           </div>
         </div>

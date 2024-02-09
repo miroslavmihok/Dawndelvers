@@ -5,11 +5,14 @@ module.exports = {
     backgroundColor: (theme) => ({
       ...theme("colors"),
       darkestPurple: "#07020c",
-      darkPurple: "#130522",
-      mediumPurple: "#8545C9",
-      lightPurple: "#8B56FF",
+      darkPurple: "#1C1124",
+      mediumPurple: "#52316A",
+      lightPurple: "#6D418D",
       lightSepiaPurple: "#46355A",
       sepiaPurple: "#362946",
+      lightLemonGreen: "#9BD161",
+      sepiaRed: "#FD3247",
+      lemonGreen: "#89C945",
       veryDarkGrey: "#6C757D",
       darkGrey: "#776d79",
       lightGrey: "#EDEDF5",
@@ -24,11 +27,19 @@ module.exports = {
     }),
     borderColor: (theme) => ({
       ...theme("colors"),
-      lightPurple: "#8B56FF",
+      lightPurple: "#6D418D",
     }),
     backgroundSize: {
       110: "110%",
       100: "100%",
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      "3xl": "1920px",
     },
     extend: {
       backgroundImage: {
