@@ -16,8 +16,8 @@ export const products = [
       },
       {
         id: 1,
-        title: "Raids",
-        url: "raids",
+        title: "Amirdrassil Mythic",
+        url: "amidrassil-mythic",
         imgSrc: "./assets/products/wow.png",
         category: "Raids",
         description:
@@ -27,19 +27,41 @@ export const products = [
       },
       {
         id: 2,
-        title: "Mythic Dungeons",
-        url: "dungeons",
+        title: "Amirdrassil Heroic",
+        url: "amidrassil-heroic",
         imgSrc: "./assets/products/wow.png",
-        category: "Dunegons",
+        category: "Raids",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+      {
+        id: 3,
+        title: "Keystone Master",
+        url: "keystone-master",
+        imgSrc: "./assets/products/wow.png",
+        category: "Dungeons",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
         lowestPrice: "0.45",
         deal: false,
       },
       {
-        id: 3,
-        title: "PvP",
-        url: "pvp",
+        id: 4,
+        title: "Mythic Plus Gear",
+        url: "mythic-plus-gear",
+        imgSrc: "./assets/products/wow.png",
+        category: "Dungeons",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 5,
+        title: "Arena PvP Coaching",
+        url: "arena-pvp-coaching",
         imgSrc: "./assets/products/wow.png",
         category: "PvP",
         description:
@@ -48,9 +70,20 @@ export const products = [
         deal: false,
       },
       {
-        id: 4,
-        title: "Leveling",
-        url: "leveling",
+        id: 6,
+        title: "Arena 2v2",
+        url: "arena-duo",
+        imgSrc: "./assets/products/wow.png",
+        category: "PvP",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 7,
+        title: "Power Leveling",
+        url: "power-leveling",
         imgSrc: "./assets/products/wow.png",
         category: "Leveling",
         description:
@@ -65,20 +98,31 @@ export const products = [
     url: "/diablo4",
     productList: [
       {
-        id: 5,
+        id: 8,
         title: "Gold",
         url: "gold",
         imgSrc: "./assets/products/diablo4.png",
-        category: "Gold",
+        category: "Currency",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
         lowestPrice: "0.45",
         deal: true,
       },
       {
-        id: 6,
-        title: "Leveling",
-        url: "leveling",
+        id: 9,
+        title: "Murmuring obols",
+        url: "murmuring-obols",
+        imgSrc: "./assets/products/diablo4.png",
+        category: "Currency",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+      {
+        id: 10,
+        title: "Power Leveling",
+        url: "power-leveling",
         imgSrc: "./assets/products/diablo4.png",
         category: "Leveling",
         description:
@@ -87,9 +131,9 @@ export const products = [
         deal: false,
       },
       {
-        id: 7,
-        title: "Bosses",
-        url: "bosses",
+        id: 11,
+        title: "Vashan the Consumed",
+        url: "vashan-the-consumed",
         imgSrc: "./assets/products/diablo4.png",
         category: "Bosses",
         description:
@@ -104,9 +148,9 @@ export const products = [
     url: "/callofduty",
     productList: [
       {
-        id: 8,
-        title: "Modern Warfare 2",
-        url: "modernwarfare2",
+        id: 12,
+        title: "Pickaxe Unlock",
+        url: "pickaxe-unlock",
         imgSrc: "./assets/products/cod.png",
         category: "Modern Warfare 2",
         description:
@@ -115,9 +159,9 @@ export const products = [
         deal: false,
       },
       {
-        id: 9,
-        title: "Modern Warfare 3",
-        url: "modernwarfare3",
+        id: 13,
+        title: "MW3 Ranked Play",
+        url: "modern-warfare-3-ranked-play",
         imgSrc: "./assets/products/cod.png",
         category: "Modern Warfare 3",
         description:
@@ -132,9 +176,9 @@ export const products = [
     url: "/lol",
     productList: [
       {
-        id: 10,
-        title: "Rank Boost",
-        url: "rankboost",
+        id: 14,
+        title: "Ranked Boost",
+        url: "ranked-boost",
         imgSrc: "./assets/products/lol.png",
         category: "Rank Boost",
         description:
@@ -143,9 +187,9 @@ export const products = [
         deal: true,
       },
       {
-        id: 11,
+        id: 15,
         title: "Win Boost",
-        url: "winboost",
+        url: "win-boost",
         imgSrc: "./assets/products/lol.png",
         category: "Win Boost",
         description:
@@ -154,7 +198,7 @@ export const products = [
         deal: false,
       },
       {
-        id: 12,
+        id: 16,
         title: "Coaching",
         url: "coaching",
         imgSrc: "./assets/products/lol.png",
@@ -165,9 +209,20 @@ export const products = [
         deal: false,
       },
       {
-        id: 13,
-        title: "Teamfight Tactics",
-        url: "tft",
+        id: 17,
+        title: "Division Boost",
+        url: "division-boost",
+        imgSrc: "./assets/products/lol.png",
+        category: "Teamfight Tactics",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+      {
+        id: 18,
+        title: "Placement Matches",
+        url: "placement-matches",
         imgSrc: "./assets/products/lol.png",
         category: "Teamfight Tactics",
         description:
@@ -182,9 +237,9 @@ export const products = [
     url: "/apex",
     productList: [
       {
-        id: 14,
+        id: 19,
         title: "Rank Boost",
-        url: "rankboost",
+        url: "rank-boost",
         imgSrc: "./assets/products/apex.png",
         category: "Rank Boost",
         description:
@@ -193,9 +248,20 @@ export const products = [
         deal: false,
       },
       {
-        id: 15,
-        title: "Badges",
-        url: "badges",
+        id: 20,
+        title: "Predator Rank",
+        url: "predator-rank",
+        imgSrc: "./assets/products/apex.png",
+        category: "Rank Boost",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 21,
+        title: "All Badges",
+        url: "all-badges",
         imgSrc: "./assets/products/apex.png",
         category: "Badges",
         description:
@@ -204,11 +270,11 @@ export const products = [
         deal: false,
       },
       {
-        id: 16,
-        title: "Coaching",
-        url: "coaching",
+        id: 22,
+        title: "Legend's Wrath Badge",
+        url: "legends-wrath-badge",
         imgSrc: "./assets/products/apex.png",
-        category: "Coaching",
+        category: "Badges",
         description:
           "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
         lowestPrice: "0.45",

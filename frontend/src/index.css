@@ -14,6 +14,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  /* background-color: white; */
   background-color: #130522;
   font-family: "Rajdhani", sans-serif;
   color: #fdfdfd;
@@ -39,8 +40,12 @@ input::placeholder {
   display: none; /* WebKit browsers */
 }
 
-/* .product-Card {
-  -webkit-box-shadow: 1px 9px 17px 4px rgba(12, 6, 14, 0.8);
-  -moz-box-shadow: 1px 9px 17px 4px rgba(12, 6, 14, 0.8);
-  box-shadow: 1px 9px 17px 4px rgba(12, 6, 14, 0.8);
-} */
+.product-Card {
+  -webkit-box-shadow: 1px 9px 17px 10px rgba(12, 6, 14, 0.8);
+  -moz-box-shadow: 1px 9px 17px 10px rgba(12, 6, 14, 0.8);
+  box-shadow: 1px 9px 17px 10px rgba(12, 6, 14, 0.8);
+}
+
+.prevent-scrolling {
+  overflow: hidden;
+}

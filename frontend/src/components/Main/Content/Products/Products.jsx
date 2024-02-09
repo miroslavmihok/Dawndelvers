@@ -7,8 +7,13 @@ import { useData } from "../../../../dataContext/dataCtx";
 
 function Products() {
   // Hooks
-  const { currentGame, setCurrentGame, currentCategory, setCurrentCategory } =
-    useData();
+  const {
+    currentGame,
+    setCurrentGame,
+    currentCategory,
+    setCurrentCategory,
+    toggleScroll,
+  } = useData();
   const [isVisible, setIsVisible] = useState(false);
   const [currentProducts, setCurrentProducts] = useState(
     products[0].productList,
@@ -54,9 +59,11 @@ function Products() {
   // Handlers
   const openHandler = () => {
     setIsVisible(true);
+    toggleScroll();
   };
   const closeHandler = () => {
     setIsVisible(false);
+    toggleScroll();
   };
 
   const currentGameHandler = (e, title) => {
@@ -74,11 +81,11 @@ function Products() {
   };
 
   return (
-    <div className="w-full pb-24">
-      <div className="flex flex-col items-center justify-center">
+    <div className="flex w-full items-start justify-center pb-24">
+      <div className="flex w-full flex-col items-start justify-center xl:w-[1120px] xl:flex-row 2xl:w-[1408px]">
         {/* Game Category choice */}
-        <div className="mb-4 w-full px-8">
-          <h5 className="text-left text-xl font-bold md:text-2xl">
+        <div className="mb-4 flex w-full flex-col items-start justify-start px-8 xl:hidden">
+          <h5 className="text-left text-lg font-bold md:text-xl">
             Choose game and category
           </h5>
           <button
@@ -89,7 +96,7 @@ function Products() {
             <FaAngleDown className="absolute right-5 size-[14px]" />
           </button>
         </div>
-        {/* navbar for game category */}
+        {/* navbar for game category below 1280px */}
         <nav
           className={`fixed top-[56px] z-40 flex h-screen w-screen flex-col items-center justify-start overflow-hidden bg-darkPurple p-4 font-semibold transition-[height] duration-500 ease-in-out md:top-[66px] ${isVisible ? "" : "hidden"}`}
         >
@@ -114,7 +121,7 @@ function Products() {
               >
                 <a
                   href={menu.url}
-                  className={`relative flex w-full items-center justify-between rounded bg-transparent px-4 py-3 text-lg font-bold focus:border focus:border-[mediumPurple] ${currentGame === menu.title ? "border border-[mediumPurple]" : "border-none"}`}
+                  className={`relative flex w-full items-center justify-between rounded px-4 py-3 text-lg font-bold ${currentGame === menu.title ? "border border-[mediumPurple] bg-lightPurple bg-opacity-10 hover:bg-lightPurple hover:bg-opacity-30" : "border-none bg-transparent"}`}
                   onClick={(e) => currentGameHandler(e, menu.title)}
                 >
                   <span
@@ -128,10 +135,41 @@ function Products() {
             ))}
           </ul>
         </nav>
-        {/* end of navbar for main category */}
+        {/* end of navbar for main category below 1280px */}
+        {/* navbar for game category min 1280px */}
+        <nav
+          className={`hidden min-w-[256px] flex-col items-center justify-start font-semibold xl:flex`}
+        >
+          {/* main game categories */}
+          <ul className="menus w-full text-sm">
+            {products.map((menu, index) => (
+              <li
+                key={index}
+                className="flex w-full flex-col items-center justify-center"
+              >
+                <a
+                  href={menu.url}
+                  className={`relative flex w-full items-center justify-between rounded px-4 py-3 text-lg font-bold ${currentGame === menu.title ? "border border-[mediumPurple] bg-lightPurple bg-opacity-10 hover:bg-lightPurple hover:bg-opacity-30" : "border-none bg-transparent"}`}
+                  onClick={(e) => currentGameHandler(e, menu.title)}
+                >
+                  <span
+                    className={`${currentGame === menu.title ? "text-white hover:text-white" : "text-fontCoolGray hover:text-fontLightGray"}  before:absolute before:inset-0 before:top-[-1px] before:h-[1px] before:w-full before:border-[lightGrey] before:bg-[lightGrey] before:opacity-25`}
+                  >
+                    {menu.title}
+                  </span>
+                  <FaAngleRight />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {/* end of navbar for main category min 1280px */}
         {/* products */}
         <div className="flex w-full max-w-full flex-col">
-          <div className="scrolling-wrapper mb-4 flex w-full min-w-0 max-w-full flex-row gap-3 overflow-x-auto px-8">
+          <h5 className="mb-4 px-8 text-2xl font-bold xl:px-0 xl:pl-8">
+            {currentGame} Offers
+          </h5>
+          <div className="scrolling-wrapper mb-4 flex w-full min-w-0 max-w-full flex-row gap-3 overflow-x-auto px-8 xl:px-0 xl:pl-8">
             <button
               ref={focusRef}
               autoFocus
@@ -143,7 +181,7 @@ function Products() {
             </button>
             <Categories currentGame={currentGame} />
           </div>
-          <div className="flex w-full flex-col items-center px-8">
+          <div className="flex w-full flex-col items-center px-8 xl:px-0 xl:pl-8">
             <div className="flex w-full flex-wrap items-center justify-start gap-4">
               {currentProducts.map((product, index) => (
                 <ProductItem

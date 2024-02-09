@@ -7,7 +7,7 @@ import Payment from "./Content/Payment/Payment";
 
 function Main() {
   return (
-    <div className="relative">
+    <div className={`main-section relative`}>
       <Hero />
       <Products />
       <Testimonials />

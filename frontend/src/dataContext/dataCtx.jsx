@@ -16,6 +16,11 @@ export const DataProvider = ({ children }) => {
   const [currentGame, setCurrentGame] = useState(products[0].title);
   const [currentCategory, setCurrentCategory] = useState("All Categories");
 
+  const toggleScroll = () => {
+    const body = document.body;
+    body.classList.toggle("prevent-scrolling");
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -27,6 +32,7 @@ export const DataProvider = ({ children }) => {
         setCurrentGame,
         currentCategory,
         setCurrentCategory,
+        toggleScroll,
       }}
     >
       {children}

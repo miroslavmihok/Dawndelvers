@@ -13,7 +13,7 @@ export const categories = [
         title: "Raids",
       },
       {
-        title: "Mythic Dungeons",
+        title: "Dungeons",
       },
       {
         title: "PvP",
@@ -28,7 +28,7 @@ export const categories = [
     url: "/diablo4",
     submenu: [
       {
-        title: "Gold",
+        title: "Currency",
       },
       {
         title: "Limited Deals",
@@ -89,9 +89,6 @@ export const categories = [
       },
       {
         title: "Badges",
-      },
-      {
-        title: "Coaching",
       },
     ],
   },

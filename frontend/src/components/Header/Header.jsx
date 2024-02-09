@@ -1,5 +1,6 @@
 import React from "react";
 import Tooltip from "../UI/Tooltip";
+import Navbar from "./Navbar";
 import {
   FaBars,
   FaCartShopping,
@@ -13,12 +14,14 @@ import { useHeaderData } from "../../dataContext/headerCtx";
 import { useData } from "../../dataContext/dataCtx";
 
 const Header = () => {
-  const { setIsShown, setHeading } = useHeaderData();
-  const { isCurrencyVisible, setIsCurrencyVisible, currency } = useData();
+  const { isShown, setIsShown, setHeading } = useHeaderData();
+  const { isCurrencyVisible, setIsCurrencyVisible, currency, toggleScroll } =
+    useData();
 
   const clickHandler = () => {
-    setIsShown(true);
+    setIsShown(!isShown);
     setHeading("");
+    toggleScroll();
   };
 
   const currencyClickHandler = () => {
@@ -52,7 +55,7 @@ const Header = () => {
             {/* Catalog Btn */}
             <button
               onClick={() => clickHandler()}
-              className="flex items-center justify-start rounded-sm bg-lightPurple p-[3px] hover:bg-mediumPurple md:rounded-sm xl:p-[12px]"
+              className="flex items-center justify-start rounded-sm bg-lightPurple p-[3px] hover:bg-mediumPurple md:rounded-md md:p-[10px] xl:p-[12px]"
             >
               <FaBars className="size-[22px] xl:mr-2 xl:size-[18px]" />
               <span className="hidden h-[22px] items-center xl:flex xl:h-[18px]">
@@ -122,6 +125,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <Navbar onClose={clickHandler} />
     </>
   );
 };
