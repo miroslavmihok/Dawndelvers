@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useHeaderData } from "../../dataContext/headerCtx";
 import { useData } from "../../dataContext/dataCtx";
 import { FaXmark } from "react-icons/fa6";
@@ -56,7 +57,7 @@ function Navbar({ onClose }) {
     <>
       {/* Navbar for < 768px */}
       <nav
-        className={`mobile-nav fixed top-[56px] z-50 overflow-hidden bg-darkPurple text-lg font-semibold transition-[max-height] duration-500 ease-in-out md:top-[66px] xl:hidden ${isShown ? "max-h-[500px]" : "max-h-0"} `}
+        className={`mobile-nav fixed top-[56px] z-50 overflow-hidden bg-darkPurple text-lg font-semibold transition-[max-height] duration-500 ease-in-out md:top-[66px] md:text-2xl xl:hidden ${isShown ? "max-h-[500px]" : "max-h-0"} `}
         ref={navbarRef}
       >
         <div className="flex w-full flex-col items-center justify-start px-2 pb-10 pt-4">
@@ -71,19 +72,19 @@ function Navbar({ onClose }) {
           {/* main game categories */}
           <ul className="menus flex w-[300px] flex-col items-center justify-center uppercase leading-8">
             <li>
-              <a href="/">home</a>
+              <Link to="/">home</Link>
             </li>
             <li>
-              <a href="/">boosting</a>
+              <Link to="/boosting">boosting</Link>
             </li>
             <li>
-              <a href="/">about us</a>
+              <Link to="/about">about us</Link>
             </li>
             <li>
-              <a href="/">work with us</a>
+              <Link to="/workwithus">work with us</Link>
             </li>
             <li>
-              <a href="/">faq</a>
+              <Link to="/faq">faq</Link>
             </li>
           </ul>
         </div>

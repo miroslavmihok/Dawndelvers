@@ -17,7 +17,7 @@ function Hero() {
           background: `linear-gradient(270deg, rgba(28,17,36,1) 0%,rgba(28,17,36,0.3) 50%, rgba(28,17,36,0) 100%), linear-gradient(90deg, rgba(28,17,36,1) 0%,rgba(28,17,36,0.3) 50%, rgba(28,17,36,0) 100%), url(${gameBg}) center center / cover no-repeat, rgb(28,17,36)`,
         }}
       >
-        <h1 className="w-[300px] max-w-[80%] text-center text-2xl font-extrabold sm:w-[50%] md:min-w-[500px] md:max-w-[67%] md:text-[56px] md:leading-[64px]">
+        <h1 className="w-[300px] max-w-[80%] text-center sm:w-[50%] md:min-w-[500px] md:max-w-[67%]">
           {currentGameTitle}
         </h1>
       </div>

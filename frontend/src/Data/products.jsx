@@ -292,4 +292,119 @@ export const products = [
       },
     ],
   },
+  {
+    title: "League of Legends",
+    url: "/lol",
+    bg: "./assets/games/lol.jpg",
+    logo: "./assets/games/lollogo.png",
+    productList: [
+      {
+        id: 23,
+        title: "Ranked Boost",
+        url: "ranked-boost",
+        imgSrc: "./assets/products/lol.png",
+        category: "Rank Boost",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+      {
+        id: 24,
+        title: "Win Boost",
+        url: "win-boost",
+        imgSrc: "./assets/products/lol.png",
+        category: "Win Boost",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 25,
+        title: "Coaching",
+        url: "coaching",
+        imgSrc: "./assets/products/lol.png",
+        category: "Coaching",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 26,
+        title: "Division Boost",
+        url: "division-boost",
+        imgSrc: "./assets/products/lol.png",
+        category: "Teamfight Tactics",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+      {
+        id: 27,
+        title: "Placement Matches",
+        url: "placement-matches",
+        imgSrc: "./assets/products/lol.png",
+        category: "Teamfight Tactics",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+    ],
+  },
+  {
+    title: "Apex Legends",
+    url: "/apex",
+    bg: "./assets/games/apex.jpg",
+    logo: "./assets/games/apexlogo.png",
+    productList: [
+      {
+        id: 28,
+        title: "Rank Boost",
+        url: "rank-boost",
+        imgSrc: "./assets/products/apex.png",
+        category: "Rank Boost",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 29,
+        title: "Predator Rank",
+        url: "predator-rank",
+        imgSrc: "./assets/products/apex.png",
+        category: "Rank Boost",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 30,
+        title: "All Badges",
+        url: "all-badges",
+        imgSrc: "./assets/products/apex.png",
+        category: "Badges",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: false,
+      },
+      {
+        id: 31,
+        title: "Legend's Wrath Badge",
+        url: "legends-wrath-badge",
+        imgSrc: "./assets/products/apex.png",
+        category: "Badges",
+        description:
+          "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+        lowestPrice: "0.45",
+        deal: true,
+      },
+    ],
+  },
 ];

@@ -124,7 +124,7 @@ function Products() {
         <div className="flex w-full items-center justify-between">
           <div className="w-[25%]"></div>
           <div className="flex w-[50%] items-center justify-center">
-            <h5 className="font-bold">Choose game</h5>
+            <h3>Choose game</h3>
           </div>
           <div className="flex w-[25%] justify-end">
             <button type="button" onClick={() => closeHandler()}>
@@ -158,14 +158,12 @@ function Products() {
       <div className="flex w-full flex-col items-start justify-center xl:w-[900px] 2xl:w-[1200px] 3xl:w-[1580px]">
         {/* Game Category choice */}
         <div className="mb-4 flex w-full flex-col items-start justify-start px-8">
-          <h5 className="text-left text-lg font-bold md:text-xl">
-            Choose game and category
-          </h5>
+          <h3 className="text-left">Choose game and category</h3>
           <button
-            className="relative mt-4 flex w-full items-center justify-between rounded-md bg-sepiaPurple px-5 py-4 font-semibold text-fontCoolGray hover:bg-lightSepiaPurple hover:text-fontLightGray xl:hidden"
+            className="relative mt-4 flex w-full items-center justify-between rounded-md bg-sepiaPurple px-5 py-4 text-fontCoolGray hover:bg-lightSepiaPurple hover:text-fontLightGray xl:hidden"
             onClick={() => openHandler()}
           >
-            {currentGameTitle}
+            <h4>{currentGameTitle}</h4>
             {!isNavbarVisible && (
               <FaAngleDown className="absolute right-5 size-[14px]" />
             )}
@@ -178,7 +176,7 @@ function Products() {
               className="mt-4 flex w-full cursor-pointer items-center rounded-md bg-sepiaPurple px-5 py-4 font-semibold text-fontCoolGray outline-0 hover:bg-lightSepiaPurple hover:text-fontLightGray"
               onClick={() => toggleDesktopMenuHandler()}
             >
-              {currentGameTitle}
+              <h4>{currentGameTitle}</h4>
               {!isGameListVisible && (
                 <FaAngleDown className="absolute right-5 size-[14px]" />
               )}
@@ -201,9 +199,6 @@ function Products() {
         {/* end of navbar for main category below 1280px */}
         {/* products */}
         <div className="flex w-full max-w-full flex-col">
-          <h5 className="mb-4 px-8 text-2xl font-bold xl:px-0 xl:pl-8">
-            {currentGameTitle} Offers
-          </h5>
           <div className="scrolling-wrapper mb-4 flex w-full min-w-0 max-w-full flex-row gap-3 overflow-x-auto px-8 xl:px-0 xl:pl-8">
             <button
               ref={focusRef}

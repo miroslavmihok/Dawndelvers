@@ -1,7 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaAngleDown } from "react-icons/fa6";
+
+const questions = [
+  {
+    title: "Question 1",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+  },
+  {
+    title: "Question 2",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+  },
+  {
+    title: "Question 3",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+  },
+  {
+    title: "Question 4",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+  },
+  {
+    title: "Question 5",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+  },
+];
 
 function FAQ() {
-  return <div></div>;
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const clickHandler = (index) => {
+    if (currentIndex === index) {
+      setCurrentIndex(null);
+    } else {
+      setCurrentIndex(index);
+    }
+  };
+
+  return (
+    <div className="flex w-full flex-col items-center justify-center px-8">
+      <h2>FAQ</h2>
+      <div className="flex flex-col items-center justify-center gap-4 pb-8 pt-8 text-black sm:pb-10 md:pb-12 xl:pb-14">
+        {questions.map((question, index) => (
+          <button
+            key={index}
+            className="w-full max-w-[800px] overflow-hidden rounded-md bg-lightGrey px-4 py-3 text-left"
+            onClick={() => clickHandler(index)}
+          >
+            <div className="flex items-center justify-between">
+              <span className="">{question.title}</span>
+              <FaAngleDown size={"24px"} />
+            </div>
+            <div
+              className={`transition-maxHeight duration-300 ease-in-out ${index === currentIndex ? "max-h-[100px]" : "max-h-0 overflow-hidden"}`}
+            >
+              {question.answer}
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default FAQ;

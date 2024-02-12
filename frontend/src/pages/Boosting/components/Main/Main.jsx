@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./Content/Hero/Hero";
 import Products from "./Content/Products/Products";
-import Payment from "./Content/Payment/Payment";
+import Payment from "../../../../components/Payment/Payment";
 
 function Main() {
   return (

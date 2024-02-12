@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Tooltip from "../UI/Tooltip";
 import Navbar from "./Navbar";
 import {
@@ -31,11 +32,11 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header fixed top-0 z-30 flex w-full items-center bg-darkPurple font-semibold tracking-[0.01rem] text-[#fdfdfd] xl:h-screen xl:w-[300px] xl:flex-col`}
+        className={`fixed top-0 z-50 flex w-full items-center bg-darkPurple font-semibold tracking-[0.01rem] text-[#fdfdfd] xl:h-screen xl:w-[300px] xl:flex-col`}
       >
         <div className="flex w-full justify-between px-8 py-3 xl:h-full xl:flex-col xl:px-3">
           {/* HEADER LEFT */}
-          <div className="flex items-center justify-start gap-4 xl:h-[25%] xl:w-full xl:flex-col xl:justify-between xl:py-5">
+          <div className="flex w-[50%] items-center justify-start gap-4 sm:w-[70%] xl:h-[25%] xl:w-full xl:flex-col xl:justify-between xl:py-5">
             {/* Logo > 1280px */}
             <div className="flex items-center justify-start gap-4 xl:flex-col xl:justify-center">
               {/* Catalog Btn */}
@@ -48,21 +49,21 @@ const Header = () => {
                   Catalog
                 </span>
               </button>
-              <a href="/">
+              <Link to="/">
                 <img
                   src={Logo}
                   alt="logo"
                   className="icon block aspect-square w-[32px] xl:w-[64px]"
                 />
-              </a>
+              </Link>
               {/* Logoname > 1536px */}
-              <a href="/">
+              <Link to="/">
                 <img
                   src={Logoname}
                   alt="logoname"
                   className="icon hidden h-[26px] sm:block"
                 />
-              </a>
+              </Link>
             </div>
             <form className="hidden w-full px-4 xl:block">
               <div className="relative flex w-full items-center justify-between text-sepiaGray">
@@ -78,67 +79,67 @@ const Header = () => {
             </form>
           </div>
           <div className="hidden w-full items-center justify-center xl:flex xl:h-[50%]">
-            <ul className="menus flex w-full flex-col items-start justify-center  text-3xl uppercase leading-8">
+            <ul className="menus flex w-full flex-col items-start justify-center text-3xl uppercase leading-8">
               <li className="w-full">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
                     home
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="w-full">
-                <a
-                  href="/"
+                <Link
+                  to="/boosting"
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
                     boosting
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="w-full">
-                <a
-                  href="/"
+                <Link
+                  to="/about"
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
                     about us
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="w-full">
-                <a
-                  href="/"
+                <Link
+                  to="/workwithus"
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
                     work with us
                   </span>
-                </a>
+                </Link>
               </li>
               <li className="w-full">
-                <a
-                  href="/"
+                <Link
+                  to="/faq"
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
                     faq
                   </span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           {/* HEADER RIGHT*/}
           {/* three icons < 1280px , two icons > 1280px */}
-          <div className="flex w-[28%] items-center justify-end sm:w-[25%] xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
+          <div className="flex w-[50%] items-center justify-end sm:w-[30%] xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
             <button className="block xl:hidden">
               <FaMagnifyingGlass size="26px" />
             </button>

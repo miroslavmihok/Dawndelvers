@@ -11,7 +11,7 @@ import { footerMenu } from "../../Data/footerMenu";
 
 function Footer() {
   return (
-    <div className="flex items-center justify-center px-8">
+    <div className="flex items-center justify-center px-8 pt-8">
       <div className="flex flex-col items-center justify-center xl:max-w-[1120px]">
         <div className="mb-8 flex w-full items-center justify-center gap-4 text-xl">
           <a
@@ -49,9 +49,9 @@ function Footer() {
           <div className="mb-8 grid w-full grid-cols-2">
             {footerMenu.map((item, index) => (
               <ul key={index} className="leading-7">
-                <h4 className="mb-2 font-bold uppercase tracking-widest">
+                <h5 className="mb-2 uppercase tracking-widest">
                   {item.heading}
-                </h4>
+                </h5>
                 {item.links.map((link, index) => (
                   <li key={index}>
                     <a href={link.url}>{link.title}</a>
@@ -62,7 +62,7 @@ function Footer() {
           </div>
           <div className="w-full">
             <div className="mb-2 w-full columns-2">
-              <h4 className=" font-bold uppercase tracking-widest">Games</h4>
+              <h5 className="uppercase tracking-widest">Games</h5>
             </div>
             <div className="w-full columns-2">
               <ul className="leading-7">
@@ -87,7 +87,7 @@ function Footer() {
             managing their game franchises. Copyrighted art submitted to or
             through Dawndelvers remains the intellectual property of the
             respective copyright holder. Dawndelvers does not engage in the sale
-            of in-game items. Instead, our service focuses on enhancing players’
+            of in-game items. Instead, our service focuses on enhancing players'
             in-game skills.
           </span>
         </div>

@@ -41,12 +41,12 @@ function ProductItem({
           <span>Limited Deal!</span>
         </div>
         <div>
-          <h5 className="text-xl font-bold">{title}</h5>
+          <h4 className="font-bold">{title}</h4>
           <p className="mb-2 leading-4">{description}</p>
           <div className="flex items-center ">
             <span className="mr-2">From </span>
             <span className="text-xl font-bold">{currency.curSymbol}</span>
-            <span className="text-xl font-bold">{price}</span>
+            <h4 className="font-bold">{price}</h4>
           </div>
         </div>
       </div>
