@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaRocket, FaGraduationCap, FaWpforms } from "react-icons/fa6";
 
 function Services() {
@@ -30,10 +31,13 @@ function Services() {
               <li>Advantage</li>
               <li>Advantage</li>
             </ul>
-            <button className="flex items-center justify-center gap-2 rounded-md bg-mediumPurple px-6 py-3 hover:bg-lightPurple">
+            <Link
+              to="/workwithus"
+              className="flex w-fit items-center justify-center gap-2 rounded-md bg-mediumPurple px-6 py-3 font-semibold hover:bg-lightPurple"
+            >
               <FaWpforms />
               Sign Up Today
-            </button>
+            </Link>
           </div>
         </div>
         <div
@@ -60,10 +64,13 @@ function Services() {
               <li>Advantage</li>
               <li>Advantage</li>
             </ul>
-            <button className="flex items-center justify-center gap-2 rounded-md bg-mediumPurple px-6 py-3 hover:bg-lightPurple">
+            <Link
+              to="/workwithus"
+              className="flex w-fit items-center justify-center gap-2 rounded-md bg-mediumPurple px-6 py-3 font-semibold hover:bg-lightPurple"
+            >
               <FaWpforms />
               Sign Up Today
-            </button>
+            </Link>
           </div>
         </div>
       </div>

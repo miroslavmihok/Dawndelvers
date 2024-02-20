@@ -1,16 +1,29 @@
 import React from "react";
-import Header from "../../components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "../../components/Footer/Footer";
+import { useParams } from "react-router-dom";
+import { useData } from "../../dataContext/dataCtx";
+import Hero from "./components/Hero/Hero";
+import Products from "./components/Products/Products";
+import Payment from "../../components/Payment/Payment";
 
 function Boosting() {
+  const { gameUrl } = useParams();
+  const { isLoading, error } = useData();
+
+  console.log("rendering Boosting");
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
-    <div className="flex flex-col xl:flex-row">
-      <Header />
-      <div className="w-full xl:ml-[300px]">
-        <Main />
-        <Footer />
-      </div>
+    <div className={`main-section relative`}>
+      <Hero gameUrl={gameUrl} />
+      <Products gameUrl={gameUrl} />
+      <Payment />
     </div>
   );
 }

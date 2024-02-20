@@ -6,6 +6,7 @@ import {
   FaYoutube,
   FaTwitter,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import { categories } from "../../Data/categories";
 import { footerMenu } from "../../Data/footerMenu";
 
@@ -54,7 +55,7 @@ function Footer() {
                 </h5>
                 {item.links.map((link, index) => (
                   <li key={index}>
-                    <a href={link.url}>{link.title}</a>
+                    <Link to={link.url}>{link.title}</Link>
                   </li>
                 ))}
               </ul>

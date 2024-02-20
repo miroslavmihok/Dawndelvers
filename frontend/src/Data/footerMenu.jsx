@@ -7,12 +7,20 @@ export const footerMenu = [
         url: "/",
       },
       {
+        title: "Boosting",
+        url: "/products",
+      },
+      {
         title: "About us",
         url: "/about",
       },
       {
-        title: "Contact us",
-        url: "/contact",
+        title: "Work with us",
+        url: "/workwithus",
+      },
+      {
+        title: "FAQ",
+        url: "/faq",
       },
     ],
   },

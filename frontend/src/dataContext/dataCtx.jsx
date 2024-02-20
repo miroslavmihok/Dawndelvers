@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
-import { products } from "../Data/products";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const DataContext = createContext();
 
@@ -13,13 +13,37 @@ export const DataProvider = ({ children }) => {
     cur: "EUR",
     curSymbol: "€",
   });
-  const [currentGame, setCurrentGame] = useState(products[0]);
-  const [currentGameTitle, setCurrentGameTitle] = useState(products[0].title);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [products, setProducts] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("All Categories");
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
+  const [isGameListVisible, setIsGameListVisible] = useState(false);
 
-  const toggleScroll = () => {
-    const body = document.body;
-    body.classList.toggle("prevent-scrolling");
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get("/api/products");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError(error);
+      }
+      setIsLoading(false);
+    };
+    fetchProducts();
+  }, []);
+
+  const currentGameHandler = () => {
+    setCurrentCategory("All Categories");
+    toggleDesktopMenuHandler();
+    setIsNavbarVisible(false);
+  };
+
+  // clicks outside game List
+  const toggleDesktopMenuHandler = () => {
+    setIsGameListVisible((prevIsGameListVisible) => !prevIsGameListVisible);
   };
 
   return (
@@ -29,13 +53,19 @@ export const DataProvider = ({ children }) => {
         setIsCurrencyVisible,
         currency,
         setIsCurrency,
-        currentGame,
-        setCurrentGame,
-        currentGameTitle,
-        setCurrentGameTitle,
+        isLoading,
+        setIsLoading,
+        error,
+        setError,
+        isNavbarVisible,
+        setIsNavbarVisible,
         currentCategory,
         setCurrentCategory,
-        toggleScroll,
+        isGameListVisible,
+        setIsGameListVisible,
+        products,
+        currentGameHandler,
+        toggleDesktopMenuHandler,
       }}
     >
       {children}

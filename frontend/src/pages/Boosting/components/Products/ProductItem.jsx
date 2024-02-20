@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
-import { useData } from "../../../../../../dataContext/dataCtx";
+import { useData } from "../../../../dataContext/dataCtx";
 
 function ProductItem({
   id,
+  gameUrl,
   url,
   deal,
   title,
@@ -16,11 +18,9 @@ function ProductItem({
 }) {
   const { currency } = useData();
 
-  let imgSrc = `${process.env.PUBLIC_URL}${imageUrl}`;
-
   return (
-    <a
-      href={url}
+    <Link
+      to={`/products/${gameUrl}/${url}`}
       className="product-Card flex min-w-[auto] max-w-[530px] flex-grow basis-0 rounded-2xl"
     >
       <div
@@ -28,8 +28,8 @@ function ProductItem({
         style={{
           transition: "all 0.3s ease-in-out",
           background: isHovered
-            ? `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imgSrc}) center top / 110% no-repeat, rgb(51, 41, 70)`
-            : `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imgSrc}) center top / 100% no-repeat, rgb(51, 41, 70)`,
+            ? `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imageUrl}) center top / 110% no-repeat, rgb(51, 41, 70)`
+            : `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imageUrl}) center top / 100% no-repeat, rgb(51, 41, 70)`,
         }}
         onMouseEnter={() => onMouseEnter(id)}
         onMouseLeave={() => onMouseLeave()}
@@ -50,7 +50,7 @@ function ProductItem({
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

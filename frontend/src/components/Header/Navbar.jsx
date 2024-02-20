@@ -1,14 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHeaderData } from "../../dataContext/headerCtx";
-import { useData } from "../../dataContext/dataCtx";
 import { FaXmark } from "react-icons/fa6";
 
 function Navbar({ onClose }) {
   // Hooks
   const { isShown, setIsShown, setHeading } = useHeaderData();
-
-  const { toggleScroll } = useData();
 
   const navbarRef = useRef();
 
@@ -49,7 +46,6 @@ function Navbar({ onClose }) {
   const clickHandler = () => {
     setIsShown(false);
     setHeading("");
-    toggleScroll();
   };
 
   return (
@@ -72,19 +68,29 @@ function Navbar({ onClose }) {
           {/* main game categories */}
           <ul className="menus flex w-[300px] flex-col items-center justify-center uppercase leading-8">
             <li>
-              <Link to="/">home</Link>
+              <Link to="/" onClick={() => onClose()}>
+                home
+              </Link>
             </li>
             <li>
-              <Link to="/boosting">boosting</Link>
+              <Link to={`/products/worldofwarcraft`} onClick={() => onClose()}>
+                boosting
+              </Link>
             </li>
             <li>
-              <Link to="/about">about us</Link>
+              <Link to="/about" onClick={() => onClose()}>
+                about us
+              </Link>
             </li>
             <li>
-              <Link to="/workwithus">work with us</Link>
+              <Link to="/workwithus" onClick={() => onClose()}>
+                work with us
+              </Link>
             </li>
             <li>
-              <Link to="/faq">faq</Link>
+              <Link to="/faq" onClick={() => onClose()}>
+                faq
+              </Link>
             </li>
           </ul>
         </div>

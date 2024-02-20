@@ -1,7 +1,9 @@
 import React from "react";
-import { products } from "../../../../Data/products";
+import { useData } from "../../../../dataContext/dataCtx";
 
 function WorkWithUs() {
+  const { products } = useData();
+
   return (
     <div>
       <div className="mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">

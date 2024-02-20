@@ -16,13 +16,11 @@ import { useData } from "../../dataContext/dataCtx";
 
 const Header = () => {
   const { isShown, setIsShown, setHeading } = useHeaderData();
-  const { isCurrencyVisible, setIsCurrencyVisible, currency, toggleScroll } =
-    useData();
+  const { isCurrencyVisible, setIsCurrencyVisible, currency } = useData();
 
   const clickHandler = () => {
     setIsShown(!isShown);
     setHeading("");
-    toggleScroll();
   };
 
   const currencyClickHandler = () => {
@@ -93,7 +91,7 @@ const Header = () => {
               </li>
               <li className="w-full">
                 <Link
-                  to="/boosting"
+                  to={`/products/worldofwarcraft`}
                   className={`group group relative flex w-full items-center justify-between overflow-hidden rounded border border-none border-[mediumPurple] px-4 py-3 font-bold`}
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
