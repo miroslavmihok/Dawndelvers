@@ -1,5 +1,6 @@
 import React from "react";
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function About() {
   return (
@@ -9,6 +10,7 @@ function About() {
         background: `linear-gradient(0deg, rgba(28,16,36,1) 0%, rgba(28,16,36,0) 50%, rgba(28,16,36,1) 100%), url(${bg}) center center / cover no-repeat`,
       }}
     >
+      <Breadcrumbs />
       <h2 className="mb-14">About us</h2>
       <div className="max-w-[800px] text-center">
         <p>

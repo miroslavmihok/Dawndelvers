@@ -1,14 +1,14 @@
 import React from "react";
 import GameItem from "./GameItem";
+import { useProductsData } from "../../../../dataContext/productsCtx";
 import { Navigation, A11y, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useData } from "../../../../dataContext/dataCtx";
 
 function Games() {
-  const { products } = useData();
-  console.log("rendering Games");
+  const { isLoading, error, products } = useProductsData();
+
   return (
     <div className="mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">
       <Swiper
@@ -30,16 +30,20 @@ function Games() {
         freeMode={true}
         navigation
       >
-        {products.map((game, index) => (
-          <SwiperSlide key={index}>
-            <GameItem
-              title={game.title}
-              url={game.url}
-              bgUrl={game.bg}
-              logoUrl={game.logo}
-            />
-          </SwiperSlide>
-        ))}
+        {error
+          ? "Something went wrong"
+          : isLoading
+            ? "loading"
+            : products.map((game, index) => (
+                <SwiperSlide key={index}>
+                  <GameItem
+                    title={game.title}
+                    url={game.url}
+                    bgUrl={game.bg}
+                    logoUrl={game.logo}
+                  />
+                </SwiperSlide>
+              ))}
       </Swiper>
     </div>
   );

@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../../../dataContext/dataCtx";
 import { FaXmark, FaAngleRight } from "react-icons/fa6";
+import { useProductsData } from "../../../../dataContext/productsCtx";
 
-function MobileNavbar({ currentGame, products }) {
+function MobileNavbar({ currentGame }) {
   const { isNavbarVisible, setIsNavbarVisible, currentGameHandler } = useData();
+  const { products } = useProductsData();
 
   const closeHandler = () => {
     setIsNavbarVisible(false);

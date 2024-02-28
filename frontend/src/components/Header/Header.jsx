@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHeaderData } from "../../dataContext/headerCtx";
+import { useCartData } from "../../dataContext/cartCtx";
 import Tooltip from "../UI/Tooltip";
 import Navbar from "./Navbar";
 import {
@@ -11,16 +13,20 @@ import {
 } from "react-icons/fa6";
 import Logo from "../../assets/identity/Logo.png";
 import Logoname from "../../assets/identity/Logoname.png";
-import { useHeaderData } from "../../dataContext/headerCtx";
-import { useData } from "../../dataContext/dataCtx";
 
-const Header = () => {
-  const { isShown, setIsShown, setHeading } = useHeaderData();
-  const { isCurrencyVisible, setIsCurrencyVisible, currency } = useData();
+const Header = ({ displayLoginModal }) => {
+  const {
+    isShown,
+    setIsShown,
+    isCurrencyVisible,
+    setIsCurrencyVisible,
+    currency,
+  } = useHeaderData();
+
+  const { cartCount } = useCartData();
 
   const clickHandler = () => {
     setIsShown(!isShown);
-    setHeading("");
   };
 
   const currencyClickHandler = () => {
@@ -96,7 +102,7 @@ const Header = () => {
                 >
                   <div className="transition-width absolute left-0 z-20 h-full w-0 bg-lightPurple bg-transparent duration-300 ease-in-out group-hover:w-full group-hover:bg-lightPurple"></div>
                   <span className="z-30 text-fontLavenderGray group-hover:text-white">
-                    boosting
+                    products
                   </span>
                 </Link>
               </li>
@@ -159,17 +165,28 @@ const Header = () => {
               <Tooltip list={["USD", "EUR"]} />
             </div>
             {/* user icons on > 1280px */}
-            <button className="mx-3 hidden rounded-md border border-lightPurple hover:bg-lightPurple md:px-[16px] md:py-[10px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2">
+            <button
+              className="mx-3 hidden rounded-md border border-lightPurple hover:bg-lightPurple md:px-[16px] md:py-[10px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2"
+              onClick={() => displayLoginModal()}
+            >
               <span>Login / Sign Up</span>
             </button>
             {/* user icon on < 1280px */}
-            <button className="mx-3 block xl:hidden">
+            <button
+              className="mx-3 block xl:hidden"
+              onClick={() => displayLoginModal()}
+            >
               <FaRegUser size="26px" />
             </button>
-            <button className="rounded-md hover:bg-lightPurple md:bg-mediumPurple md:p-[8px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2">
+            <Link
+              to={`/cart`}
+              className="rounded-md hover:bg-lightPurple md:bg-mediumPurple md:p-[8px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2"
+            >
               <FaCartShopping size="26px" />
-              <span className="hidden xl:block">Cart</span>
-            </button>
+              <span className="hidden xl:block">
+                Cart (<span>{cartCount}</span>)
+              </span>
+            </Link>
           </div>
         </div>
       </header>

@@ -1,8 +1,8 @@
 import React from "react";
-import { useData } from "../../../../dataContext/dataCtx";
+import { useProductsData } from "../../../../dataContext/productsCtx";
 
 function WorkWithUs() {
-  const { products } = useData();
+  const { isLoading, error, products } = useProductsData();
 
   return (
     <div>
@@ -25,11 +25,15 @@ function WorkWithUs() {
               <form className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-4 sm:grid-rows-4">
                 <select className="col-span-1 rounded-md px-5 py-3 sm:col-span-2">
                   <option hidden>Choose game</option>
-                  {products.map((product, index) => (
-                    <option key={index} value={product.title}>
-                      {product.title}
-                    </option>
-                  ))}
+                  {error
+                    ? "Something went wrong"
+                    : isLoading
+                      ? "Loading"
+                      : products.map((product, index) => (
+                          <option key={index} value={product.title}>
+                            {product.title}
+                          </option>
+                        ))}
                 </select>
                 <input
                   type="text"

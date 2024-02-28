@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
-import { useData } from "../../../../dataContext/dataCtx";
+import { useHeaderData } from "../../../../dataContext/headerCtx";
+import formatter from "../../../../utils/formatter";
 
 function ProductItem({
   id,
@@ -12,28 +13,15 @@ function ProductItem({
   description,
   price,
   imageUrl,
-  isHovered,
-  onMouseEnter,
-  onMouseLeave,
 }) {
-  const { currency } = useData();
+  const { currency } = useHeaderData();
 
   return (
     <Link
       to={`/products/${gameUrl}/${url}`}
-      className="product-Card flex min-w-[auto] max-w-[530px] flex-grow basis-0 rounded-2xl"
+      className="product-Card relative flex h-[300px] min-w-[256px] max-w-[530px] flex-grow basis-0 overflow-hidden rounded-2xl"
     >
-      <div
-        className="flex h-[300px] min-w-[256px] max-w-[530px] flex-grow flex-col items-start justify-between rounded-2xl p-4"
-        style={{
-          transition: "all 0.3s ease-in-out",
-          background: isHovered
-            ? `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imageUrl}) center top / 110% no-repeat, rgb(51, 41, 70)`
-            : `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imageUrl}) center top / 100% no-repeat, rgb(51, 41, 70)`,
-        }}
-        onMouseEnter={() => onMouseEnter(id)}
-        onMouseLeave={() => onMouseLeave()}
-      >
+      <div className="z-20 flex flex-grow flex-col items-start justify-between rounded-2xl p-4">
         <div
           className={`${deal ? "opacity-1" : "opacity-0"} text-md flex items-center gap-1 rounded-md bg-yellow-300 px-2 py-1 font-bold text-black`}
         >
@@ -45,11 +33,18 @@ function ProductItem({
           <p className="mb-2 leading-4">{description}</p>
           <div className="flex items-center ">
             <span className="mr-2">From </span>
-            <span className="text-xl font-bold">{currency.curSymbol}</span>
-            <h4 className="font-bold">{price}</h4>
+            <h4 className="font-bold">
+              {formatter(price, currency.curSymbol)}
+            </h4>
           </div>
         </div>
       </div>
+      <div
+        className={`product-Card-bg absolute inset-0 z-0 h-[300px] min-w-[256px] max-w-[530px]`}
+        style={{
+          background: `linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%) 0% 0% / 100%, linear-gradient(rgba(51, 41, 70, 0) 0%, rgb(51, 41, 70) 100%), url(${imageUrl}) center top / cover no-repeat`,
+        }}
+      ></div>
     </Link>
   );
 }

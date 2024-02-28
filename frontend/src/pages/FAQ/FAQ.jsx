@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { questions } from "../../Data/questions";
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function FAQ() {
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -21,6 +22,7 @@ function FAQ() {
         background: `linear-gradient(0deg, rgba(28,16,36,1) 0%, rgba(28,16,36,0) 50%, rgba(28,16,36,1) 100%), url(${bg}) center center / cover no-repeat`,
       }}
     >
+      <Breadcrumbs />
       <h2 className="mb-14">FAQ</h2>
       <div className="flex flex-col items-center justify-center gap-4 pb-8 pt-8 text-black sm:pb-10 md:pb-12 xl:pb-14">
         {questions.map((question, index) => (

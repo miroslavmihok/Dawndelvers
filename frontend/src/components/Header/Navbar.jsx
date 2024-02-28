@@ -5,7 +5,7 @@ import { FaXmark } from "react-icons/fa6";
 
 function Navbar({ onClose }) {
   // Hooks
-  const { isShown, setIsShown, setHeading } = useHeaderData();
+  const { isShown, setIsShown } = useHeaderData();
 
   const navbarRef = useRef();
 
@@ -45,20 +45,18 @@ function Navbar({ onClose }) {
 
   const clickHandler = () => {
     setIsShown(false);
-    setHeading("");
   };
 
   return (
-    // navbar menu
     <>
       {/* Navbar for < 768px */}
       <nav
         className={`mobile-nav fixed top-[56px] z-50 overflow-hidden bg-darkPurple text-lg font-semibold transition-[max-height] duration-500 ease-in-out md:top-[66px] md:text-2xl xl:hidden ${isShown ? "max-h-[500px]" : "max-h-0"} `}
         ref={navbarRef}
       >
-        <div className="flex w-full flex-col items-center justify-start px-2 pb-10 pt-4">
+        <div className="flex w-full flex-col items-center justify-start pb-10 pt-4">
           {/* main navbar heading and closing button */}
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between px-8">
             <div className="flex w-full justify-end">
               <button type="button" onClick={() => clickHandler()}>
                 <FaXmark size="24px" />
@@ -74,7 +72,7 @@ function Navbar({ onClose }) {
             </li>
             <li>
               <Link to={`/products/worldofwarcraft`} onClick={() => onClose()}>
-                boosting
+                products
               </Link>
             </li>
             <li>
@@ -95,9 +93,6 @@ function Navbar({ onClose }) {
           </ul>
         </div>
       </nav>
-      {/* <div
-        className={`absolute top-[240px] z-40 h-screen w-screen max-w-full bg-darkPurple transition-opacity duration-500 ease-in-out lg:top-[566px] ${isShown ? "block opacity-70" : "hidden opacity-0"}`}
-      ></div> */}
     </>
   );
 }

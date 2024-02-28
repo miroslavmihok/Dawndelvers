@@ -1,9 +1,10 @@
 import React from "react";
-import { useData } from "../../dataContext/dataCtx";
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
+import { useProductsData } from "../../dataContext/productsCtx";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function WorkWithUs() {
-  const { products } = useData();
+  const { products } = useProductsData();
 
   return (
     <div
@@ -13,6 +14,7 @@ function WorkWithUs() {
       }}
     >
       <div className="mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">
+        <Breadcrumbs />
         <h2 className="mb-14">Work with us</h2>
         <div className="flex w-full flex-col items-center justify-center gap-4 text-black">
           <div className="flex w-full max-w-[800px] flex-col gap-4 md:min-w-[565px]">

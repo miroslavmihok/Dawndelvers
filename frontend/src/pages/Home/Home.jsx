@@ -10,8 +10,6 @@ import img1 from "../../assets/backgrounds/h5-rev-8.png";
 import img2 from "../../assets/backgrounds/Untitled-6.png";
 
 function Home() {
-  console.log("rendering Home");
-
   return (
     <div className="flex flex-col">
       <div

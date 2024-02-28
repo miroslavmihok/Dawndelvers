@@ -9,15 +9,21 @@ export function useHeaderData() {
 export function HeaderDataProvider({ children }) {
   // burger icon state - opened/closed on click of burger icon - closed on submenu click aswell
   const [isShown, setIsShown] = useState(false);
-  const [heading, setHeading] = useState("");
+  const [isCurrencyVisible, setIsCurrencyVisible] = useState(false);
+  const [currency, setIsCurrency] = useState({
+    cur: "EUR",
+    curSymbol: "€",
+  });
 
   return (
     <HeaderContext.Provider
       value={{
         isShown,
         setIsShown,
-        heading,
-        setHeading,
+        isCurrencyVisible,
+        setIsCurrencyVisible,
+        currency,
+        setIsCurrency,
       }}
     >
       {children}

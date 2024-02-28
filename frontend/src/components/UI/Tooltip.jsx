@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import { useData } from "../../dataContext/dataCtx";
+import { useHeaderData } from "../../dataContext/headerCtx";
 
 function Tooltip({ list }) {
-  const { isCurrencyVisible, setIsCurrencyVisible, setIsCurrency } = useData();
+  const { isCurrencyVisible, setIsCurrencyVisible, setIsCurrency } =
+    useHeaderData();
 
   const wrapperRef = useRef(null);
 

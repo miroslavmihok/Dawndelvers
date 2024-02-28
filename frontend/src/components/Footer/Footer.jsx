@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,7 +12,7 @@ import { footerMenu } from "../../Data/footerMenu";
 
 function Footer() {
   return (
-    <div className="flex items-center justify-center px-8 pt-8">
+    <div className="flex items-center justify-center bg-darkPurple px-8 pt-8">
       <div className="flex flex-col items-center justify-center xl:max-w-[1120px]">
         <div className="mb-8 flex w-full items-center justify-center gap-4 text-xl">
           <a
@@ -100,4 +100,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default memo(Footer);

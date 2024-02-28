@@ -10,9 +10,9 @@ module.exports = {
       lightPurple: "#6D418D",
       lightSepiaPurple: "#46355A",
       sepiaPurple: "#362946",
-      lightLemonGreen: "#9BD161",
       sepiaRed: "#FD3247",
-      lemonGreen: "#89C945",
+      lightLemonGreen: "#9BD161",
+      lemonGreen: "#4DAA57",
       veryDarkGrey: "#6C757D",
       darkGrey: "#776d79",
       lightGrey: "#EDEDF5",
@@ -24,10 +24,15 @@ module.exports = {
       fontLightGray: "#C0C0D6",
       sepiaGray: "#676B8B",
       fontCoolGray: "#A7A7C8",
+      lightPurple: "#6D418D",
+      sepiaRed: "#FD3247",
+      lemonGreen: "#89C945",
     }),
     borderColor: (theme) => ({
       ...theme("colors"),
+      mediumPurple: "#52316A",
       lightPurple: "#6D418D",
+      sepiaRed: "#FD3247",
     }),
     backgroundSize: {
       110: "110%",
@@ -54,6 +59,14 @@ module.exports = {
         hide: {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
+        },
+        moveButtonUp: {
+          "0%": { top: "0px" },
+          "100%": { top: "-48px" },
+        },
+        moveButtonDown: {
+          "0%": { top: "-48px" },
+          "100%": { top: "0px" },
         },
       },
     },
