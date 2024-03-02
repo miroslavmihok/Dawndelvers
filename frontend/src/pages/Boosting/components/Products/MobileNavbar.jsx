@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../../../dataContext/dataCtx";
 import { FaXmark, FaAngleRight } from "react-icons/fa6";
-import { useProductsData } from "../../../../dataContext/productsCtx";
+import { useGamesData } from "../../../../dataContext/gamesCtx";
 
 function MobileNavbar({ currentGame }) {
   const { isNavbarVisible, setIsNavbarVisible, currentGameHandler } = useData();
-  const { products } = useProductsData();
+  const { games } = useGamesData();
 
   const closeHandler = () => {
     setIsNavbarVisible(false);
@@ -32,7 +32,7 @@ function MobileNavbar({ currentGame }) {
         </div>
         {/* main game categories */}
         <ul className="menus mt-[24px] w-full text-sm">
-          {products.map((menu, index) => (
+          {games.map((menu, index) => (
             <li
               key={index}
               className="flex w-full flex-col items-center justify-center"

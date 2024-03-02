@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Product from "./productModel";
 
 const gameSchema = new mongoose.Schema({
   title: {
@@ -16,10 +15,6 @@ const gameSchema = new mongoose.Schema({
   },
   logo: {
     type: String,
-    required: true,
-  },
-  productList: {
-    type: [Product],
     required: true,
   },
 });

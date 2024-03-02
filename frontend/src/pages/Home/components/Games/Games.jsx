@@ -1,13 +1,13 @@
 import React from "react";
 import GameItem from "./GameItem";
-import { useProductsData } from "../../../../dataContext/productsCtx";
+import { useGamesData } from "../../../../dataContext/gamesCtx";
 import { Navigation, A11y, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
 function Games() {
-  const { isLoading, error, products } = useProductsData();
+  const { isLoading, error, games } = useGamesData();
 
   return (
     <div className="mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">
@@ -34,7 +34,7 @@ function Games() {
           ? "Something went wrong"
           : isLoading
             ? "loading"
-            : products.map((game, index) => (
+            : games.map((game, index) => (
                 <SwiperSlide key={index}>
                   <GameItem
                     title={game.title}

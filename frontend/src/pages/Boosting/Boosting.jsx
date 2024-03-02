@@ -7,16 +7,18 @@ import useFetch from "../../hooks/useFetch";
 
 function Boosting() {
   const { gameUrl } = useParams();
-  const { isLoading, error, data } = useFetch(`/products/${gameUrl}`);
+  const gameData = useFetch(`/games/${gameUrl}`);
+  const productsData = useFetch(`/products/${gameUrl}`);
 
   return (
     <div className={`main-section relative bg-darkPurple`}>
-      <Hero game={data} />
+      <Hero game={gameData.data} />
       <Products
         gameUrl={gameUrl}
-        isLoading={isLoading}
-        error={error}
-        game={data}
+        game={gameData.data}
+        products={productsData.data}
+        areProductsLoading={productsData.isLoading}
+        productsError={productsData.error}
       />
       <Payment />
     </div>

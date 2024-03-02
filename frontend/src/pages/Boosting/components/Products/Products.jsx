@@ -6,15 +6,14 @@ import MobileNavbar from "./MobileNavbar";
 import DesktopNavbar from "./DesktopNavbar";
 import Breadcrumbs from "../../../../components/Breadcrumbs/Breadcrumbs";
 
-function Products({ isLoading, error, game }) {
+function Products({ game, products, areProductsLoading, productsError }) {
   // Hooks
   const { currentCategory } = useData();
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const updateProducts = useCallback(() => {
-    const productList = game ? game.productList : [];
-    let productArray = productList;
+    let productArray = products ? products : [];
 
     let filteredProducts =
       currentCategory === "All Categories"
@@ -25,13 +24,13 @@ function Products({ isLoading, error, game }) {
               (product) => product.category === currentCategory,
             );
     setFilteredProducts(filteredProducts);
-  }, [game, currentCategory]);
+  }, [products, currentCategory]);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!areProductsLoading) {
       updateProducts();
     }
-  }, [isLoading, updateProducts]);
+  }, [areProductsLoading, updateProducts]);
 
   return (
     <div className="flex w-full flex-col items-center justify-start pb-24">
@@ -49,8 +48,8 @@ function Products({ isLoading, error, game }) {
           </div>
           <div className="flex w-full flex-col items-center px-8">
             <div className="flex w-full flex-wrap items-center justify-start gap-4">
-              {error && <div>Something went wrong</div>}
-              {isLoading && <div>Loading...</div>}
+              {productsError && <div>Something went wrong</div>}
+              {areProductsLoading && <div>Loading...</div>}
               {filteredProducts &&
                 filteredProducts.map((product, index) => (
                   <ProductItem

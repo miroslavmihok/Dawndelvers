@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useData } from "../../../../dataContext/dataCtx";
 import { FaAngleDown } from "react-icons/fa6";
-import { useProductsData } from "../../../../dataContext/productsCtx";
+import { useGamesData } from "../../../../dataContext/gamesCtx";
 
 function DesktopNavbar({ currentGame }) {
   //HOOKS
@@ -15,7 +15,7 @@ function DesktopNavbar({ currentGame }) {
     currentGameHandler,
   } = useData();
 
-  const { products } = useProductsData();
+  const { games } = useGamesData();
 
   const gameListRef = useRef(null);
 
@@ -77,11 +77,11 @@ function DesktopNavbar({ currentGame }) {
           <ul
             className={`absolute ${isGameListVisible ? "flex" : "hidden"} top-[72px] w-full flex-col items-center justify-start overflow-hidden rounded-md`}
           >
-            {products.map((menu, index) => {
+            {games.map((menu, index) => {
               return menu.title !== currentGame.title ? (
                 <li
                   key={index}
-                  className={`w-full bg-sepiaPurple font-semibold text-fontCoolGray outline-0 hover:bg-lightSepiaPurple hover:text-fontLightGray ${index !== products.length - 1 ? "border-b border-gray-400/25" : ""}`}
+                  className={`w-full bg-sepiaPurple font-semibold text-fontCoolGray outline-0 hover:bg-lightSepiaPurple hover:text-fontLightGray ${index !== games.length - 1 ? "border-b border-gray-400/25" : ""}`}
                 >
                   <Link
                     to={`/products/${menu.url}`}

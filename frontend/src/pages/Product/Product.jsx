@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useProductsData } from "../../dataContext/productsCtx";
 import { useHeaderData } from "../../dataContext/headerCtx";
 import { useCartData } from "../../dataContext/cartCtx";
+import useGameFetch from "../../hooks/useGameFetch";
+import useProductFetch from "../../hooks/useProductFetch";
 import { Filter } from "../../models/Filter";
 import formatter from "../../utils/formatter";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
@@ -11,52 +12,42 @@ import { FaCartShopping, FaCheck } from "react-icons/fa6";
 function Product() {
   // CONTEXT
   const { gameUrl, productUrl } = useParams();
-  const { isLoading, error, products } = useProductsData();
   const { currency } = useHeaderData();
   const { setCurrentlyAddedProduct } = useCartData();
 
   // HOOKS
-  const [game, setGame] = useState(null);
-  const [productData, setProductData] = useState(null);
+  const { isGameLoading, gameError, game } = useGameFetch(`/games/${gameUrl}`);
+  const { isProductLoading, productError, product } = useProductFetch(
+    `/products/${gameUrl}/${productUrl}`,
+  );
   const [selectedFilters, setSelectedFilters] = useState({});
   const [basePrice, setBasePrice] = useState(5.0);
   const [price, setPrice] = useState(5.0);
   const [isAddButtonClicked, setIsAddButtonClicked] = useState();
 
   useEffect(() => {
-    if (!isLoading && products) {
-      const game = products.find((game) => game.url === gameUrl);
-      setGame(game);
-      if (game) {
-        const product = game.productList.find(
-          (product) => product.url === productUrl,
-        );
-        if (product) {
-          setProductData(product);
-          // Reseting filters and price if the product changes
-          setSelectedFilters({});
-          setBasePrice(product.basePrice);
-          setPrice(product.basePrice);
-        }
-      }
+    if (!isProductLoading && product) {
+      // reseting filters and price if the product changes
+      setSelectedFilters({});
+      setBasePrice(product.basePrice);
+      setPrice(product.basePrice);
     }
-  }, [isLoading, products, gameUrl, productUrl]);
+  }, [isProductLoading, product, gameUrl, productUrl]);
 
   // FILTERS
   const calculateAdjustedPrice = (basePrice, selectedFilters) => {
     let adjustedPrice = basePrice;
 
-    // Iterate over selected filters
     Object.entries(selectedFilters).forEach(([filterName, filterValues]) => {
-      // Find the filter object from the product's filters array
-      const filter = productData.filters.find(
+      // finding the filter object from the product's filters array
+      const filter = product.filters.find(
         (filter) => filter.name === filterName,
       );
 
-      // Check if the filter exists and has multiplicators
+      // checking if the filter exists and has multiplicators
       if (filter && filter.values) {
         if (Array.isArray(filterValues)) {
-          // If filterValues is an array (for checkboxes)
+          // if filterValues is an array (for checkboxes)
           filterValues.forEach((value) => {
             const selectedOption = filter.values.find(
               (option) => option.title === value,
@@ -72,7 +63,7 @@ function Product() {
           const start = value - min;
           adjustedPrice += basePrice * (start / steps);
         } else {
-          // If filterValues is a single value (for radio buttons or range)
+          // if filterValues is a single value (for radio buttons or range)
           const selectedOption = filter.values.find(
             (option) => option.title === filterValues,
           );
@@ -92,28 +83,29 @@ function Product() {
     }));
 
     // Calculate adjusted price based on the selected filters
-    const newPrice = calculateAdjustedPrice(productData.basePrice, {
+    const newPrice = calculateAdjustedPrice(product.basePrice, {
       ...selectedFilters,
       [name]: value,
     });
     setPrice(newPrice);
   };
 
-  const filters = productData
-    ? productData.filters.map((filterData) => {
-        return {
-          ...filterData,
-          onChange: handleFilterChange,
-        };
-      })
-    : [];
+  const filters =
+    product && product.filters
+      ? product.filters.map((filterData) => {
+          return {
+            ...filterData,
+            onChange: handleFilterChange,
+          };
+        })
+      : [];
 
   // SUBMIT
 
   const submitProductHandler = () => {
     setCurrentlyAddedProduct({
       id: Math.floor(Math.random() * 100000),
-      product: productData,
+      product: product,
       price: price,
       filters: selectedFilters,
     });
@@ -125,9 +117,9 @@ function Product() {
 
   return (
     <>
-      {error && <div>Something went wrong</div>}
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && productData && (
+      {(productError || gameError) && <div>Something went wrong</div>}
+      {(isProductLoading || isGameLoading) && <div>Loading...</div>}
+      {!isProductLoading && !isGameLoading && product && game && (
         <div className="flex min-h-screen flex-col items-center justify-start bg-darkPurple">
           <div
             className="min-h-[220px] w-full md:min-h-[400px]"
@@ -136,14 +128,14 @@ function Product() {
             }}
           ></div>
           <div className="flex flex-col px-8 xl:w-[836px] xl:px-0 2xl:w-[1136px] 3xl:w-[1516px]">
-            <Breadcrumbs game={game.title} product={productData.title} />
+            <Breadcrumbs game={game.title} product={product.title} />
             <h2 className="mb-8 text-wrap text-center lg:text-start xl:mb-14">
-              {game.title}: {productData.title}
+              {game.title}: {product.title}
             </h2>
             <div className="flex w-full flex-col-reverse items-center justify-center gap-8 lg:flex-row lg:items-start lg:justify-between ">
               <div className="w-[50%]">
                 <h3>Product description</h3>
-                <p className="mb-8">{productData.description}</p>
+                <p className="mb-8">{product.description}</p>
                 <div
                   className="mb-8 border-l-2 border-yellow-300 p-2"
                   style={{

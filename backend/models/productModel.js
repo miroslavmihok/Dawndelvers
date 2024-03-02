@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Filters from "./filtersModel";
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -24,14 +23,37 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const filtersSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  values: [
+    {
+      title: {
+        type: String,
+      },
+      multiplicator: {
+        type: Number,
+        required: true,
+      },
+      min: { type: Number },
+      max: { type: Number },
+      step: { type: Number },
+    },
+  ],
+});
+
 const productSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-    },
-    id: {
-      type: Number,
       required: true,
+      ref: "User",
     },
     title: {
       type: String,
@@ -42,6 +64,14 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     imgSrc: {
+      type: String,
+      required: true,
+    },
+    game: {
+      type: String,
+      required: true,
+    },
+    gameUrl: {
       type: String,
       required: true,
     },
@@ -78,10 +108,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-    filters: {
-      type: [Filters],
-      required: true,
-    },
+    filters: [filtersSchema],
   },
   { timestamps: true }
 );

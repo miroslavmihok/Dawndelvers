@@ -4,6 +4,7 @@ import { DataProvider } from "./dataContext/dataCtx";
 import { HeaderDataProvider } from "./dataContext/headerCtx";
 import { ProductsDataProvider } from "./dataContext/productsCtx";
 import { CartDataProvider } from "./dataContext/cartCtx";
+import { GamesDataProvider } from "./dataContext/gamesCtx";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
@@ -15,7 +16,9 @@ root.render(
       <HeaderDataProvider>
         <CartDataProvider>
           <ProductsDataProvider>
-            <App />
+            <GamesDataProvider>
+              <App />
+            </GamesDataProvider>
           </ProductsDataProvider>
         </CartDataProvider>
       </HeaderDataProvider>

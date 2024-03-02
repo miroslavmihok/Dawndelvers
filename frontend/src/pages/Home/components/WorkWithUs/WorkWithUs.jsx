@@ -1,8 +1,8 @@
 import React from "react";
-import { useProductsData } from "../../../../dataContext/productsCtx";
+import { useGamesData } from "../../../../dataContext/gamesCtx";
 
 function WorkWithUs() {
-  const { isLoading, error, products } = useProductsData();
+  const { isLoading, error, games } = useGamesData();
 
   return (
     <div>
@@ -29,7 +29,7 @@ function WorkWithUs() {
                     ? "Something went wrong"
                     : isLoading
                       ? "Loading"
-                      : products.map((product, index) => (
+                      : games.map((product, index) => (
                           <option key={index} value={product.title}>
                             {product.title}
                           </option>
