@@ -304,6 +304,7 @@ dialog::backdrop {
   padding: 10px 40px;
   border-radius: 3px;
   color: white;
+  outline: none;
 }
 
 .control::placeholder {
@@ -324,6 +325,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* .prevent-scrolling {
+.no-scroll {
   overflow: hidden;
-} */
+}

@@ -7,8 +7,8 @@ import {
   FaTwitter,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { categories } from "../../Data/categories";
-import { footerMenu } from "../../Data/footerMenu";
+import { categories } from "../../data/categories";
+import { footerMenu } from "../../data/footerMenu";
 
 function Footer() {
   return (

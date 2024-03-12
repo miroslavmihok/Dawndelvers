@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useData } from "../../../../dataContext/dataCtx";
+import { useData } from "../../../../context/dataCtx";
 import Categories from "./Categories";
 import ProductItem from "./ProductItem";
 import MobileNavbar from "./MobileNavbar";

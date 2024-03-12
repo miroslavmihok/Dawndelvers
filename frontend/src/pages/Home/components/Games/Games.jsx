@@ -1,6 +1,6 @@
 import React from "react";
 import GameItem from "./GameItem";
-import { useGamesData } from "../../../../dataContext/gamesCtx";
+import { useGamesData } from "../../../../context/gamesCtx";
 import { Navigation, A11y, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -26,7 +26,7 @@ function Games() {
             slidesPerView: 4,
           },
         }}
-        // loop={true}
+        loop={true}
         freeMode={true}
         navigation
       >

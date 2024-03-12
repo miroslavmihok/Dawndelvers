@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useHeaderData } from "../../dataContext/headerCtx";
-import { useCartData } from "../../dataContext/cartCtx";
+import { useHeaderData } from "../../context/headerCtx";
+import { useCartData } from "../../context/cartCtx";
 import useGameFetch from "../../hooks/useGameFetch";
 import useProductFetch from "../../hooks/useProductFetch";
 import { Filter } from "../../models/Filter";

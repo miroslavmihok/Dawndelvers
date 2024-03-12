@@ -9,7 +9,7 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-// @desc    Fetch all Products
+// @desc    Fetch Products by Game Category
 // @route   GET /api/products/:gameUrl
 // @access  Public
 const getProductsByGame = asyncHandler(async (req, res) => {
@@ -23,7 +23,7 @@ const getProductsByGame = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Fetch all Products
+// @desc    Fetch Product by specific Game url and product url
 // @route   GET /api/products/:gameUrl/:productUrl
 // @access  Public
 const getSpecificProduct = asyncHandler(async (req, res) => {

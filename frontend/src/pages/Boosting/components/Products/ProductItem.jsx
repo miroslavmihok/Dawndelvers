@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
-import { useHeaderData } from "../../../../dataContext/headerCtx";
+import { useHeaderData } from "../../../../context/headerCtx";
 import formatter from "../../../../utils/formatter";
 
 function ProductItem({

@@ -1,5 +1,5 @@
 import React from "react";
-import { paymentOptions } from "../../Data/paymentOptions";
+import { paymentOptions } from "../../data/paymentOptions";
 
 function Payment() {
   return (

@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useHeaderData } from "./context/headerCtx";
 import ScrollToTop from "./utils/ScrollToTop";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
@@ -10,27 +11,27 @@ import WorkWithUs from "./pages/Workwithus/WorkWithUs";
 import FAQ from "./pages/FAQ/FAQ";
 import Cart from "./pages/Cart/Cart";
 import Footer from "./components/Footer/Footer";
-import LoginModal from "./modal/LoginModal";
+import AuthModal from "./modal/AuthModal";
 
 const App = () => {
-  const dialog = useRef();
+  const { setShowDialog } = useHeaderData();
 
-  const displayLoginModal = () => {
-    dialog.inert = true;
-    dialog.current.showModal();
-    dialog.inert = false;
+  const displayAuthModalHandler = () => {
+    setShowDialog(true);
+    document.body.classList.add("no-scroll");
   };
 
-  const dialogCloseHandler = () => {
-    dialog.current.close();
+  const closeAuthModalHandler = () => {
+    document.body.classList.remove("no-scroll");
+    setShowDialog(false);
   };
 
   return (
     <Router>
       <div className="relative z-0 flex w-full flex-col">
-        <LoginModal ref={dialog} onClose={dialogCloseHandler} />
+        <AuthModal onClose={closeAuthModalHandler} />
         <ScrollToTop />
-        <Header displayLoginModal={displayLoginModal} />
+        <Header displayAuthModalHandler={displayAuthModalHandler} />
         <div className="z-10 flex-1 xl:ml-[300px]">
           <Routes>
             <Route path="/" element={<Home />} />

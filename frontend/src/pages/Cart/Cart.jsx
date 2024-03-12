@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useCartData } from "../../dataContext/cartCtx";
-import { useHeaderData } from "../../dataContext/headerCtx";
+import { useCartData } from "../../context/cartCtx";
+import { useHeaderData } from "../../context/headerCtx";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import formatter from "../../utils/formatter";
 import CartItem from "./components/CartItem";
-import { cartPaymentOptions } from "../../Data/paymentOptions";
+import { cartPaymentOptions } from "../../data/paymentOptions";
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
 import { FaAngleDown } from "react-icons/fa6";
 
@@ -12,10 +12,14 @@ function Cart() {
   const {
     cartProducts,
     setCartProducts,
-    cartSum,
-    setCartSum,
     cartCount,
     setCartCount,
+    cartSum,
+    setCartSum,
+    cartSumWithoutTax,
+    setCartSumWithoutTax,
+    tax,
+    setTax,
   } = useCartData();
   const { currency } = useHeaderData();
 
@@ -53,10 +57,11 @@ function Cart() {
                     id={product.id}
                     cartProducts={cartProducts}
                     setCartProducts={setCartProducts}
-                    cartSum={cartSum}
-                    setCartSum={setCartSum}
                     cartCount={cartCount}
                     setCartCount={setCartCount}
+                    setCartSum={setCartSum}
+                    setCartSumWithoutTax={setCartSumWithoutTax}
+                    setTax={setTax}
                   />
                 ))}
               </section>
@@ -80,7 +85,7 @@ function Cart() {
                       <label
                         htmlFor={item.title}
                         key={index}
-                        className="border-mediumPurple focus:border-mediumPurple flex cursor-pointer items-center justify-between gap-4 rounded-md border bg-mediumPurple px-4 py-2 hover:border-lightPurple hover:bg-lightPurple focus:bg-lightPurple active:bg-lightPurple"
+                        className="flex cursor-pointer items-center justify-between gap-4 rounded-md border border-mediumPurple bg-mediumPurple px-4 py-2 hover:border-lightPurple hover:bg-lightPurple focus:border-mediumPurple focus:bg-lightPurple active:bg-lightPurple"
                       >
                         <div className="flex min-h-[47px] gap-4 ">
                           <img
@@ -110,9 +115,21 @@ function Cart() {
               </section>
               <section>
                 <div className="flex w-full justify-end">
-                  <div className="flex w-full items-center justify-between p-4 md:w-[35%]">
-                    <h4>Total:</h4>
-                    <h4>{formatter(cartSum, currency.curSymbol)}</h4>
+                  <div className="p-4 md:w-[35%]">
+                    <div className="flex w-full items-center justify-between">
+                      <h4>Subtotal:</h4>
+                      <h4>
+                        {formatter(cartSumWithoutTax, currency.curSymbol)}
+                      </h4>
+                    </div>
+                    <div className="flex w-full items-center justify-between">
+                      <h4>+20% Tax:</h4>
+                      <h4>{formatter(tax, currency.curSymbol)}</h4>
+                    </div>
+                    <div className="flex w-full items-center justify-between">
+                      <h4>Total:</h4>
+                      <h4>{formatter(cartSum, currency.curSymbol)}</h4>
+                    </div>
                   </div>
                 </div>
               </section>

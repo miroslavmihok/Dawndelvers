@@ -1,5 +1,5 @@
 import React from "react";
-import { useHeaderData } from "../../../dataContext/headerCtx";
+import { useHeaderData } from "../../../context/headerCtx";
 import formatter from "../../../utils/formatter";
 import { FaTrashCan } from "react-icons/fa6";
 
@@ -12,10 +12,11 @@ function CartItem({
   id,
   cartProducts,
   setCartProducts,
-  cartSum,
-  setCartSum,
   cartCount,
   setCartCount,
+  setCartSum,
+  setCartSumWithoutTax,
+  setTax,
 }) {
   const { currency } = useHeaderData();
 
@@ -24,6 +25,8 @@ function CartItem({
     if (filteredProduct) {
       const { price } = filteredProduct[0];
       setCartSum((prevSum) => prevSum - price);
+      setCartSumWithoutTax((prevSum) => prevSum - price * 0.8);
+      setTax((prevSum) => prevSum - price * 0.2);
     } else {
       return;
     }

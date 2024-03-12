@@ -11,7 +11,7 @@ import img2 from "../../assets/backgrounds/Untitled-6.png";
 
 function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-darkPurple">
       <div
         className="w-full"
         style={{
@@ -21,16 +21,19 @@ function Home() {
         <Hero />
         <Games />
       </div>
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden bg-darkPurple">
         <img
           src={img1}
           alt="smoke img"
           className="absolute left-[-150px] top-[350px] z-0 scale-[400%] opacity-60 lg:scale-[200%] 2xl:left-[-50px] 2xl:top-[230px] 2xl:scale-[180%]"
+          style={{ userSelect: "none", pointerEvents: "none" }}
         />
         <Services />
         <HowItWorks />
       </div>
-      <WorkWithUs />
+      <div className="w-full bg-darkPurple">
+        <WorkWithUs />
+      </div>
       <div
         className="relative w-full"
         style={{

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { useData } from "../../../../dataContext/dataCtx";
+import { useData } from "../../../../context/dataCtx";
 import { FaAngleDown } from "react-icons/fa6";
-import { useGamesData } from "../../../../dataContext/gamesCtx";
+import { useGamesData } from "../../../../context/gamesCtx";
 
 function DesktopNavbar({ currentGame }) {
   //HOOKS

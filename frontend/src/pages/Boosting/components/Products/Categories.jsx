@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useCallback } from "react";
-import { categories } from "../../../../Data/categories";
-import { useData } from "../../../../dataContext/dataCtx";
+import { categories } from "../../../../data/categories";
+import { useData } from "../../../../context/dataCtx";
 
 function Categories({ currentGameTitle }) {
   const { isLoading, setCurrentCategory } = useData();

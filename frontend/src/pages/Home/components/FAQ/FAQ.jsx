@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
-import { questions } from "../../../../Data/questions";
+import { questions } from "../../../../data/questions";
 
 function FAQ() {
   const [currentIndex, setCurrentIndex] = useState(null);

@@ -14,6 +14,7 @@ export function HeaderDataProvider({ children }) {
     cur: "EUR",
     curSymbol: "€",
   });
+  const [showDialog, setShowDialog] = useState(false);
 
   return (
     <HeaderContext.Provider
@@ -24,6 +25,8 @@ export function HeaderDataProvider({ children }) {
         setIsCurrencyVisible,
         currency,
         setIsCurrency,
+        showDialog,
+        setShowDialog,
       }}
     >
       {children}

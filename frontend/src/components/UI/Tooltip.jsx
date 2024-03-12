@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useHeaderData } from "../../dataContext/headerCtx";
+import { useHeaderData } from "../../context/headerCtx";
 
 function Tooltip({ list }) {
   const { isCurrencyVisible, setIsCurrencyVisible, setIsCurrency } =

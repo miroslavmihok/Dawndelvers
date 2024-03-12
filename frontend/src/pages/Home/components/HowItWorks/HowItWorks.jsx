@@ -1,6 +1,6 @@
 import React from "react";
 import HowItWorksContainer from "./components/HowItWorksContainer";
-import { steps } from "../../../../Data/howItWorksSteps";
+import { steps } from "../../../../data/howItWorksSteps";
 
 function HowItWorks() {
   return (

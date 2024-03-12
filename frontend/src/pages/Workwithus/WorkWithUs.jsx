@@ -1,10 +1,10 @@
 import React from "react";
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
-import { useProductsData } from "../../dataContext/productsCtx";
+import { useGamesData } from "../../context/gamesCtx";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 function WorkWithUs() {
-  const { products } = useProductsData();
+  const { games } = useGamesData();
 
   return (
     <div
@@ -33,7 +33,7 @@ function WorkWithUs() {
               <form className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-4 sm:grid-rows-4">
                 <select className="col-span-1 rounded-md px-5 py-3 sm:col-span-2">
                   <option hidden>Choose game</option>
-                  {products.map((product, index) => (
+                  {games.map((product, index) => (
                     <option key={index} value={product.title}>
                       {product.title}
                     </option>

@@ -1,10 +1,17 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Game from "../models/gameModel.js";
 
+// @desc    Fetch all Games
+// @route   GET /api/games
+// @access  Public
 const getGames = asyncHandler(async (req, res) => {
   const games = await Game.find({});
   res.json(games);
 });
+
+// @desc    Fetch single Game
+// @route   GET /api/games/:gameUrl
+// @access  Public
 const getSingleGame = asyncHandler(async (req, res) => {
   const games = await Game.findOne({
     url: req.params.gameUrl,
