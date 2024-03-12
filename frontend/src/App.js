@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useHeaderData } from "./context/headerCtx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ScrollToTop from "./utils/ScrollToTop";
+import AuthModal from "./modal/AuthModal";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Boosting from "./pages/Boosting/Boosting";
@@ -10,8 +12,8 @@ import About from "./pages/About/About";
 import WorkWithUs from "./pages/Workwithus/WorkWithUs";
 import FAQ from "./pages/FAQ/FAQ";
 import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
-import AuthModal from "./modal/AuthModal";
 
 const App = () => {
   const { setShowDialog } = useHeaderData();
@@ -43,7 +45,15 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/workwithus" element={<WorkWithUs />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/cart"
+              element={
+                <Cart displayAuthModalHandler={displayAuthModalHandler} />
+              }
+            />
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/checkout" element={<Checkout />} />
+            </Route>
           </Routes>
           <Footer />
         </div>

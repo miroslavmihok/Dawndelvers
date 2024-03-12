@@ -22,7 +22,7 @@ const Header = ({ displayAuthModalHandler }) => {
   const { setIsShown, setIsCurrencyVisible, currency } = useHeaderData();
 
   const { userItem } = useAuthData();
-  const { cartCount } = useCartData();
+  const { state } = useCartData();
 
   const { logout } = useLogout();
 
@@ -197,7 +197,13 @@ const Header = ({ displayAuthModalHandler }) => {
             >
               <FaCartShopping size="26px" />
               <span className="hidden xl:block">
-                Cart (<span>{cartCount}</span>)
+                Cart (
+                <span>
+                  {state.cartItems.length > 0
+                    ? state.cartItems.reduce((a, c) => a + 1, 0)
+                    : 0}
+                </span>
+                )
               </span>
             </Link>
           </div>

@@ -12,7 +12,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: true,
-    countInStock: 10,
     filters: [
       {
         type: "Single",
@@ -69,7 +68,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: true,
-    countInStock: 10,
     filters: [
       {
         type: "Single",
@@ -126,7 +124,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: true,
-    countInStock: 10,
     filters: [
       {
         type: "Single",
@@ -183,7 +180,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: false,
-    countInStock: 10,
     filters: [
       {
         type: "Single",
@@ -240,7 +236,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: true,
-    countInStock: 10,
     filters: [
       {
         type: "Single",
@@ -297,7 +292,6 @@ const products = [
     numReviews: 12,
     basePrice: 5,
     deal: false,
-    countInStock: 10,
     filters: [
       {
         type: "Single",

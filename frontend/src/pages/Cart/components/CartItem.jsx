@@ -11,32 +11,13 @@ function CartItem({
   price,
   id,
   cartProducts,
-  setCartProducts,
-  cartCount,
-  setCartCount,
-  setCartSum,
-  setCartSumWithoutTax,
-  setTax,
+  dispatch,
 }) {
   const { currency } = useHeaderData();
 
   const removeProductHandler = (id) => {
-    const filteredProduct = cartProducts.filter((p) => p.id === id);
-    if (filteredProduct) {
-      const { price } = filteredProduct[0];
-      setCartSum((prevSum) => prevSum - price);
-      setCartSumWithoutTax((prevSum) => prevSum - price * 0.8);
-      setTax((prevSum) => prevSum - price * 0.2);
-    } else {
-      return;
-    }
-    const filteredCartProducts = cartProducts.filter(
-      (product) => product.id !== id,
-    );
-    setCartProducts(filteredCartProducts);
-    if (cartCount > 0) {
-      setCartCount((prevCount) => prevCount - 1);
-    }
+    const filteredProduct = cartProducts.find((p) => p.id === id);
+    dispatch({ type: "REMOVE", payload: filteredProduct });
   };
   return (
     <div
@@ -48,10 +29,13 @@ function CartItem({
           <img
             src={imgSrc}
             alt={title}
-            className="aspect-square max-w-[64px] object-contain sm:max-w-[100px] lg:max-w-[120px]"
+            className="aspect-square w-full max-w-[64px] object-contain sm:max-w-[100px] lg:max-w-[120px]"
           />
         </div>
-        <div className="cartItem-middle flex flex-col items-start justify-start">
+        <div
+          className="cartItem-middle flex flex-col items-start justify-start"
+          style={{ flex: 1 }}
+        >
           <h4>{title}</h4>
           <ul className="flex flex-wrap gap-x-2">
             {Object.entries(filters).map(
@@ -73,7 +57,7 @@ function CartItem({
           </ul>
         </div>
       </div>
-      <div className="flex flex-row-reverse items-center justify-between md:w-[25%] md:flex-col md:items-end">
+      <div className="flex flex-row-reverse items-center justify-between md:w-[30%] md:flex-col md:items-end lg:w-[25%]">
         <h4>{formatter(price, currency.curSymbol)}</h4>
         <button
           onClick={() => removeProductHandler(id)}

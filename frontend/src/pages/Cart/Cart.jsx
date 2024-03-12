@@ -1,29 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useCartData } from "../../context/cartCtx";
 import { useHeaderData } from "../../context/headerCtx";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import formatter from "../../utils/formatter";
 import CartItem from "./components/CartItem";
-import { cartPaymentOptions } from "../../data/paymentOptions";
+
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
-import { FaAngleDown } from "react-icons/fa6";
+import { useAuthData } from "../../context/authCtx";
 
-function Cart() {
-  const {
-    cartProducts,
-    setCartProducts,
-    cartCount,
-    setCartCount,
-    cartSum,
-    setCartSum,
-    cartSumWithoutTax,
-    setCartSumWithoutTax,
-    tax,
-    setTax,
-  } = useCartData();
+function Cart({ displayAuthModalHandler }) {
+  const { state, dispatch } = useCartData();
+  const { userItem } = useAuthData();
   const { currency } = useHeaderData();
-
-  const [isPaymentOptionsShown, setIsPaymentOptionsShown] = useState(false);
 
   return (
     <div
@@ -38,103 +27,70 @@ function Cart() {
       <div className="cart-container w-full px-8 xl:w-[900px] 2xl:w-[1200px] 3xl:w-[1580px]">
         <div className="rounded-md border border-white/30 p-2 md:p-8">
           <h3 className="mb-4 text-center">
-            Shopping Cart (<span>{cartCount}</span>)
+            Shopping Cart (
+            <span>
+              {state.cartItems.length > 0
+                ? state.cartItems.reduce((a, c) => a + 1, 0)
+                : 0}
+            </span>
+            )
           </h3>
-          {cartProducts.length === 0 && (
-            <div className="text-center">No items in Cart yet</div>
-          )}
-          {cartProducts.length > 0 && (
-            <div className="cart-content flex w-full flex-col gap-8">
-              <section className="flex flex-col gap-3">
-                {cartProducts.map((product, index) => (
-                  <CartItem
-                    key={index}
-                    index={index}
-                    imgSrc={product.product.imgSrc}
-                    title={product.product.title}
-                    price={product.price}
-                    filters={product.filters}
-                    id={product.id}
-                    cartProducts={cartProducts}
-                    setCartProducts={setCartProducts}
-                    cartCount={cartCount}
-                    setCartCount={setCartCount}
-                    setCartSum={setCartSum}
-                    setCartSumWithoutTax={setCartSumWithoutTax}
-                    setTax={setTax}
-                  />
-                ))}
-              </section>
-              <section className="flex flex-col items-center justify-start gap-2 text-fontLightGray">
-                <button
-                  className="w-full max-w-[800px] overflow-hidden rounded-md bg-mediumPurple px-4 py-2 text-left"
-                  onClick={() =>
-                    setIsPaymentOptionsShown(!isPaymentOptionsShown)
-                  }
-                >
-                  <div className="flex min-h-[47px] items-center justify-between">
-                    <span className="">Payment options</span>
-                    <FaAngleDown size={"24px"} />
-                  </div>
-                </button>
-                <div
-                  className={`transition-maxHeight w-full max-w-[800px] overflow-hidden duration-300 ease-in-out ${isPaymentOptionsShown ? "max-h-[500px]" : "max-h-0"}`}
-                >
-                  <form className="flex w-full flex-col gap-2 overflow-hidden">
-                    {cartPaymentOptions.map((item, index) => (
-                      <label
-                        htmlFor={item.title}
-                        key={index}
-                        className="flex cursor-pointer items-center justify-between gap-4 rounded-md border border-mediumPurple bg-mediumPurple px-4 py-2 hover:border-lightPurple hover:bg-lightPurple focus:border-mediumPurple focus:bg-lightPurple active:bg-lightPurple"
-                      >
-                        <div className="flex min-h-[47px] gap-4 ">
-                          <img
-                            src={item.imgSrc}
-                            alt={item.title}
-                            className="max-w-[70px] object-contain"
-                          />
-                          <div className="flex flex-col items-start justify-center">
-                            <h5>{item.title}</h5>
-                            <ul className="flex flex-wrap items-center justify-start gap-x-3">
-                              {item.paymentList?.map((item, index) => (
-                                <li key={index}>{item.title}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <input
-                          type="radio"
-                          name="paymentOption"
-                          id={item.title}
-                          value={item.title}
-                        />
-                      </label>
-                    ))}
-                  </form>
+          <div className="cart-content flex w-full flex-col gap-8 md:flex-row">
+            <section className="flex flex-col gap-3" style={{ flex: 1 }}>
+              {state.cartItems.length === 0 && (
+                <div className="text-center">No items in Cart yet</div>
+              )}
+              {state.cartItems.map((product, index) => (
+                <CartItem
+                  key={index}
+                  index={index}
+                  imgSrc={product.product.imgSrc}
+                  title={product.product.title}
+                  price={product.price}
+                  filters={product.filters}
+                  id={product.id}
+                  cartProducts={state.cartItems}
+                  dispatch={dispatch}
+                />
+              ))}
+            </section>
+            <section className="min-w-full sm:min-w-[240px]">
+              <div className="flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-none bg-darkestPurple bg-opacity-35 p-4">
+                <div className="flex w-full items-center justify-between">
+                  <h4>Subtotal:</h4>
+                  <h4>
+                    {state.cartItems.length > 0
+                      ? formatter(state.priceExclTax, currency.curSymbol)
+                      : formatter(0, currency.curSymbol)}
+                  </h4>
                 </div>
-              </section>
-              <section>
-                <div className="flex w-full justify-end">
-                  <div className="p-4 md:w-[35%]">
-                    <div className="flex w-full items-center justify-between">
-                      <h4>Subtotal:</h4>
-                      <h4>
-                        {formatter(cartSumWithoutTax, currency.curSymbol)}
-                      </h4>
-                    </div>
-                    <div className="flex w-full items-center justify-between">
-                      <h4>+20% Tax:</h4>
-                      <h4>{formatter(tax, currency.curSymbol)}</h4>
-                    </div>
-                    <div className="flex w-full items-center justify-between">
-                      <h4>Total:</h4>
-                      <h4>{formatter(cartSum, currency.curSymbol)}</h4>
-                    </div>
-                  </div>
+                <div className="flex w-full items-center justify-between">
+                  <h4>+20% Tax:</h4>
+                  <h4>
+                    {state.cartItems.length > 0
+                      ? formatter(state.taxPrice, currency.curSymbol)
+                      : formatter(0, currency.curSymbol)}
+                  </h4>
                 </div>
-              </section>
-            </div>
-          )}
+                <hr className="h-[1px] w-full" />
+                <div className="flex w-full items-center justify-between">
+                  <h4>Total:</h4>
+                  <h4>
+                    {state.cartItems.length > 0
+                      ? formatter(state.totalPrice, currency.curSymbol)
+                      : formatter(0, currency.curSymbol)}
+                  </h4>
+                </div>
+                <Link
+                  to="/checkout"
+                  className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple md:w-full"
+                  onClick={!userItem ? () => displayAuthModalHandler() : null}
+                >
+                  <span>Proceed to checkout</span>
+                </Link>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>

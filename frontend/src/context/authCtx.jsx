@@ -22,6 +22,8 @@ export const AuthContextProvider = ({ children }) => {
     userItem: null,
   });
 
+  console.log(state);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userItem"));
     if (user) {

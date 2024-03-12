@@ -13,7 +13,7 @@ function Product() {
   // CONTEXT
   const { gameUrl, productUrl } = useParams();
   const { currency } = useHeaderData();
-  const { setCurrentlyAddedProduct } = useCartData();
+  const { dispatch } = useCartData();
 
   // HOOKS
   const { isGameLoading, gameError, game } = useGameFetch(`/games/${gameUrl}`);
@@ -103,12 +103,13 @@ function Product() {
   // SUBMIT
 
   const submitProductHandler = () => {
-    setCurrentlyAddedProduct({
+    const currentProduct = {
       id: Math.floor(Math.random() * 100000),
       product: product,
       price: price,
       filters: selectedFilters,
-    });
+    };
+    dispatch({ type: "ADD", payload: currentProduct });
     setIsAddButtonClicked((prevState) => !prevState);
     setTimeout(() => {
       setIsAddButtonClicked((prevState) => !prevState);
