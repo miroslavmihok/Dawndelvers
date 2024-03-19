@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema(
   {
@@ -9,9 +9,6 @@ const orderSchema = new mongoose.Schema(
     },
     orderItems: [
       {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
         price: { type: Number, required: true },
         product: {
           type: mongoose.Schema.Types.ObjectId,
@@ -20,12 +17,6 @@ const orderSchema = new mongoose.Schema(
         },
       },
     ],
-    shippingAddress: {
-      address: { type: String, required: true },
-      city: { type: String, required: true },
-      postalCode: { type: String, required: true },
-      country: { type: String, required: true },
-    },
     paymentMethod: {
       type: String,
       required: true,
@@ -46,7 +37,12 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: 0.0,
     },
-    shippingPrice: {
+    subtotalPrice: {
+      type: Number,
+      required: true,
+      default: 0.0,
+    },
+    paymentFee: {
       type: Number,
       required: true,
       default: 0.0,
@@ -54,6 +50,18 @@ const orderSchema = new mongoose.Schema(
     totalPrice: {
       type: Number,
       required: true,
+      default: 0.0,
+    },
+    discount: {
+      type: Number,
+      default: 0.0,
+    },
+    discountCode: {
+      type: String,
+      default: "",
+    },
+    totalAmount: {
+      type: Number,
       default: 0.0,
     },
     isPaid: {

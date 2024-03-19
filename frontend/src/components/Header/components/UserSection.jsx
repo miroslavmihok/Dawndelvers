@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import Avatar from "../../../assets/user/Avatar.png";
 import { FaCaretDown } from "react-icons/fa6";
 
@@ -50,9 +51,12 @@ function UserSection({ logoutHandler }) {
           <div className="absolute top-[-5%] aspect-square h-[10%] rotate-45 bg-lightGrey"></div>
           <ul className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-md bg-white text-black">
             <li className="group w-full  cursor-pointer text-center">
-              <button className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey">
+              <Link
+                to="/profile"
+                className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey"
+              >
                 Profile
-              </button>
+              </Link>
             </li>
             <li className="group w-full  cursor-pointer text-center">
               <button

@@ -32,6 +32,7 @@ module.exports = {
       ...theme("colors"),
       mediumPurple: "#52316A",
       lightPurple: "#6D418D",
+      sepiaPurple: "#362946",
       sepiaRed: "#FD3247",
     }),
     backgroundSize: {

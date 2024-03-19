@@ -20,9 +20,9 @@ export const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       let newAddCartItems = [...state.cartItems, action.payload];
-      let newAddTotalPrice = state.totalPrice + action.payload.price;
-      let newAddTaxPrice = 0.2 * newAddTotalPrice;
-      let newAddPriceExclTax = newAddTotalPrice - newAddTaxPrice;
+      let newAddPriceExclTax = state.priceExclTax + action.payload.price;
+      let newAddTaxPrice = 0.2 * newAddPriceExclTax;
+      let newAddTotalPrice = newAddPriceExclTax + newAddTaxPrice;
 
       localStorage.setItem(
         "cart",
@@ -44,9 +44,9 @@ export const cartReducer = (state, action) => {
       let newRemoveCartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id,
       );
-      let newRemoveTotalPrice = state.totalPrice - action.payload.price;
-      let newRemoveTaxPrice = 0.2 * newRemoveTotalPrice;
-      let newRemovePriceExclTax = newRemoveTotalPrice - newRemoveTaxPrice;
+      let newRemovePriceExclTax = state.priceExclTax - action.payload.price;
+      let newRemoveTaxPrice = 0.2 * newRemovePriceExclTax;
+      let newRemoveTotalPrice = newRemovePriceExclTax + newRemoveTaxPrice;
 
       localStorage.setItem(
         "cart",
@@ -62,6 +62,18 @@ export const cartReducer = (state, action) => {
         totalPrice: newRemoveTotalPrice,
         taxPrice: newRemoveTaxPrice,
         priceExclTax: newRemovePriceExclTax,
+      };
+    case "CLEAR":
+      let newClearCartItems = action.payload;
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({
+          cartItems: newClearCartItems,
+        }),
+      );
+      return {
+        cartItems: newClearCartItems,
       };
     default:
       return state;

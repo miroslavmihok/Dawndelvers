@@ -76,10 +76,11 @@ const Header = ({ displayAuthModalHandler }) => {
             </div>
             <div className="flex items-center justify-center xl:w-full xl:flex-col xl:gap-4">
               {userItem && <UserSection logoutHandler={logoutHandler} />}
-              <form className="hidden w-full px-4 xl:block">
+              <form name="searchForm" className="hidden w-full px-4 xl:block">
                 <div className="relative flex w-full items-center justify-between text-sepiaGray">
                   <input
                     type="search"
+                    name="searchBar"
                     placeholder="Search"
                     className="h-[42px] w-full rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium outline-0  focus:border-lightPurple"
                   />

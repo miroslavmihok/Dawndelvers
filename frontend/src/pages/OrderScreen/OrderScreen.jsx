@@ -1,7 +1,7 @@
 import React from "react";
 
-function Newsletter() {
+function OrderScreen() {
   return <div></div>;
 }
 
-export default Newsletter;
+export default OrderScreen;

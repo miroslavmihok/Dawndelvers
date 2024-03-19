@@ -16,7 +16,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  /* background-color: white; */
   background-color: #1c1124;
   font-family: "Rajdhani", sans-serif;
   color: #fdfdfd;
@@ -29,11 +28,6 @@ body {
 input {
   accent-color: #8b56ff;
 }
-
-/* default margin bottom: 32px
-sm: 40px
-md: 48px
-xl: 56px */
 
 h1 {
   font-size: 24px;
@@ -328,3 +322,5 @@ select:-webkit-autofill:focus {
 .no-scroll {
   overflow: hidden;
 }
+
+/* CHECKOUT */

@@ -6,6 +6,7 @@ import { HeaderDataProvider } from "./context/headerCtx";
 import { ProductsDataProvider } from "./context/productsCtx";
 import { CartDataProvider } from "./context/cartCtx";
 import { GamesDataProvider } from "./context/gamesCtx";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
@@ -19,7 +20,11 @@ root.render(
           <CartDataProvider>
             <ProductsDataProvider>
               <GamesDataProvider>
-                <App />
+                <PayPalScriptProvider
+                  options={{ clientId: "test", currency: "EUR" }}
+                >
+                  <App />
+                </PayPalScriptProvider>
               </GamesDataProvider>
             </ProductsDataProvider>
           </CartDataProvider>

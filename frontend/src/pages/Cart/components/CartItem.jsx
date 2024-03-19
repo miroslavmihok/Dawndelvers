@@ -12,6 +12,7 @@ function CartItem({
   id,
   cartProducts,
   dispatch,
+  currentPayment,
 }) {
   const { currency } = useHeaderData();
 
@@ -22,15 +23,17 @@ function CartItem({
   return (
     <div
       key={index}
-      className="flex flex-col gap-4 bg-mediumPurple p-4 md:flex-row md:gap-0"
+      className="flex flex-col gap-4 rounded-md border-none bg-mediumPurple p-4 md:flex-row md:gap-0"
     >
       <div className="cartItem-container flex w-full gap-2">
         <div className="flex items-start justify-center md:w-[25%]">
-          <img
-            src={imgSrc}
-            alt={title}
-            className="aspect-square w-full max-w-[64px] object-contain sm:max-w-[100px] lg:max-w-[120px]"
-          />
+          <div className="w-full max-w-[64px] overflow-hidden rounded-md border-none sm:max-w-[100px] lg:max-w-[120px]">
+            <img
+              src={imgSrc}
+              alt={title}
+              className="aspect-square w-full max-w-[64px] object-contain sm:max-w-[100px] lg:max-w-[120px]"
+            />
+          </div>
         </div>
         <div
           className="cartItem-middle flex flex-col items-start justify-start"
@@ -59,13 +62,15 @@ function CartItem({
       </div>
       <div className="flex flex-row-reverse items-center justify-between md:w-[30%] md:flex-col md:items-end lg:w-[25%]">
         <h4>{formatter(price, currency.curSymbol)}</h4>
-        <button
-          onClick={() => removeProductHandler(id)}
-          className="flex items-center gap-2 px-2 py-1"
-        >
-          <FaTrashCan />
-          <span>Remove</span>
-        </button>
+        {!currentPayment && (
+          <button
+            onClick={() => removeProductHandler(id)}
+            className="flex items-center gap-2 px-2 py-1"
+          >
+            <FaTrashCan />
+            <span>Remove</span>
+          </button>
+        )}
       </div>
     </div>
   );

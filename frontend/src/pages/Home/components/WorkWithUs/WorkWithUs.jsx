@@ -22,7 +22,10 @@ function WorkWithUs() {
           </div>
           <div className="">
             <form className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-4 sm:grid-rows-4">
-              <select className="col-span-1 rounded-md px-5 py-3 sm:col-span-2">
+              <select
+                className="col-span-1 rounded-md px-5 py-3 sm:col-span-2"
+                name="gameSelect"
+              >
                 <option hidden>Choose game</option>
                 {error
                   ? "Something went wrong"
@@ -36,21 +39,25 @@ function WorkWithUs() {
               </select>
               <input
                 type="text"
+                name="discordInput"
                 placeholder="Your Discord"
                 className="col-span-1 rounded-md px-5 py-3 sm:col-span-2"
               />
               <input
                 type="email"
+                name="emailInput"
                 placeholder="Your Email"
                 className="col-span-1 rounded-md px-5 py-3 sm:col-span-2"
               />
               <input
                 type="text"
+                name="countryInput"
                 placeholder="Your Country"
                 className="col-span-1 rounded-md px-5 py-3 sm:col-span-2"
               />
               <textarea
                 type="text"
+                name="aboutSelfInput"
                 placeholder="Tell us about your self"
                 className="col-span-1 row-span-3 min-h-[120px] rounded-md px-5 py-3 sm:col-span-4"
               ></textarea>

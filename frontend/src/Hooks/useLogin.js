@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { makeRequest } from "../makeRequest";
 import { useAuthData } from "../context/authCtx";
 
 export const useLogin = () => {
@@ -12,8 +12,8 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_USER_LOGIN}`,
+      const response = await makeRequest.post(
+        `${process.env.REACT_APP_USER_LOGIN}`,
         { email: email, password: password },
         {
           withCredentials: true,

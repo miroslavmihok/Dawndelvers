@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import { PasswordStrength } from "./components/PasswordStrength";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useHeaderData } from "../context/headerCtx";
 import { useSignup } from "../hooks/useSignup";
 import { useLogin } from "../hooks/useLogin";
+import { PasswordStrength } from "./components/PasswordStrength";
 import validator from "validator";
 import {
   FaRegEnvelope,
@@ -12,6 +13,9 @@ import {
 } from "react-icons/fa6";
 
 const AuthModal = ({ onClose, resetFormData }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   const userAuthRef = useRef(null);
 
   const [formType, setFormType] = useState("login");
@@ -41,11 +45,15 @@ const AuthModal = ({ onClose, resetFormData }) => {
       });
       onClose();
       setIsSubmitted(false);
+      if (pathname === "/cart") {
+        console.log("this is true");
+        navigate("/checkout", { replace: true });
+      }
     } else if (isSubmitted && currentError) {
       setShowDialog(true);
       setIsSubmitted(false);
     }
-  }, [isSubmitted, currentError, onClose, setShowDialog]);
+  }, [isSubmitted, currentError, onClose, setShowDialog, pathname, navigate]);
 
   //remove red border and remove validator error msg when email/password are correct format
   useEffect(() => {
@@ -216,7 +224,7 @@ const AuthModal = ({ onClose, resetFormData }) => {
               </div>
               <button
                 type="submit"
-                className="rounded-md border border-lightPurple bg-lightPurple px-4 py-2 hover:bg-purple-500 disabled:cursor-not-allowed disabled:border-gray-500 disabled:bg-gray-500"
+                className="disabled:border-sepiaPurple rounded-md border border-lightPurple bg-lightPurple px-4 py-2 hover:bg-purple-500 disabled:cursor-not-allowed disabled:bg-sepiaPurple"
                 disabled={
                   !validator.isEmail(values.email) ||
                   !validator.isStrongPassword(values.password) ||

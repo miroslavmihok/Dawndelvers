@@ -4,6 +4,10 @@ export const paymentOptions = [
     imgSrc: "/assets/payment/paypal.png",
   },
   {
+    title: "Stripe",
+    imgSrc: "/assets/payment/stripe.png",
+  },
+  {
     title: "Apple Pay",
     imgSrc: "/assets/payment/applepay.png",
   },
@@ -19,15 +23,12 @@ export const paymentOptions = [
     title: "Mastercard",
     imgSrc: "/assets/payment/mastercard.png",
   },
-  {
-    title: "Stripe",
-    imgSrc: "/assets/payment/stripe.png",
-  },
 ];
 export const cartPaymentOptions = [
   {
     title: "Stripe",
     imgSrc: "/assets/payment/stripe.png",
+    fixFee: 0.56,
     paymentList: [
       {
         title: "Apple Pay",
@@ -50,13 +51,6 @@ export const cartPaymentOptions = [
   {
     title: "Paypal",
     imgSrc: "/assets/payment/paypal.png",
-  },
-  {
-    title: "Apple Pay",
-    imgSrc: "/assets/payment/applepay.png",
-  },
-  {
-    title: "Google Pay",
-    imgSrc: "/assets/payment/googlepay.png",
+    fixFee: 1,
   },
 ];

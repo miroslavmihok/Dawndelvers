@@ -54,42 +54,44 @@ function Cart({ displayAuthModalHandler }) {
                 />
               ))}
             </section>
-            <section className="min-w-full sm:min-w-[240px]">
-              <div className="flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-none bg-darkestPurple bg-opacity-35 p-4">
-                <div className="flex w-full items-center justify-between">
-                  <h4>Subtotal:</h4>
-                  <h4>
-                    {state.cartItems.length > 0
-                      ? formatter(state.priceExclTax, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
-                  </h4>
+            {state.cartItems.length > 0 && (
+              <section className="min-w-full sm:min-w-[240px]">
+                <div className="flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-none bg-darkestPurple bg-opacity-35 p-4">
+                  <div className="flex w-full items-center justify-between">
+                    <h4>Subtotal:</h4>
+                    <h4>
+                      {state.cartItems.length > 0
+                        ? formatter(state.priceExclTax, currency.curSymbol)
+                        : formatter(0, currency.curSymbol)}
+                    </h4>
+                  </div>
+                  <div className="flex w-full items-center justify-between">
+                    <h4>+20% Tax:</h4>
+                    <h4>
+                      {state.cartItems.length > 0
+                        ? formatter(state.taxPrice, currency.curSymbol)
+                        : formatter(0, currency.curSymbol)}
+                    </h4>
+                  </div>
+                  <hr className="h-[1px] w-full" />
+                  <div className="flex w-full items-center justify-between">
+                    <h4>Total:</h4>
+                    <h4>
+                      {state.cartItems.length > 0
+                        ? formatter(state.totalPrice, currency.curSymbol)
+                        : formatter(0, currency.curSymbol)}
+                    </h4>
+                  </div>
+                  <Link
+                    to="/checkout"
+                    className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple md:w-full"
+                    onClick={!userItem ? () => displayAuthModalHandler() : null}
+                  >
+                    <span>Secure checkout</span>
+                  </Link>
                 </div>
-                <div className="flex w-full items-center justify-between">
-                  <h4>+20% Tax:</h4>
-                  <h4>
-                    {state.cartItems.length > 0
-                      ? formatter(state.taxPrice, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
-                  </h4>
-                </div>
-                <hr className="h-[1px] w-full" />
-                <div className="flex w-full items-center justify-between">
-                  <h4>Total:</h4>
-                  <h4>
-                    {state.cartItems.length > 0
-                      ? formatter(state.totalPrice, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
-                  </h4>
-                </div>
-                <Link
-                  to="/checkout"
-                  className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple md:w-full"
-                  onClick={!userItem ? () => displayAuthModalHandler() : null}
-                >
-                  <span>Proceed to checkout</span>
-                </Link>
-              </div>
-            </section>
+              </section>
+            )}
           </div>
         </div>
       </div>

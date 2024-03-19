@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { useHeaderData } from "../../context/headerCtx";
+import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 function Tooltip({ list }) {
   const { isCurrencyVisible, setIsCurrencyVisible, setIsCurrency } =
     useHeaderData();
+  const [{ options }, dispatch] = usePayPalScriptReducer();
 
   const wrapperRef = useRef(null);
 
@@ -25,13 +27,27 @@ function Tooltip({ list }) {
     setIsCurrencyVisible(false);
     if (item === "USD") {
       setIsCurrency({
-        cur: "USD",
+        cur: item,
         curSymbol: "$",
+      });
+      dispatch({
+        type: "resetOptions",
+        value: {
+          ...options,
+          currency: item,
+        },
       });
     } else {
       setIsCurrency({
-        cur: "EUR",
+        cur: item,
         curSymbol: "€",
+      });
+      dispatch({
+        type: "resetOptions",
+        value: {
+          ...options,
+          currency: item,
+        },
       });
     }
   };

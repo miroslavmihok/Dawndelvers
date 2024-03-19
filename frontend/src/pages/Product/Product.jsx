@@ -16,13 +16,15 @@ function Product() {
   const { dispatch } = useCartData();
 
   // HOOKS
-  const { isGameLoading, gameError, game } = useGameFetch(`/games/${gameUrl}`);
+  const { isGameLoading, gameError, game } = useGameFetch(
+    `${process.env.REACT_APP_GAMES_URL}/${gameUrl}`,
+  );
   const { isProductLoading, productError, product } = useProductFetch(
-    `/products/${gameUrl}/${productUrl}`,
+    `${process.env.REACT_APP_PRODUCTS_URL}/${gameUrl}/${productUrl}`,
   );
   const [selectedFilters, setSelectedFilters] = useState({});
-  const [basePrice, setBasePrice] = useState(5.0);
-  const [price, setPrice] = useState(5.0);
+  const [basePrice, setBasePrice] = useState(0);
+  const [price, setPrice] = useState(0);
   const [isAddButtonClicked, setIsAddButtonClicked] = useState();
 
   useEffect(() => {
@@ -151,7 +153,13 @@ function Product() {
                     exercitationem?
                   </p>
                 </div>
-                <p className="mb-8 text-sepiaRed">
+                <p
+                  className="mb-8 border-l-2 border-red-500 p-2"
+                  style={{
+                    background:
+                      "linear-gradient(to right, rgba(255, 75, 75, 0.15) 0%, rgba(255, 75, 75, 0.03))",
+                  }}
+                >
                   Our boosters never ask you for your items back, DO NOT give
                   your items to anyone.
                 </p>

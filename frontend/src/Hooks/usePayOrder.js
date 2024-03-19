@@ -1,28 +1,27 @@
 import { useState } from "react";
-import { useAuthData } from "../context/authCtx";
 import { makeRequest } from "../makeRequest";
 
-export const useLogout = () => {
+export const usePayOrder = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthData();
+  const [data, setData] = useState({});
 
-  const logout = async () => {
+  const payOrder = async ({ id, details }) => {
+    setIsLoading(true);
+    setError(null);
+
     try {
-      const response = await makeRequest.post(
-        `${process.env.REACT_APP_USER_LOGOUT}`,
-        null,
+      const response = await makeRequest.put(
+        `${process.env.REACT_APP_ORDERS_URL}/${id}/pay`,
+        { ...details },
         {
           withCredentials: true,
         },
       );
+      const data = response.data;
       // Handle success
       if (response.status === 200) {
-        //remove user from storage
-        localStorage.removeItem("userItem");
-
-        //dispatch logout action
-        dispatch({ type: "LOGOUT" });
+        setData(data);
       }
     } catch (error) {
       console.log(error);
@@ -32,5 +31,10 @@ export const useLogout = () => {
     }
   };
 
-  return { logout, isLogoutLoading: isLoading, logoutError: error };
+  return {
+    payOrder,
+    isPaymentLoading: isLoading,
+    paymentError: error,
+    updatedOrder: data,
+  };
 };

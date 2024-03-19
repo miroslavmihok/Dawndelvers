@@ -13,7 +13,11 @@ import WorkWithUs from "./pages/Workwithus/WorkWithUs";
 import FAQ from "./pages/FAQ/FAQ";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
+import OrderScreen from "./pages/OrderScreen/OrderScreen";
 import Footer from "./components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ProfileScreen from "./pages/Profile/ProfileScreen";
 
 const App = () => {
   const { setShowDialog } = useHeaderData();
@@ -53,9 +57,12 @@ const App = () => {
             />
             <Route path="" element={<PrivateRoute />}>
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/orders/:id" element={<OrderScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
             </Route>
           </Routes>
           <Footer />
+          <ToastContainer />
         </div>
       </div>
     </Router>
