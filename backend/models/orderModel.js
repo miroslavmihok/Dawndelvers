@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Product from "./productModel.js";
 
 const orderSchema = new mongoose.Schema(
   {
@@ -9,11 +10,11 @@ const orderSchema = new mongoose.Schema(
     },
     orderItems: [
       {
+        filters: { type: Object, required: true },
         price: { type: Number, required: true },
         product: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: Object,
           required: true,
-          ref: "Product",
         },
       },
     ],

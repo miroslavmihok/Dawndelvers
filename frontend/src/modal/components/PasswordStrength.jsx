@@ -9,7 +9,6 @@ export const PasswordStrength = ({
   password,
   setValues,
   showPassword,
-  resetFormData,
   formType,
   passwordFocus,
   setPasswordFocus,
@@ -60,13 +59,6 @@ export const PasswordStrength = ({
         }
         onBlur={() => setPasswordFocus(false)}
       />
-      <span className="text-sm text-red-500">
-        {values.password.length > 0 &&
-        !passwordFocus &&
-        !validator.isStrongPassword(values.password)
-          ? "Password is not strong enough"
-          : null}
-      </span>
       {formType === "signup" && values.password.length > 0 && (
         <div>
           <div

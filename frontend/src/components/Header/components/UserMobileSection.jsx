@@ -28,6 +28,11 @@ function UserMobileSection({ logoutHandler }) {
     };
   }, [mobileWrapperRef, setIsUserClicked]);
 
+  const clickHandler = () => {
+    logoutHandler();
+    setIsUserClicked((prevValue) => !prevValue);
+  };
+
   return (
     <>
       <div className="relative flex items-center justify-center xl:hidden">
@@ -53,8 +58,9 @@ function UserMobileSection({ logoutHandler }) {
           <ul className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-md bg-white text-black">
             <li className="group w-full  cursor-pointer text-center">
               <Link
-                to="/profile"
-                className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey"
+                to="/profile/details"
+                className="flex w-full cursor-pointer items-center justify-center px-4 py-3 group-hover:bg-lightGrey"
+                onClick={() => setIsUserClicked((prevValue) => !prevValue)}
               >
                 Profile
               </Link>
@@ -62,7 +68,7 @@ function UserMobileSection({ logoutHandler }) {
             <li className="group w-full  cursor-pointer text-center">
               <button
                 className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey"
-                onClick={() => logoutHandler()}
+                onClick={() => clickHandler()}
               >
                 <span>Logout</span>
               </button>

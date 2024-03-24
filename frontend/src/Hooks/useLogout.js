@@ -16,17 +16,11 @@ export const useLogout = () => {
           withCredentials: true,
         },
       );
-      // Handle success
       if (response.status === 200) {
-        //remove user from storage
-        localStorage.removeItem("userItem");
-
-        //dispatch logout action
         dispatch({ type: "LOGOUT" });
       }
     } catch (error) {
-      console.log(error);
-      setError(error?.response?.data?.message || "An error occured");
+      setError(error?.response?.data?.message || error?.message);
     } finally {
       setIsLoading(false);
     }

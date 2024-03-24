@@ -19,13 +19,11 @@ export const usePayOrder = () => {
         },
       );
       const data = response.data;
-      // Handle success
       if (response.status === 200) {
         setData(data);
       }
     } catch (error) {
-      console.log(error);
-      setError(error?.response?.data?.message || "An error occured");
+      setError(error?.response?.data?.message || error?.message);
     } finally {
       setIsLoading(false);
     }

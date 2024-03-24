@@ -21,7 +21,7 @@ class Filter extends React.Component {
             selectedValues: [...prevState.selectedValues, value],
           }),
           () => {
-            // Pass updated values to the parent component
+            // passing updated values to the parent component
             onChange(name, this.state.selectedValues);
           },
         );
@@ -33,15 +33,15 @@ class Filter extends React.Component {
             ),
           }),
           () => {
-            // Pass updated values to the parent component
+            // passing updated values to the parent component
             onChange(name, this.state.selectedValues);
           },
         );
       }
     } else {
-      // For single and range inputs, store a single value
+      // for single and range inputs, store a single value
       this.setState({ selectedValue: value }, () => {
-        // Pass updated values to the parent component
+        // passing updated values to the parent component
         onChange(name, value);
       });
     }
@@ -56,7 +56,7 @@ class Filter extends React.Component {
     return (
       <div className="mb-4 flex flex-col gap-3">
         {values.map((value, index) => {
-          // Find the selected option in the filter values
+          // finding the selected option in the filter values
           const selectedOption =
             value.multiplicator !== 0 ? value.multiplicator * basePrice : null;
 
@@ -68,7 +68,10 @@ class Filter extends React.Component {
                   id={value.title}
                   name={`${name}Group`}
                   value={value.title}
-                  checked={value.title === selectedValue}
+                  checked={
+                    (index === 0 && !selectedValue) ||
+                    value.title === selectedValue
+                  }
                   onChange={this.handleInputChange}
                 />
                 {value.title}
@@ -95,7 +98,7 @@ class Filter extends React.Component {
     return (
       <div className="mb-4 flex flex-col gap-3">
         {values.map((value, index) => {
-          // Find the selected option in the filter values
+          // finding the selected option in the filter values
           const selectedOption =
             value.multiplicator !== 0 ? value.multiplicator * basePrice : null;
 

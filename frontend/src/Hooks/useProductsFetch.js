@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
 import { makeRequest } from "../makeRequest";
 
-const usePaypalClientId = () => {
+const useProductsFetch = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchPaypalData = async () => {
+    const fetchProducts = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await makeRequest.get(
-          `${process.env.REACT_APP_PAYPAL_URL}`,
-        );
+        const response = await makeRequest.get(url);
         setData(response.data);
       } catch (error) {
         setError(error?.response?.data?.message || error?.message);
@@ -21,10 +19,14 @@ const usePaypalClientId = () => {
         setIsLoading(false);
       }
     };
-    fetchPaypalData();
-  }, []);
+    fetchProducts();
+  }, [url]);
 
-  return { isPaypalLoading: isLoading, paypalError: error, paypal: data };
+  return {
+    areProductsLoading: isLoading,
+    productsError: error,
+    products: data,
+  };
 };
 
-export default usePaypalClientId;
+export default useProductsFetch;

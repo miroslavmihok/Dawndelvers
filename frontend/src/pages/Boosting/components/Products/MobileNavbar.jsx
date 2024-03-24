@@ -4,7 +4,7 @@ import { useData } from "../../../../context/dataCtx";
 import { FaXmark, FaAngleRight } from "react-icons/fa6";
 import { useGamesData } from "../../../../context/gamesCtx";
 
-function MobileNavbar({ currentGame }) {
+function MobileNavbar({ currentGame, isGameLoading, gameError }) {
   const { isNavbarVisible, setIsNavbarVisible, currentGameHandler } = useData();
   const { games } = useGamesData();
 

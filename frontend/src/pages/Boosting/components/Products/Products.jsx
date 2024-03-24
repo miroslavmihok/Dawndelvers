@@ -5,8 +5,19 @@ import ProductItem from "./ProductItem";
 import MobileNavbar from "./MobileNavbar";
 import DesktopNavbar from "./DesktopNavbar";
 import Breadcrumbs from "../../../../components/Breadcrumbs/Breadcrumbs";
+import ErrorMessage from "../../../../components/UI/ErrorMessage";
+import { BeatLoader } from "react-spinners";
+import Skeleton from "react-loading-skeleton";
+import ProductsSkeleton from "../../../../components/Skeletons/ProductsSkeleton";
 
-function Products({ game, products, areProductsLoading, productsError }) {
+function Products({
+  game,
+  isGameLoading,
+  gameError,
+  products,
+  areProductsLoading,
+  productsError,
+}) {
   // Hooks
   const { currentCategory } = useData();
 
@@ -40,17 +51,28 @@ function Products({ game, products, areProductsLoading, productsError }) {
       <MobileNavbar currentGame={game} />
       <div className="flex w-full flex-col items-start justify-center xl:w-[900px] 2xl:w-[1200px] 3xl:w-[1580px]">
         {/* Game Category choice */}
-        <DesktopNavbar currentGame={game} />
+        <DesktopNavbar
+          currentGame={game}
+          isGameLoading={isGameLoading}
+          gameError={gameError}
+        />
         {/* products */}
         <div className="flex w-full max-w-full flex-col">
           <div className="scrolling-wrapper mb-4 flex w-full min-w-0 max-w-full flex-row gap-3 overflow-x-auto px-8 xl:px-0 xl:pl-8">
-            <Categories currentGameTitle={game.title} />
+            {isGameLoading ? (
+              <div className="h-[42px] w-full">
+                <Skeleton height={34} />
+              </div>
+            ) : (
+              <Categories currentGameTitle={game.title} />
+            )}
           </div>
           <div className="flex w-full flex-col items-center px-8">
             <div className="flex w-full flex-wrap items-center justify-start gap-4">
-              {productsError && <div>Something went wrong</div>}
-              {areProductsLoading && <div>Loading...</div>}
-              {filteredProducts &&
+              {productsError && <ErrorMessage msg={productsError} />}
+              {areProductsLoading && <ProductsSkeleton cards={4} />}
+              {!areProductsLoading &&
+                filteredProducts &&
                 filteredProducts.map((product, index) => (
                   <ProductItem
                     key={index}

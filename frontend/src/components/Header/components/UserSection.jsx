@@ -28,6 +28,11 @@ function UserSection({ logoutHandler }) {
     };
   }, [wrapperRef, setIsUserClicked]);
 
+  const clickHandler = () => {
+    logoutHandler();
+    setIsUserClicked((prevValue) => !prevValue);
+  };
+
   return (
     <>
       <div className="relative hidden xl:flex xl:w-full xl:items-center xl:justify-center">
@@ -50,10 +55,11 @@ function UserSection({ logoutHandler }) {
         >
           <div className="absolute top-[-5%] aspect-square h-[10%] rotate-45 bg-lightGrey"></div>
           <ul className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-md bg-white text-black">
-            <li className="group w-full  cursor-pointer text-center">
+            <li className="group w-full cursor-pointer text-center">
               <Link
-                to="/profile"
-                className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey"
+                to="/profile/details"
+                className={`flex w-full cursor-pointer items-center justify-center px-4 py-3 text-center group-hover:bg-lightGrey`}
+                onClick={() => setIsUserClicked((prevValue) => !prevValue)}
               >
                 Profile
               </Link>
@@ -61,7 +67,7 @@ function UserSection({ logoutHandler }) {
             <li className="group w-full  cursor-pointer text-center">
               <button
                 className="w-full cursor-pointer px-4 py-3 group-hover:bg-lightGrey"
-                onClick={() => logoutHandler()}
+                onClick={() => clickHandler()}
               >
                 <span>Logout</span>
               </button>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useData } from "../../../../context/dataCtx";
 import { FaAngleDown } from "react-icons/fa6";
 import { useGamesData } from "../../../../context/gamesCtx";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function DesktopNavbar({ currentGame }) {
   //HOOKS
@@ -15,7 +17,7 @@ function DesktopNavbar({ currentGame }) {
     currentGameHandler,
   } = useData();
 
-  const { games } = useGamesData();
+  const { areGamesLoading, gamesError, games } = useGamesData();
 
   const gameListRef = useRef(null);
 
@@ -50,29 +52,51 @@ function DesktopNavbar({ currentGame }) {
       <div className="mb-4 flex w-full flex-col items-start justify-start px-8">
         <h3 className="text-left">Choose game and category</h3>
         {/* mobile navbar button */}
-        <button
-          className="relative mt-4 flex w-full items-center justify-between rounded-md bg-sepiaPurple px-5 py-4 text-fontCoolGray hover:bg-lightSepiaPurple hover:text-fontLightGray xl:hidden"
-          onClick={() => openNavbarHandler()}
-        >
-          <h4>{currentGame.title}</h4>
-          {!isNavbarVisible && (
-            <FaAngleDown className="absolute right-5 size-[14px]" />
-          )}
-        </button>
+        {areGamesLoading ? (
+          <div className="mt-5 flex h-[55px] w-full items-center justify-between bg-[#312F2C] px-5 py-2 xl:hidden">
+            <div className="w-[60%]">
+              <Skeleton />
+            </div>
+            <div className="w-[10%]">
+              <Skeleton />
+            </div>
+          </div>
+        ) : (
+          <button
+            className="relative mt-4 flex w-full items-center justify-between rounded-md bg-sepiaPurple px-5 py-4 text-fontCoolGray hover:bg-lightSepiaPurple hover:text-fontLightGray xl:hidden"
+            onClick={() => openNavbarHandler()}
+          >
+            <h4>{currentGame.title}</h4>
+            {!isNavbarVisible && (
+              <FaAngleDown className="absolute right-5 size-[14px]" />
+            )}
+          </button>
+        )}
         {/* desktop navbar button + custom dropdown */}
         <div
           className="relative z-40 hidden w-full xl:flex xl:flex-col"
           ref={gameListRef}
         >
-          <button
-            className="mt-4 flex w-full cursor-pointer items-center rounded-md bg-sepiaPurple px-5 py-4 font-semibold text-fontCoolGray outline-0 hover:bg-lightSepiaPurple hover:text-fontLightGray"
-            onClick={() => openGameListHandler()}
-          >
-            <h4>{currentGame.title}</h4>
-            {!isGameListVisible && (
-              <FaAngleDown className="absolute right-5 size-[14px]" />
-            )}
-          </button>
+          {areGamesLoading ? (
+            <div className="mt-5 flex h-[55px] w-full items-center justify-between bg-[#312F2C] px-5 py-2">
+              <div className="w-[60%]">
+                <Skeleton />
+              </div>
+              <div className="w-[10%]">
+                <Skeleton />
+              </div>
+            </div>
+          ) : (
+            <button
+              className="mt-4 flex w-full cursor-pointer items-center rounded-md bg-sepiaPurple px-5 py-4 font-semibold text-fontCoolGray outline-0 hover:bg-lightSepiaPurple hover:text-fontLightGray"
+              onClick={() => openGameListHandler()}
+            >
+              <h4>{currentGame.title}</h4>
+              {!isGameListVisible && (
+                <FaAngleDown className="absolute right-5 size-[14px]" />
+              )}
+            </button>
+          )}
           {/* custom dropdown */}
           <ul
             className={`absolute ${isGameListVisible ? "flex" : "hidden"} top-[72px] w-full flex-col items-center justify-start overflow-hidden rounded-md`}

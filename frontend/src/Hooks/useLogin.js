@@ -7,10 +7,9 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthData();
 
-  const login = async (email, password) => {
+  const login = async ({ email, password }) => {
     setIsLoading(true);
     setError(null);
-
     try {
       const response = await makeRequest.post(
         `${process.env.REACT_APP_USER_LOGIN}`,
@@ -20,17 +19,11 @@ export const useLogin = () => {
         },
       );
       const data = response.data;
-      // Handle success
       if (response.status === 200) {
-        // Save the user to local storage
-        localStorage.setItem("userItem", JSON.stringify(data));
-
-        // Update the auth context
         dispatch({ type: "LOGIN", payload: data });
       }
     } catch (error) {
-      console.log("in useLogin:", error);
-      setError(error?.response?.data?.message || "An error occured");
+      setError(error?.response?.data?.message || error?.message);
     } finally {
       setIsLoading(false);
     }

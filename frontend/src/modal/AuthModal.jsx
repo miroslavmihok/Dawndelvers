@@ -11,6 +11,7 @@ import {
   FaRegEye,
   FaRegEyeSlash,
 } from "react-icons/fa6";
+import ErrorMessage from "../components/UI/ErrorMessage";
 
 const AuthModal = ({ onClose, resetFormData }) => {
   const { pathname } = useLocation();
@@ -37,7 +38,7 @@ const AuthModal = ({ onClose, resetFormData }) => {
 
   //if currentError true - dont close
   useEffect(() => {
-    if (isSubmitted && !currentError) {
+    if (isSubmitted && !currentError && !signupError && !loginError) {
       setValues({
         name: "",
         email: "",
@@ -46,14 +47,22 @@ const AuthModal = ({ onClose, resetFormData }) => {
       onClose();
       setIsSubmitted(false);
       if (pathname === "/cart") {
-        console.log("this is true");
         navigate("/checkout", { replace: true });
       }
-    } else if (isSubmitted && currentError) {
+    } else if (isSubmitted && (currentError || signupError || loginError)) {
       setShowDialog(true);
       setIsSubmitted(false);
     }
-  }, [isSubmitted, currentError, onClose, setShowDialog, pathname, navigate]);
+  }, [
+    isSubmitted,
+    currentError,
+    onClose,
+    setShowDialog,
+    pathname,
+    navigate,
+    signupError,
+    loginError,
+  ]);
 
   //remove red border and remove validator error msg when email/password are correct format
   useEffect(() => {
@@ -129,9 +138,9 @@ const AuthModal = ({ onClose, resetFormData }) => {
     e.preventDefault();
 
     if (formType === "signup") {
-      await signup(values.name, values.email, values.password);
+      await signup({ ...values });
     } else if (formType === "login") {
-      await login(values.email, values.password);
+      await login({ ...values });
     }
     setIsSubmitted(true);
   };
@@ -145,7 +154,6 @@ const AuthModal = ({ onClose, resetFormData }) => {
           <div className="flex min-w-[90%] flex-col items-center justify-start rounded-lg bg-mediumPurple xs:min-w-[500px]">
             <form
               ref={userAuthRef}
-              action="/form"
               className="flex w-full flex-col items-center justify-start gap-3 p-8 text-white"
               onSubmit={handleSubmit}
             >
@@ -165,6 +173,7 @@ const AuthModal = ({ onClose, resetFormData }) => {
                   <FaRegEnvelope
                     size={"20px"}
                     className="absolute left-[10px] top-[12px]"
+                    tabIndex={-1}
                   />
                 </div>
               )}
@@ -187,14 +196,14 @@ const AuthModal = ({ onClose, resetFormData }) => {
                   size={"20px"}
                   className="absolute left-[10px] top-[12px]"
                 />
-                <span className="text-sm text-red-500">
-                  {values.email.length > 0 &&
-                  !emailFocus &&
-                  !validator.isEmail(values.email)
-                    ? "Email is not valid"
-                    : null}
-                </span>
               </div>
+              {values.email.length > 0 &&
+              !emailFocus &&
+              !validator.isEmail(values.email) ? (
+                <div className="w-full">
+                  <ErrorMessage msg={"Email is not valid"} />
+                </div>
+              ) : null}
               <div className="formInput">
                 <PasswordStrength
                   placeholder={"Password"}
@@ -202,7 +211,6 @@ const AuthModal = ({ onClose, resetFormData }) => {
                   password={values.password}
                   setValues={setValues}
                   showPassword={showPassword}
-                  resetFormData={resetFormData}
                   formType={formType}
                   passwordFocus={passwordFocus}
                   setPasswordFocus={setPasswordFocus}
@@ -211,20 +219,30 @@ const AuthModal = ({ onClose, resetFormData }) => {
                   size={"20px"}
                   className="absolute left-[10px] top-[12px]"
                 />
-                <button
+
+                <span
                   className="absolute right-[10px] top-[12px]"
                   onClick={(e) => showPasswordHandler(e)}
+                  tabIndex={-1}
                 >
                   {!showPassword ? (
                     <FaRegEye size={"20px"} />
                   ) : (
                     <FaRegEyeSlash size={"20px"} />
                   )}
-                </button>
+                </span>
               </div>
+              {values.password.length > 0 &&
+              !passwordFocus &&
+              !validator.isStrongPassword(values.password) ? (
+                <div className="w-full">
+                  <ErrorMessage msg={"Password is not strong enough"} />
+                </div>
+              ) : null}
               <button
                 type="submit"
-                className="disabled:border-sepiaPurple rounded-md border border-lightPurple bg-lightPurple px-4 py-2 hover:bg-purple-500 disabled:cursor-not-allowed disabled:bg-sepiaPurple"
+                className="rounded-md border border-lightPurple bg-lightPurple px-4 py-2 hover:bg-purple-500 disabled:cursor-not-allowed disabled:border-sepiaPurple disabled:bg-sepiaPurple"
+                tabIndex={0}
                 disabled={
                   !validator.isEmail(values.email) ||
                   !validator.isStrongPassword(values.password) ||
@@ -233,11 +251,7 @@ const AuthModal = ({ onClose, resetFormData }) => {
                 }
               >{`${formType === "login" ? "Log in" : "Sign up"}`}</button>
               {/* error message */}
-              {currentError && (
-                <div className="rounded-sm border border-red-500 px-2 py-1 text-red-500">
-                  {currentError}
-                </div>
-              )}
+              {currentError && <ErrorMessage msg={currentError} />}
               {/* switch to login/singup */}
               <div className="flex items-center justify-center gap-2">
                 <span>{`${formType === "login" ? "Don't have an account? " : "Already have an account? "}`}</span>

@@ -8,15 +8,15 @@ const useFetch = (url) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
-        setIsLoading(true);
         const response = await makeRequest.get(url);
         setData(response.data);
-        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching products:", error);
-        setError(error);
-        setIsLoading(false);
+        setError(error?.response?.data?.message || error?.message);
+      } finally {
+        setIsLoading(true);
       }
     };
     fetchProducts();

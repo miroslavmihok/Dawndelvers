@@ -8,6 +8,8 @@ import { Filter } from "../../models/Filter";
 import formatter from "../../utils/formatter";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { FaCartShopping, FaCheck } from "react-icons/fa6";
+import { BeatLoader } from "react-spinners";
+import ErrorMessage from "../../components/UI/ErrorMessage";
 
 function Product() {
   // CONTEXT
@@ -28,11 +30,20 @@ function Product() {
   const [isAddButtonClicked, setIsAddButtonClicked] = useState();
 
   useEffect(() => {
-    if (!isProductLoading && product) {
+    if (!isProductLoading && product && product.filters) {
       // reseting filters and price if the product changes
       setSelectedFilters({});
       setBasePrice(product.basePrice);
       setPrice(product.basePrice);
+      //adding the default radio input to selectedFilters like platform and region
+      product.filters.forEach((filter) => {
+        if (filter.type === "Single" && filter.values.length > 0) {
+          setSelectedFilters((prevState) => ({
+            ...prevState,
+            [filter.name]: filter.values[0].title,
+          }));
+        }
+      });
     }
   }, [isProductLoading, product, gameUrl, productUrl]);
 
@@ -120,123 +131,137 @@ function Product() {
 
   return (
     <>
-      {(productError || gameError) && <div>Something went wrong</div>}
-      {(isProductLoading || isGameLoading) && <div>Loading...</div>}
-      {!isProductLoading && !isGameLoading && product && game && (
-        <div className="flex min-h-screen flex-col items-center justify-start bg-darkPurple">
+      <div className="flex min-h-screen flex-col items-center justify-start bg-darkPurple">
+        {isGameLoading && (
+          <div
+            className="min-h-[220px] w-full md:min-h-[400px]"
+            style={{
+              background: `rgba(28,17,36,1)`,
+            }}
+          ></div>
+        )}
+        {!isGameLoading && game && (
           <div
             className="min-h-[220px] w-full md:min-h-[400px]"
             style={{
               background: `linear-gradient(rgba(28,17,36,0) 0%, rgb(28,16,36) 100%), linear-gradient(rgba(28,17,36,0) 0%, rgb(28,16,36) 100%),linear-gradient(rgba(28,17,36,0) 0%, rgb(28,16,36) 100%), url(${game.bg}) center center / cover no-repeat`,
             }}
           ></div>
-          <div className="flex flex-col px-8 xl:w-[836px] xl:px-0 2xl:w-[1136px] 3xl:w-[1516px]">
-            <Breadcrumbs game={game.title} product={product.title} />
-            <h2 className="mb-8 text-wrap text-center lg:text-start xl:mb-14">
-              {game.title}: {product.title}
-            </h2>
-            <div className="flex w-full flex-col-reverse items-center justify-center gap-8 lg:flex-row lg:items-start lg:justify-between ">
-              <div className="w-[50%]">
-                <h3>Product description</h3>
-                <p className="mb-8">{product.description}</p>
-                <div
-                  className="mb-8 border-l-2 border-yellow-300 p-2"
-                  style={{
-                    background:
-                      "linear-gradient(to right, rgba(253, 224, 71, 0.15) 0%, rgba(253, 224, 71, 0.03))",
-                  }}
-                >
-                  <p>
-                    <b>Note:</b> Lorem, ipsum dolor sit amet consectetur
-                    adipisicing elit. Totam nemo temporibus excepturi est quod
-                    saepe a reprehenderit quisquam necessitatibus
-                    exercitationem?
+        )}
+        <div className="flex flex-col px-8 xl:w-[836px] xl:px-0 2xl:w-[1136px] 3xl:w-[1516px]">
+          {(productError || gameError) && (
+            <ErrorMessage msg={productError || gameError} />
+          )}
+          {(isProductLoading || isGameLoading) && <BeatLoader color="#fff" />}
+          {!isProductLoading && product && (
+            <>
+              <Breadcrumbs game={game.title} product={product.title} />
+              <h2 className="mb-8 text-wrap text-center lg:text-start xl:mb-14">
+                {game.title}: {product.title}
+              </h2>
+              <div className="flex w-full flex-col-reverse items-center justify-center gap-8 lg:flex-row lg:items-start lg:justify-between ">
+                <div className="w-[50%]">
+                  <h3>Product description</h3>
+                  <p className="mb-8">{product.description}</p>
+                  <div
+                    className="mb-8 border-l-2 border-yellow-300 p-2"
+                    style={{
+                      background:
+                        "linear-gradient(to right, rgba(253, 224, 71, 0.15) 0%, rgba(253, 224, 71, 0.03))",
+                    }}
+                  >
+                    <p>
+                      <b>Note:</b> Lorem, ipsum dolor sit amet consectetur
+                      adipisicing elit. Totam nemo temporibus excepturi est quod
+                      saepe a reprehenderit quisquam necessitatibus
+                      exercitationem?
+                    </p>
+                  </div>
+                  <p
+                    className="mb-8 border-l-2 border-red-500 p-2"
+                    style={{
+                      background:
+                        "linear-gradient(to right, rgba(255, 75, 75, 0.15) 0%, rgba(255, 75, 75, 0.03))",
+                    }}
+                  >
+                    Our boosters never ask you for your items back, DO NOT give
+                    your items to anyone.
+                  </p>
+                  <h3>Some other content</h3>
+                  <ul className="mb-8 ml-6 list-disc">
+                    <li>Bullet point</li>
+                    <li>Bullet point</li>
+                    <li>Bullet point</li>
+                    <li>Bullet point</li>
+                    <li>Bullet point</li>
+                  </ul>
+                  <h3>Some other information</h3>
+                  <p className="mb-8">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
+                    veritatis maiores non, voluptate veniam vel eos, omnis
+                    minima temporibus cupiditate velit? Vitae possimus modi ab,
+                    quidem dolorem illo tempore dolor quis est nemo cum numquam
+                    temporibus eum voluptatum. At in optio quia, corporis illum
+                    quasi adipisci quidem? Quo minima amet repellat id, sapiente
+                    nesciunt dolore, mollitia officiis neque delectus maxime!
+                    Itaque assumenda nihil velit magni culpa sapiente sit. Eos,
+                    laboriosam assumenda incidunt architecto exercitationem at
+                    laudantium dolorum quisquam, nisi accusantium earum atque
+                    necessitatibus molestias aliquam! Debitis consequatur
+                    quisquam quis sequi, doloribus ducimus ex rerum veritatis,
+                    nemo maxime iste, asperiores id.
                   </p>
                 </div>
-                <p
-                  className="mb-8 border-l-2 border-red-500 p-2"
-                  style={{
-                    background:
-                      "linear-gradient(to right, rgba(255, 75, 75, 0.15) 0%, rgba(255, 75, 75, 0.03))",
-                  }}
-                >
-                  Our boosters never ask you for your items back, DO NOT give
-                  your items to anyone.
-                </p>
-                <h3>Some other content</h3>
-                <ul className="mb-8 ml-6 list-disc">
-                  <li>Bullet point</li>
-                  <li>Bullet point</li>
-                  <li>Bullet point</li>
-                  <li>Bullet point</li>
-                  <li>Bullet point</li>
-                </ul>
-                <h3>Some other information</h3>
-                <p className="mb-8">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-                  veritatis maiores non, voluptate veniam vel eos, omnis minima
-                  temporibus cupiditate velit? Vitae possimus modi ab, quidem
-                  dolorem illo tempore dolor quis est nemo cum numquam
-                  temporibus eum voluptatum. At in optio quia, corporis illum
-                  quasi adipisci quidem? Quo minima amet repellat id, sapiente
-                  nesciunt dolore, mollitia officiis neque delectus maxime!
-                  Itaque assumenda nihil velit magni culpa sapiente sit. Eos,
-                  laboriosam assumenda incidunt architecto exercitationem at
-                  laudantium dolorum quisquam, nisi accusantium earum atque
-                  necessitatibus molestias aliquam! Debitis consequatur quisquam
-                  quis sequi, doloribus ducimus ex rerum veritatis, nemo maxime
-                  iste, asperiores id.
-                </p>
-              </div>
-              <section className="border-md min-w-[250px] overflow-hidden rounded-md border-8 border-lightPurple/50 xs:min-w-[400px]">
-                <div className="p-4">
-                  <div className="filterSection">
-                    {filters.map((filter, index) => (
-                      <div key={index} className="mb-4">
-                        <h5 className="mb-2">{filter.name}</h5>
-                        {/* Render UI elements based on filter type */}
-                        <Filter
-                          {...filter}
-                          basePrice={basePrice}
-                          currencySymbol={currency.curSymbol}
-                        />
-                        <hr />
+                <section className="border-md min-w-[250px] overflow-hidden rounded-md border-8 border-lightPurple/50 xs:min-w-[400px]">
+                  <div className="p-4">
+                    <div className="filterSection">
+                      {filters.map((filter, index) => (
+                        <div key={index} className="mb-4">
+                          <h5 className="mb-2">{filter.name}</h5>
+                          {/* Render UI elements based on filter type */}
+                          <Filter
+                            {...filter}
+                            basePrice={basePrice}
+                            currencySymbol={currency.curSymbol}
+                          />
+                          <hr />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4>Total Price:</h4>
                       </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h4>Total Price:</h4>
-                    </div>
-                    <div className="text-3xl font-bold">
-                      <span>{formatter(price, currency.curSymbol)}</span>
+                      <div className="text-3xl font-bold">
+                        <span>{formatter(price, currency.curSymbol)}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="px-4 pb-4">
-                  <button
-                    className="relative flex min-h-[48px] w-full flex-col items-center justify-center overflow-hidden rounded-md"
-                    onClick={() => submitProductHandler()}
-                  >
-                    <div
-                      className={`${isAddButtonClicked ? "top-[-48px]" : "top-0"} absolute w-full transition-[top] duration-500 ease-in-out`}
+                  <div className="px-4 pb-4">
+                    <button
+                      className="relative flex min-h-[48px] w-full flex-col items-center justify-center overflow-hidden rounded-md"
+                      onClick={() => submitProductHandler()}
                     >
-                      <div className="addedButton-incomplete flex w-full items-center justify-center gap-2 bg-mediumPurple p-3 hover:bg-lightPurple">
-                        <FaCartShopping size={"22px"} />
-                        <span className="">Add to Cart</span>
+                      <div
+                        className={`${isAddButtonClicked ? "top-[-48px]" : "top-0"} absolute w-full transition-[top] duration-500 ease-in-out`}
+                      >
+                        <div className="addedButton-incomplete flex w-full items-center justify-center gap-2 bg-mediumPurple p-3 hover:bg-lightPurple">
+                          <FaCartShopping size={"22px"} />
+                          <span className="">Add to Cart</span>
+                        </div>
+                        <div className="addedButton-complete flex w-full items-center justify-center gap-2 bg-lemonGreen p-3">
+                          <FaCheck size={"22px"} />
+                          <span className="">Added</span>
+                        </div>
                       </div>
-                      <div className="addedButton-complete flex w-full items-center justify-center gap-2 bg-lemonGreen p-3">
-                        <FaCheck size={"22px"} />
-                        <span className="">Added</span>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </section>
-            </div>
-          </div>
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }

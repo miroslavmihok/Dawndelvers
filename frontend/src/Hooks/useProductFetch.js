@@ -14,8 +14,7 @@ const useProductFetch = (url) => {
         const response = await makeRequest.get(url);
         setData(response.data);
       } catch (error) {
-        console.error("Error fetching product:", error);
-        setError(error);
+        setError(error?.response?.data?.message || error?.message);
       } finally {
         setIsLoading(false);
       }

@@ -9,8 +9,10 @@ export const useAuthData = () => {
 export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
+      localStorage.setItem("userItem", JSON.stringify(action.payload));
       return { userItem: action.payload };
     case "LOGOUT":
+      localStorage.removeItem("userItem");
       return { userItem: null };
     default:
       return state;

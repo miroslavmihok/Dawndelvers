@@ -15,7 +15,7 @@ function CompletedOrder({ completedOrder }) {
         delivery date, please click on the "Order Information" button below.
       </p>
       <Link
-        to="/orders/:id"
+        to={`profile/orders/${completedOrder._id}`}
         className="flex w-full max-w-full items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple md:max-w-[200px]"
       >
         <span>Order information</span>

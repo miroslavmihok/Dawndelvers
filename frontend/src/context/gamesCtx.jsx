@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import useFetch from "../hooks/useFetch";
+import useGamesFetch from "../hooks/useGamesFetch";
 
 const GamesContext = createContext();
 
@@ -8,10 +8,10 @@ export function useGamesData() {
 }
 
 export function GamesDataProvider({ children }) {
-  const { isLoading, error, data } = useFetch(`/games`);
+  const { areGamesLoading, gamesError, games } = useGamesFetch();
 
   return (
-    <GamesContext.Provider value={{ isLoading, error, games: data }}>
+    <GamesContext.Provider value={{ areGamesLoading, gamesError, games }}>
       {children}
     </GamesContext.Provider>
   );

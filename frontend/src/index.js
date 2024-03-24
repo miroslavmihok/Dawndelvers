@@ -7,6 +7,7 @@ import { ProductsDataProvider } from "./context/productsCtx";
 import { CartDataProvider } from "./context/cartCtx";
 import { GamesDataProvider } from "./context/gamesCtx";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { SkeletonTheme } from "react-loading-skeleton";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
@@ -23,7 +24,9 @@ root.render(
                 <PayPalScriptProvider
                   options={{ clientId: "test", currency: "EUR" }}
                 >
-                  <App />
+                  <SkeletonTheme baseColor="#403d39" highlightColor="#727272">
+                    <App />
+                  </SkeletonTheme>
                 </PayPalScriptProvider>
               </GamesDataProvider>
             </ProductsDataProvider>

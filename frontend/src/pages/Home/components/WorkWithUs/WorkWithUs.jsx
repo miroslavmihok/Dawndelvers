@@ -1,5 +1,7 @@
 import React from "react";
 import { useGamesData } from "../../../../context/gamesCtx";
+import ErrorMessage from "../../../../components/UI/ErrorMessage";
+import { BeatLoader } from "react-spinners";
 
 function WorkWithUs() {
   const { isLoading, error, games } = useGamesData();
@@ -20,22 +22,22 @@ function WorkWithUs() {
               Coach
             </button>
           </div>
-          <div className="">
+          {error ? (
+            <ErrorMessage msg={error} />
+          ) : isLoading ? (
+            <BeatLoader color="#fff" />
+          ) : (
             <form className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-4 sm:grid-rows-4">
               <select
                 className="col-span-1 rounded-md px-5 py-3 sm:col-span-2"
                 name="gameSelect"
               >
                 <option hidden>Choose game</option>
-                {error
-                  ? "Something went wrong"
-                  : isLoading
-                    ? "Loading"
-                    : games.map((product, index) => (
-                        <option key={index} value={product.title}>
-                          {product.title}
-                        </option>
-                      ))}
+                {games.map((product, index) => (
+                  <option key={index} value={product.title}>
+                    {product.title}
+                  </option>
+                ))}
               </select>
               <input
                 type="text"
@@ -68,7 +70,7 @@ function WorkWithUs() {
                 Send
               </button>
             </form>
-          </div>
+          )}
         </div>
       </div>
     </div>
