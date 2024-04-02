@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 function Games() {
-  const { isLoading, error, games } = useGamesData();
+  const { areGamesLoading, gamesError, games } = useGamesData();
   const [cards, setCards] = useState(
     window.innerWidth < 768 ? 2 : window.innerWidth < 1280 ? 3 : 4,
   );
@@ -32,11 +32,11 @@ function Games() {
 
   return (
     <div className="mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">
-      {error ? (
+      {gamesError ? (
         <div className="flex w-full gap-x-4 lg:w-[742px] xl:w-[880px] 2xl:w-[980px]">
-          <ErrorMessage msg={error} />
+          <ErrorMessage msg={gamesError} />
         </div>
-      ) : !games || isLoading ? (
+      ) : !games || areGamesLoading ? (
         <div className="flex w-full gap-x-4 lg:w-[742px] xl:w-[880px] 2xl:w-[980px]">
           <GameSkeleton cards={cards} />
         </div>

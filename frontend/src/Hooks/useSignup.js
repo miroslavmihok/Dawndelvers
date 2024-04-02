@@ -13,7 +13,7 @@ export const useSignup = () => {
 
     try {
       const response = await makeRequest.post(
-        `${process.env.REACT_APP_USER_SIGNUP}`,
+        `${process.env.REACT_APP_USERS_URL}`,
         { name: name, email: email, password: password },
         {
           withCredentials: true,

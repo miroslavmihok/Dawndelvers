@@ -37,9 +37,144 @@ const getSpecificProduct = asyncHandler(async (req, res) => {
   } else {
     res.status(404);
     throw new Error(
-      `No product found in ${req.params.gameUrl} with url ${req.params.gameUrl}`
+      `No product found in ${req.params.gameUrl} with url ${req.params.productUrl}`
     );
   }
 });
 
-export { getProducts, getProductsByGame, getSpecificProduct };
+// @desc    Fetch Product by its id
+// @route   GET /api/products/details/:url
+// @access  Private/Admin
+const getSingleProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findOne({ url: req.params.url });
+  if (product) {
+    return res.json(product);
+  } else {
+    res.status(404);
+    throw new Error(`No product found with this url`);
+  }
+});
+
+// @desc    Update product information
+// @route   PUT /api/products
+// @access  Private/Admin
+const updateProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findOne({ _id: req.body.id });
+
+  if (product) {
+    product.title = req.body.title;
+    product.url = req.body.url;
+    product.imgSrc = req.body.imgSrc;
+    product.category = req.body.category;
+    product.description = req.body.description;
+    product.price = req.body.price;
+    product.priceBeforeDiscount = req.body.priceBeforeDiscount;
+    product.deal = req.body.deal;
+    product.filters = req.body.filters;
+
+    const updatedProduct = await product.save();
+
+    res.status(200).json({
+      title: updatedProduct.title,
+      url: updatedProduct.url,
+      imgSrc: updatedProduct.imgSrc,
+      category: updatedProduct.category,
+      description: updatedProduct.description,
+      price: updatedProduct.price,
+      priceBeforeDiscount: updatedProduct.priceBeforeDiscount,
+      deal: updatedProduct.deal,
+      filters: updatedProduct.filters,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+});
+
+// @desc    Add product
+// @route   POST /api/products
+// @access  Private/Admin
+const addProduct = asyncHandler(async (req, res) => {
+  const {
+    title,
+    url,
+    imgSrc,
+    game,
+    gameUrl,
+    category,
+    description,
+    price,
+    priceBeforeDiscount,
+    deal,
+    filters,
+  } = req.body;
+
+  const productExists = await Product.findOne({ url });
+
+  if (
+    !title ||
+    !url ||
+    !imgSrc ||
+    !game ||
+    !gameUrl ||
+    !category ||
+    !description ||
+    !price ||
+    !priceBeforeDiscount ||
+    !deal ||
+    !filters
+  ) {
+    res.status(400);
+    throw Error("All fields must be filled");
+  } else if (productExists) {
+    res.status(400);
+    throw new Error("Product with this url path name already exists");
+  } else {
+    const product = new Product({
+      user: req.user._id,
+      title,
+      url,
+      imgSrc,
+      game,
+      gameUrl,
+      category,
+      description,
+      price,
+      priceBeforeDiscount,
+      deal,
+      filters,
+      reviews: [],
+      rating: 0,
+      numReviews: 0,
+    });
+
+    const createdProduct = await product.save();
+
+    res.status(201).json(createdProduct);
+  }
+});
+
+// @desc    Remove product
+// @route   DELETE /api/products/delete/:id
+// @access  Private/Admin
+const deleteProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    await Product.deleteOne({ _id: product._id });
+    res.status(200).json({ message: "Product deleted" });
+  } else {
+    res.status(404);
+    throw new Error("Resource not found");
+  }
+});
+
+export {
+  getProducts,
+  getProductsByGame,
+  getSpecificProduct,
+  getSingleProduct,
+  updateProduct,
+  addProduct,
+  deleteProduct,
+};

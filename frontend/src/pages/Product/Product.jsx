@@ -33,8 +33,8 @@ function Product() {
     if (!isProductLoading && product && product.filters) {
       // reseting filters and price if the product changes
       setSelectedFilters({});
-      setBasePrice(product.basePrice);
-      setPrice(product.basePrice);
+      setBasePrice(product.price);
+      setPrice(product.price);
       //adding the default radio input to selectedFilters like platform and region
       product.filters.forEach((filter) => {
         if (filter.type === "Single" && filter.values.length > 0) {
@@ -96,7 +96,7 @@ function Product() {
     }));
 
     // Calculate adjusted price based on the selected filters
-    const newPrice = calculateAdjustedPrice(product.basePrice, {
+    const newPrice = calculateAdjustedPrice(product.price, {
       ...selectedFilters,
       [name]: value,
     });

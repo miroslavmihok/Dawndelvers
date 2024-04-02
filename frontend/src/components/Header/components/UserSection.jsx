@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../../assets/user/Avatar.png";
 import { FaCaretDown } from "react-icons/fa6";
 
-function UserSection({ logoutHandler }) {
+function UserSection({ logoutHandler, userItem }) {
   const [isUserClicked, setIsUserClicked] = useState(false);
 
   const wrapperRef = useRef();
@@ -57,7 +57,7 @@ function UserSection({ logoutHandler }) {
           <ul className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-md bg-white text-black">
             <li className="group w-full cursor-pointer text-center">
               <Link
-                to="/profile/details"
+                to={`${userItem.isAdmin ? "/admin/profile/details" : "/profile/details"}`}
                 className={`flex w-full cursor-pointer items-center justify-center px-4 py-3 text-center group-hover:bg-lightGrey`}
                 onClick={() => setIsUserClicked((prevValue) => !prevValue)}
               >

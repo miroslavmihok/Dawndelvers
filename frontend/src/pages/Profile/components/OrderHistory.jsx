@@ -28,8 +28,20 @@ const OrderHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {ordersError && <ErrorMessage msg={ordersError} />}
-          {areOrdersLoading && <BeatLoader color="#fff" />}
+          {ordersError && (
+            <tr>
+              <td>
+                <ErrorMessage msg={ordersError} />
+              </td>
+            </tr>
+          )}
+          {areOrdersLoading && (
+            <tr>
+              <td>
+                <BeatLoader color="#fff" />
+              </td>
+            </tr>
+          )}
           {orders &&
             !areOrdersLoading &&
             orders.map((order, index) => (
@@ -37,17 +49,13 @@ const OrderHistory = () => {
                 key={index}
                 className={`h-[48px] text-center font-semibold ${index === 0 || index % 2 === 0 ? "bg-mediumPurple" : "bg-lightPurple"}`}
               >
-                <td>
-                  <span>{order._id}</span>
-                </td>
+                <td>{order._id}</td>
                 <td className="items-center justify-center">
-                  <span>{order.orderItems.length}</span>
+                  {order.orderItems.length}
                 </td>
+                <td>{formatDate(order.createdAt)}</td>
                 <td>
-                  <span>{formatDate(order.createdAt)}</span>
-                </td>
-                <td>
-                  {order.isDevelivered ? (
+                  {order.isDelivered ? (
                     <span className="rounded-md border-none bg-lightGreen px-[10px] py-[6px] text-darkGreen">
                       Delivered
                     </span>

@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { AuthContextProvider } from "./context/authCtx";
 import { DataProvider } from "./context/dataCtx";
 import { HeaderDataProvider } from "./context/headerCtx";
-import { ProductsDataProvider } from "./context/productsCtx";
 import { CartDataProvider } from "./context/cartCtx";
 import { GamesDataProvider } from "./context/gamesCtx";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
@@ -19,17 +18,15 @@ root.render(
       <DataProvider>
         <HeaderDataProvider>
           <CartDataProvider>
-            <ProductsDataProvider>
-              <GamesDataProvider>
-                <PayPalScriptProvider
-                  options={{ clientId: "test", currency: "EUR" }}
-                >
-                  <SkeletonTheme baseColor="#403d39" highlightColor="#727272">
-                    <App />
-                  </SkeletonTheme>
-                </PayPalScriptProvider>
-              </GamesDataProvider>
-            </ProductsDataProvider>
+            <GamesDataProvider>
+              <PayPalScriptProvider
+                options={{ clientId: "test", currency: "EUR" }}
+              >
+                <SkeletonTheme baseColor="#403d39" highlightColor="#727272">
+                  <App />
+                </SkeletonTheme>
+              </PayPalScriptProvider>
+            </GamesDataProvider>
           </CartDataProvider>
         </HeaderDataProvider>
       </DataProvider>

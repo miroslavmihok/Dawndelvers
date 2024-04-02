@@ -6,7 +6,6 @@ import MobileNavbar from "./MobileNavbar";
 import DesktopNavbar from "./DesktopNavbar";
 import Breadcrumbs from "../../../../components/Breadcrumbs/Breadcrumbs";
 import ErrorMessage from "../../../../components/UI/ErrorMessage";
-import { BeatLoader } from "react-spinners";
 import Skeleton from "react-loading-skeleton";
 import ProductsSkeleton from "../../../../components/Skeletons/ProductsSkeleton";
 
@@ -72,6 +71,7 @@ function Products({
               {productsError && <ErrorMessage msg={productsError} />}
               {areProductsLoading && <ProductsSkeleton cards={4} />}
               {!areProductsLoading &&
+                !productsError &&
                 filteredProducts &&
                 filteredProducts.map((product, index) => (
                   <ProductItem
@@ -82,7 +82,8 @@ function Products({
                     deal={product.deal}
                     title={product.title}
                     description={product.description}
-                    price={product.basePrice}
+                    price={product.price}
+                    priceBeforeDiscount={product.priceBeforeDiscount}
                     imageUrl={product.imgSrc}
                   />
                 ))}

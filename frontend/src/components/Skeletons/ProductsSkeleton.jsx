@@ -7,6 +7,7 @@ const ProductsSkeleton = ({ cards }) => {
     .fill(0)
     .map((_, i) => (
       <div
+        key={i}
         className={`flex h-[300px] min-w-[256px] max-w-[530px] flex-grow basis-0 flex-col items-start justify-between overflow-hidden rounded-2xl bg-[#312F2C] p-4`}
       >
         <div className="mb-2 flex h-[64px] w-full items-center justify-start text-wrap text-center font-bold">

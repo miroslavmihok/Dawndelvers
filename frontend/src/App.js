@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useHeaderData } from "./context/headerCtx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AdminRoute from "./components/AdminRoute/AdminRoute";
 import ScrollToTop from "./utils/ScrollToTop";
 import AuthModal from "./modal/AuthModal";
 import Header from "./components/Header/Header";
@@ -14,9 +15,10 @@ import FAQ from "./pages/FAQ/FAQ";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
+import ProfileScreen from "./pages/Profile/ProfileScreen";
+import AdminProfileScreen from "./pages/Profile/Admin/AdminProfileScreen";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProfileScreen from "./pages/Profile/ProfileScreen";
 
 const App = () => {
   const { setShowDialog } = useHeaderData();
@@ -59,6 +61,12 @@ const App = () => {
               <Route
                 path="/profile/:section/:id?"
                 element={<ProfileScreen />}
+              />
+            </Route>
+            <Route path="" element={<AdminRoute />}>
+              <Route
+                path="/admin/profile/:section/:action?/:url?"
+                element={<AdminProfileScreen />}
               />
             </Route>
           </Routes>

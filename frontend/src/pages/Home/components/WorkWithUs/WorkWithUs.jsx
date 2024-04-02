@@ -4,7 +4,7 @@ import ErrorMessage from "../../../../components/UI/ErrorMessage";
 import { BeatLoader } from "react-spinners";
 
 function WorkWithUs() {
-  const { isLoading, error, games } = useGamesData();
+  const { areGamesLoading, gamesError, games } = useGamesData();
 
   return (
     <div className="z-10 mb-8 flex w-full flex-col items-center justify-center px-8 sm:mb-10 md:mb-12 xl:mb-14">
@@ -22,9 +22,9 @@ function WorkWithUs() {
               Coach
             </button>
           </div>
-          {error ? (
-            <ErrorMessage msg={error} />
-          ) : isLoading ? (
+          {gamesError ? (
+            <ErrorMessage msg={gamesError} />
+          ) : areGamesLoading ? (
             <BeatLoader color="#fff" />
           ) : (
             <form className="grid grid-cols-1 grid-rows-8 gap-4 sm:grid-cols-4 sm:grid-rows-4">

@@ -244,10 +244,9 @@ const AuthModal = ({ onClose, resetFormData }) => {
                 className="rounded-md border border-lightPurple bg-lightPurple px-4 py-2 hover:bg-purple-500 disabled:cursor-not-allowed disabled:border-sepiaPurple disabled:bg-sepiaPurple"
                 tabIndex={0}
                 disabled={
-                  !validator.isEmail(values.email) ||
-                  !validator.isStrongPassword(values.password) ||
-                  isLoginLoading ||
-                  isSignupLoading
+                  // !validator.isEmail(values.email) ||
+                  // !validator.isStrongPassword(values.password) ||
+                  isLoginLoading || isSignupLoading
                 }
               >{`${formType === "login" ? "Log in" : "Sign up"}`}</button>
               {/* error message */}

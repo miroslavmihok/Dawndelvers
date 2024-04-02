@@ -8,10 +8,14 @@ export function useGamesData() {
 }
 
 export function GamesDataProvider({ children }) {
-  const { areGamesLoading, gamesError, games } = useGamesFetch();
+  const { refetchGames, areGamesLoading, gamesError, games } = useGamesFetch(
+    `${process.env.REACT_APP_GAMES_URL}`,
+  );
 
   return (
-    <GamesContext.Provider value={{ areGamesLoading, gamesError, games }}>
+    <GamesContext.Provider
+      value={{ refetchGames, areGamesLoading, gamesError, games }}
+    >
       {children}
     </GamesContext.Provider>
   );

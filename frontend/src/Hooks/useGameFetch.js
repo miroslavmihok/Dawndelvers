@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { makeRequest } from "../makeRequest";
 
 const useGameFetch = (url) => {
@@ -6,23 +6,33 @@ const useGameFetch = (url) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await makeRequest.get(url);
-        setData(response.data);
-      } catch (error) {
-        setError(error?.response?.data?.message || error?.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchProducts();
+  const fetchGame = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await makeRequest.get(url, { withCredentials: true });
+      setData(response.data);
+    } catch (error) {
+      setError(error?.response?.data?.message || error?.message);
+    } finally {
+      setIsLoading(false);
+    }
   }, [url]);
 
-  return { isGameLoading: isLoading, gameError: error, game: data };
+  useEffect(() => {
+    fetchGame();
+  }, [url, fetchGame]);
+
+  const refetchGame = () => {
+    fetchGame();
+  };
+
+  return {
+    refetchGame,
+    isGameLoading: isLoading,
+    gameError: error,
+    game: data,
+  };
 };
 
 export default useGameFetch;

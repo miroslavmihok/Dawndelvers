@@ -5,16 +5,18 @@ import { useHeaderData } from "../../../../context/headerCtx";
 import formatter from "../../../../utils/formatter";
 
 function ProductItem({
-  id,
   gameUrl,
   url,
   deal,
   title,
   description,
   price,
+  priceBeforeDiscount,
   imageUrl,
 }) {
   const { currency } = useHeaderData();
+
+  console.log(priceBeforeDiscount);
 
   return (
     <Link
@@ -31,11 +33,20 @@ function ProductItem({
         <div>
           <h4 className="font-bold">{title}</h4>
           <p className="mb-2 leading-4">{description}</p>
-          <div className="flex items-center ">
-            <span className="mr-2">From </span>
-            <h4 className="font-bold">
+          <div className="flex items-center gap-x-2">
+            <span>From </span>
+            <h4
+              className={`font-bold ${price < priceBeforeDiscount ? "text-lemonGreen" : "text-white"}`}
+            >
               {formatter(price, currency.curSymbol)}
             </h4>
+            {price < priceBeforeDiscount && (
+              <h4
+                className={`font-semibold ${price < priceBeforeDiscount ? "text-sepiaGray line-through" : ""}`}
+              >
+                {formatter(priceBeforeDiscount, currency.curSymbol)}
+              </h4>
+            )}
           </div>
         </div>
       </div>

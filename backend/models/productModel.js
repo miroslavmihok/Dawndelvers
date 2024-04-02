@@ -94,7 +94,12 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-    basePrice: {
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    priceBeforeDiscount: {
       type: Number,
       required: true,
       default: 0,
@@ -102,11 +107,6 @@ const productSchema = new mongoose.Schema(
     deal: {
       type: Boolean,
       required: true,
-    },
-    countInStock: {
-      type: Number,
-      required: true,
-      default: 0,
     },
     filters: [filtersSchema],
   },

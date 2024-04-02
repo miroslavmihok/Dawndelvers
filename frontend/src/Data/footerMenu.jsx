@@ -8,7 +8,7 @@ export const footerMenu = [
       },
       {
         title: "Boosting",
-        url: "/products",
+        url: "/products/worldofwarcraft",
       },
       {
         title: "About us",

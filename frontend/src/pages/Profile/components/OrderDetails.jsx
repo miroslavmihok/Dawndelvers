@@ -193,6 +193,30 @@ const OrderDetails = () => {
               </did>
             )}
           </section>
+          <section className="flex w-full items-center justify-between sm:max-w-[260px]">
+            <span className="font-semibold">Delivered: </span>
+            {order.isDelivered ? (
+              <span className="rounded-md border-none bg-lightGreen px-[10px] py-[6px] text-darkGreen">
+                Delivered
+              </span>
+            ) : (
+              <span className="rounded-md border-none bg-lightOrange px-[10px] py-[6px] text-mediumOrange">
+                Unfulfilled
+              </span>
+            )}
+          </section>
+          <section className="flex w-full items-center justify-between sm:max-w-[260px]">
+            <span className="font-semibold">Paid: </span>
+            {order.isPaid ? (
+              <span className="rounded-md border-none bg-lightGreen px-[10px] py-[6px] font-semibold text-darkGreen">
+                Paid
+              </span>
+            ) : (
+              <span className="rounded-md border-none bg-skyBlue px-[10px] py-[6px] font-semibold text-blueGreen">
+                Unpaid
+              </span>
+            )}
+          </section>
           {order && order.paymentMethod === "Paypal" && !order.isPaid && (
             <section>
               {isPaymentLoading && <BeatLoader color="#fff" />}

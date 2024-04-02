@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { makeRequest } from "../makeRequest";
 
 const useProductFetch = (url) => {
@@ -6,23 +6,35 @@ const useProductFetch = (url) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const response = await makeRequest.get(url);
-        setData(response.data);
-      } catch (error) {
-        setError(error?.response?.data?.message || error?.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchProduct();
+  const fetchProduct = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await makeRequest.get(url, {
+        withCredentials: true,
+      });
+      setData(response.data);
+    } catch (error) {
+      setError(error?.response?.data?.message || error?.message);
+    } finally {
+      setIsLoading(false);
+    }
   }, [url]);
 
-  return { isProductLoading: isLoading, productError: error, product: data };
+  useEffect(() => {
+    fetchProduct();
+  }, [url, fetchProduct]);
+
+  const refetchProduct = () => {
+    fetchProduct();
+  };
+
+  return {
+    refetchProduct,
+    isProductLoading: isLoading,
+    productError: error,
+    product: data,
+  };
 };
 
 export default useProductFetch;

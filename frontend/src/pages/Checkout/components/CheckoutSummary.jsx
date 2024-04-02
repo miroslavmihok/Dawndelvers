@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useHeaderData } from "../../../context/headerCtx";
 import { useCartData } from "../../../context/cartCtx";
-import { useAuthData } from "../../../context/authCtx";
 import { useOrder } from "../../../hooks/useOrder";
 import { usePayOrder } from "../../../hooks/usePayOrder";
 import usePaypalClientId from "../../../hooks/usePaypalClientId";
 import formatter from "../../../utils/formatter";
 import { FaChevronDown } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 let discountCodes = ["SAVE10", "SAVE15"];
 
@@ -25,11 +25,9 @@ function CheckoutSummary({
 
   const { createOrderInDb, isOrderLoading, orderError, createdOrder } =
     useOrder();
-  const { payOrder, isPaymentLoading, paymentError, updatedOrder } =
-    usePayOrder();
+  const { payOrder, isPaymentLoading, updatedOrder } = usePayOrder();
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
   const { isPaypalLoading, paypalError, paypal } = usePaypalClientId();
-  const { userItem } = useAuthData();
 
   const [isDiscountCodeSubmitted, setIsDiscountCodeSubmitted] = useState(false);
   const [detailsShown, setDetailsShown] = useState(false);
@@ -378,42 +376,48 @@ function CheckoutSummary({
             onClick={() => checkoutSubmitHandler()}
             className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple disabled:cursor-not-allowed disabled:bg-sepiaPurple md:w-full"
           >
-            <span>Place order</span>
+            <span>
+              {isOrderLoading ? <ClipLoader color="#fff" /> : "Place order"}
+            </span>
           </button>
         )}
         {currentPayment &&
           currentPayment.title === "Stripe" &&
           isReviewed &&
           !updatedOrder.isPaid && (
-            <button
-              type="button"
-              disabled={
-                !currentPayment ||
-                state.cartItems.length === 0 ||
-                isOrderLoading
-              }
-              className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple disabled:cursor-not-allowed disabled:bg-sepiaPurple md:w-full"
-            >
-              <span>STRIPE</span>
-            </button>
+            <>
+              {!isPaymentLoading || !isPending ? (
+                <button
+                  type="button"
+                  disabled={state.cartItems.length === 0 || isOrderLoading}
+                  className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple disabled:cursor-not-allowed disabled:bg-sepiaPurple md:w-full"
+                >
+                  <span>STRIPE</span>
+                </button>
+              ) : (
+                <ClipLoader color="#fff" />
+              )}
+            </>
           )}
         {currentPayment &&
           currentPayment.title === "Paypal" &&
           isReviewed &&
           !updatedOrder.isPaid && (
-            <PayPalButtons
-              disabled={
-                !currentPayment ||
-                state.cartItems.length === 0 ||
-                isOrderLoading
-              }
-              className="paypal-buttons-class w-full"
-              onApprove={onApprove}
-              createOrder={createOrder}
-              onError={onError}
-              forceReRender={[finalAmount, createdOrder]}
-              fundingSource="paypal"
-            ></PayPalButtons>
+            <>
+              {!isPaymentLoading || !isPending ? (
+                <PayPalButtons
+                  disabled={state.cartItems.length === 0 || isOrderLoading}
+                  className="paypal-buttons-class w-full"
+                  onApprove={onApprove}
+                  createOrder={createOrder}
+                  onError={onError}
+                  forceReRender={[finalAmount, createdOrder]}
+                  fundingSource="paypal"
+                ></PayPalButtons>
+              ) : (
+                <ClipLoader color="#fff" />
+              )}
+            </>
           )}
         {orderError && (
           <span

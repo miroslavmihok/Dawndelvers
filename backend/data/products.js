@@ -10,7 +10,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: true,
     filters: [
       {
@@ -66,7 +67,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: true,
     filters: [
       {
@@ -122,7 +124,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: true,
     filters: [
       {
@@ -178,7 +181,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: false,
     filters: [
       {
@@ -234,7 +238,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: true,
     filters: [
       {
@@ -290,7 +295,8 @@ const products = [
       "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
     rating: 4.5,
     numReviews: 12,
-    basePrice: 5,
+    priceBeforeDiscount: 5,
+    price: 5,
     deal: false,
     filters: [
       {

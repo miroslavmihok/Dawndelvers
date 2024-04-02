@@ -75,7 +75,12 @@ const Header = ({ displayAuthModalHandler }) => {
               </Link>
             </div>
             <div className="flex items-center justify-center xl:w-full xl:flex-col xl:gap-4">
-              {userItem && <UserSection logoutHandler={logoutHandler} />}
+              {userItem && (
+                <UserSection
+                  logoutHandler={logoutHandler}
+                  userItem={userItem}
+                />
+              )}
               <form name="searchForm" className="hidden w-full px-4 xl:block">
                 <div className="relative flex w-full items-center justify-between text-sepiaGray">
                   <input
@@ -191,7 +196,12 @@ const Header = ({ displayAuthModalHandler }) => {
                 <FaRegUser size="26px" />
               </button>
             )}
-            {userItem && <UserMobileSection logoutHandler={logoutHandler} />}
+            {userItem && (
+              <UserMobileSection
+                logoutHandler={logoutHandler}
+                userItem={userItem}
+              />
+            )}
             <Link
               to={`/cart`}
               className="rounded-md hover:bg-lightPurple md:bg-mediumPurple md:p-[8px] xl:flex xl:w-full xl:items-center xl:justify-center xl:gap-2"

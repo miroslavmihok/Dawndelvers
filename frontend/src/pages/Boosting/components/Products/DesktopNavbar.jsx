@@ -5,6 +5,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { useGamesData } from "../../../../context/gamesCtx";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import ErrorMessage from "../../../../components/UI/ErrorMessage";
 
 function DesktopNavbar({ currentGame }) {
   //HOOKS
@@ -51,6 +52,7 @@ function DesktopNavbar({ currentGame }) {
     <>
       <div className="mb-4 flex w-full flex-col items-start justify-start px-8">
         <h3 className="text-left">Choose game and category</h3>
+        {gamesError && <ErrorMessage msg={gamesError} />}
         {/* mobile navbar button */}
         {areGamesLoading ? (
           <div className="mt-5 flex h-[55px] w-full items-center justify-between bg-[#312F2C] px-5 py-2 xl:hidden">
