@@ -16,8 +16,6 @@ function ProductItem({
 }) {
   const { currency } = useHeaderData();
 
-  console.log(priceBeforeDiscount);
-
   return (
     <Link
       to={`/products/${gameUrl}/${url}`}

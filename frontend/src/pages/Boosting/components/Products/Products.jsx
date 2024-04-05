@@ -63,7 +63,7 @@ function Products({
                 <Skeleton height={34} />
               </div>
             ) : (
-              <Categories currentGameTitle={game.title} />
+              <Categories currentGameTitle={game.title} products={products} />
             )}
           </div>
           <div className="flex w-full flex-col items-center px-8">

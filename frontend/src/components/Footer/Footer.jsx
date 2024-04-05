@@ -1,4 +1,8 @@
-import React, { memo } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import useGamesFetch from "../../hooks/useGamesFetch";
+import { footerMenu } from "../../data/footerMenu";
+import { BeatLoader } from "react-spinners";
 import {
   FaFacebookF,
   FaInstagram,
@@ -6,11 +10,12 @@ import {
   FaYoutube,
   FaTwitter,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { categories } from "../../data/categories";
-import { footerMenu } from "../../data/footerMenu";
 
 function Footer() {
+  const { areGamesLoading, games } = useGamesFetch(
+    `${process.env.REACT_APP_GAMES_URL}`,
+  );
+
   return (
     <div className="flex items-center justify-center bg-darkPurple px-8 pt-8">
       <div className="flex flex-col items-center justify-center xl:max-w-[1120px]">
@@ -67,37 +72,43 @@ function Footer() {
             </div>
             <div className="w-full columns-2">
               <ul className="leading-7">
-                {categories.map((item, index) => (
-                  <li key={index}>
-                    <a href={item.url}>{item.title}</a>
-                  </li>
-                ))}
+                {areGamesLoading && <BeatLoader color="#fff" />}
+                {!areGamesLoading &&
+                  games &&
+                  games.map((item, index) => (
+                    <li key={index}>
+                      <Link to={`products/${item.url}`}>{item.title}</Link>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
         </div>
         <div className="mb-8 text-center">
           <span>
-            Dawndelvers is not endorsed by, directly affiliated with,
+            BoostingService is not endorsed by, directly affiliated with,
             maintained, or sponsored by Blizzard Entertainment, Bungie,
             Electronic Arts, Grinding Gear Games, Activision Publishing, Square
             Enix Co., Valve, Battlestate Games, Wargaming.net Limited, Amazon
             Technologies, Jagex Limited, Riot Games, Smilegate RPG, Digital
-            Extremes. The views and opinions expressed by Dawndelvers do not
-            reflect those of anyone officially associated with producing or
-            managing their game franchises. Copyrighted art submitted to or
-            through Dawndelvers remains the intellectual property of the
-            respective copyright holder. Dawndelvers does not engage in the sale
-            of in-game items. Instead, our service focuses on enhancing players'
-            in-game skills.
+            Extremes. This is only a portfolio project created by{" "}
+            <Link
+              to={"https://miroslavmihok.com/"}
+              className="font-semibold underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Miroslav Mihok
+            </Link>
+            .
           </span>
         </div>
         <div className="mb-8">
-          <span>&copy; Dawndelvers 2024. All Rights Reserved.</span>
+          <span>&copy; BoostingService 2024. All Rights Reserved.</span>
         </div>
       </div>
     </div>
   );
 }
 
-export default memo(Footer);
+export default Footer;

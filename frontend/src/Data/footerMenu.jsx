@@ -1,6 +1,6 @@
 export const footerMenu = [
   {
-    heading: "Dawndelvers",
+    heading: "BoostingService",
     links: [
       {
         title: "Home",
