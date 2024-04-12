@@ -36,13 +36,13 @@ function ProductItem({
             <h4
               className={`font-bold ${price < priceBeforeDiscount ? "text-lemonGreen" : "text-white"}`}
             >
-              {formatter(price, currency.curSymbol)}
+              {formatter(price, currency.cur)}
             </h4>
             {price < priceBeforeDiscount && (
               <h4
                 className={`font-semibold ${price < priceBeforeDiscount ? "text-sepiaGray line-through" : ""}`}
               >
-                {formatter(priceBeforeDiscount, currency.curSymbol)}
+                {formatter(priceBeforeDiscount, currency.cur)}
               </h4>
             )}
           </div>

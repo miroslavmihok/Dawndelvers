@@ -56,7 +56,7 @@ function ChosenPaymentMethod({ item, setCurrentPayment, setIsReviewed }) {
           <div className="flex items-center justify-end gap-3 text-fontLightGray">
             <span className="flex gap-1">
               {`+`}
-              {formatter(item.fixFee, currency.curSymbol)}
+              {formatter(item.fixFee, currency.cur)}
               {`service fee`}
             </span>
           </div>

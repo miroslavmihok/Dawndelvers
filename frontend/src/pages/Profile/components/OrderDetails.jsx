@@ -130,7 +130,7 @@ const OrderDetails = () => {
                     )}
                   </ul>
                   <span className="px-3 py-2 text-right">
-                    {formatter(p.price, currency.curSymbol)}
+                    {formatter(p.price, currency.cur)}
                   </span>
                 </div>
               ))}
@@ -142,35 +142,35 @@ const OrderDetails = () => {
               items-center justify-between sm:max-w-[260px]"
             >
               <span className="font-semibold">Items: </span>
-              <span>{formatter(order.itemsPrice, currency.curSymbol)}</span>
+              <span>{formatter(order.itemsPrice, currency.cur)}</span>
             </div>
             <div
               className="flex w-full
               items-center justify-between sm:max-w-[260px]"
             >
               <span className="font-semibold">20% Tax: </span>
-              <span>{formatter(order.taxPrice, currency.curSymbol)}</span>
+              <span>{formatter(order.taxPrice, currency.cur)}</span>
             </div>
             <div
               className="flex w-full
               items-center justify-between sm:max-w-[260px]"
             >
               <span className="font-semibold">Subtotal: </span>
-              <span>{formatter(order.subtotalPrice, currency.curSymbol)}</span>
+              <span>{formatter(order.subtotalPrice, currency.cur)}</span>
             </div>
             <div
               className="flex w-full
               items-center justify-between sm:max-w-[260px]"
             >
               <span className="font-semibold">Payment fee: </span>
-              <span>{formatter(order.paymentFee, currency.curSymbol)}</span>
+              <span>{formatter(order.paymentFee, currency.cur)}</span>
             </div>
             <div
               className="flex w-full
               items-center justify-between sm:max-w-[260px]"
             >
               <span className="font-semibold">Total with fee: </span>
-              <span>{formatter(order.totalPrice, currency.curSymbol)}</span>
+              <span>{formatter(order.totalPrice, currency.cur)}</span>
             </div>
             {order.discount > 0 && (
               <did>
@@ -179,16 +179,14 @@ const OrderDetails = () => {
                 items-center justify-between sm:max-w-[260px]"
                 >
                   <span className="font-semibold">Discount: </span>
-                  <span>{formatter(order.discount, currency.curSymbol)}</span>
+                  <span>{formatter(order.discount, currency.cur)}</span>
                 </div>
                 <div
                   className="flex w-full
                 items-center justify-between sm:max-w-[260px]"
                 >
                   <span className="font-semibold">Amount to pay: </span>
-                  <span>
-                    {formatter(order.totalAmount, currency.curSymbol)}
-                  </span>
+                  <span>{formatter(order.totalAmount, currency.cur)}</span>
                 </div>
               </did>
             )}

@@ -12,7 +12,16 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-export default function Email() {
+export default function WelcomeEmail({
+  name,
+  jobType,
+  age,
+  game,
+  discord,
+  email,
+  country,
+  about,
+}) {
   return (
     <Html>
       <Head />
@@ -30,7 +39,7 @@ export default function Email() {
                     textAlign: "center",
                   }}
                 >
-                  Dear USER_NAME,
+                  {`Dear ${name},`}
                 </Heading>
                 <Heading
                   as="h4"
@@ -40,8 +49,8 @@ export default function Email() {
                     textAlign: "center",
                   }}
                 >
-                  Thank you for your interest in joining BoostingService as a
-                  BOOSETER_COACH. We are excited to have you on board!
+                  {`Thank you for your interest in joining BoostingService as a
+                  ${jobType}. We are excited to have you on board!`}
                 </Heading>
 
                 <Text style={paragraph}>
@@ -49,31 +58,31 @@ export default function Email() {
                 </Text>
                 <Text style={paragraph}>
                   <b>Name: </b>
-                  USER_NAME
+                  {name}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Age: </b>
-                  USER_AGE
+                  {age}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Game: </b>
-                  USER_GAME
+                  {game}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Discord: </b>
-                  USER_DISCORD
+                  {discord}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Email: </b>
-                  USER_EMAIL
+                  {email}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Country: </b>
-                  USER_COUNTRY
+                  {country}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>About: </b>
-                  USER_ABOUT
+                  {about}
                 </Text>
                 <Text style={paragraph}>
                   If you need to change any of the data please contact us @

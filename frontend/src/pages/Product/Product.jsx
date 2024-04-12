@@ -222,7 +222,7 @@ function Product() {
                           <Filter
                             {...filter}
                             basePrice={basePrice}
-                            currencySymbol={currency.curSymbol}
+                            currencySymbol={currency.cur}
                           />
                           <hr />
                         </div>
@@ -233,7 +233,7 @@ function Product() {
                         <h4>Total Price:</h4>
                       </div>
                       <div className="text-3xl font-bold">
-                        <span>{formatter(price, currency.curSymbol)}</span>
+                        <span>{formatter(price, currency.cur)}</span>
                       </div>
                     </div>
                   </div>

@@ -1,18 +1,10 @@
-import React from "react";
-import CurrencyFormat from "react-currency-format";
-
-const formatter = (number, prefix) => {
-  return (
-    <CurrencyFormat
-      value={number}
-      displayType={"text"}
-      thousandSeparator={true}
-      prefix={prefix}
-      decimalScale={2}
-      fixedDecimalScale={true}
-      renderText={(value) => <div>{value}</div>}
-    />
-  );
+const formatter = (value, currencySymbol) => {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: currencySymbol,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
 };
 
 export default formatter;

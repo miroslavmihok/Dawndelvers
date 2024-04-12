@@ -61,16 +61,16 @@ function Cart({ displayAuthModalHandler }) {
                     <h4>Subtotal:</h4>
                     <h4>
                       {state.cartItems.length > 0
-                        ? formatter(state.priceExclTax, currency.curSymbol)
-                        : formatter(0, currency.curSymbol)}
+                        ? formatter(state.priceExclTax, currency.cur)
+                        : formatter(0, currency.cur)}
                     </h4>
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <h4>+20% Tax:</h4>
                     <h4>
                       {state.cartItems.length > 0
-                        ? formatter(state.taxPrice, currency.curSymbol)
-                        : formatter(0, currency.curSymbol)}
+                        ? formatter(state.taxPrice, currency.cur)
+                        : formatter(0, currency.cur)}
                     </h4>
                   </div>
                   <hr className="h-[1px] w-full" />
@@ -78,8 +78,8 @@ function Cart({ displayAuthModalHandler }) {
                     <h4>Total:</h4>
                     <h4>
                       {state.cartItems.length > 0
-                        ? formatter(state.totalPrice, currency.curSymbol)
-                        : formatter(0, currency.curSymbol)}
+                        ? formatter(state.totalPrice, currency.cur)
+                        : formatter(0, currency.cur)}
                     </h4>
                   </div>
                   <Link

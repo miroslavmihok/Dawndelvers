@@ -61,7 +61,7 @@ function CartItem({
         </div>
       </div>
       <div className="flex flex-row-reverse items-center justify-between md:w-[30%] md:flex-col md:items-end lg:w-[25%]">
-        <h4>{formatter(price, currency.curSymbol)}</h4>
+        <h4>{formatter(price, currency.cur)}</h4>
         {!currentPayment && (
           <button
             onClick={() => removeProductHandler(id)}

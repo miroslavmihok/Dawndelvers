@@ -81,13 +81,9 @@ const OrderList = () => {
                 </td>
                 <td>
                   {order.totalAmount > 0 ? (
-                    <span>
-                      {formatter(order.totalAmount, currency.curSymbol)}
-                    </span>
+                    <span>{formatter(order.totalAmount, currency.cur)}</span>
                   ) : (
-                    <span>
-                      {formatter(order.totalPrice, currency.curSymbol)}
-                    </span>
+                    <span>{formatter(order.totalPrice, currency.cur)}</span>
                   )}
                 </td>
                 <td>

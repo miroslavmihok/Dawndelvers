@@ -86,10 +86,8 @@ const ProductList = () => {
                 <td className="hidden md:table-cell">
                   {formatDate(product.createdAt)}
                 </td>
-                <td>{formatter(product.price, currency.curSymbol)}</td>
-                <td>
-                  {formatter(product.priceBeforeDiscount, currency.curSymbol)}
-                </td>
+                <td>{formatter(product.price, currency.cur)}</td>
+                <td>{formatter(product.priceBeforeDiscount, currency.cur)}</td>
                 <td className="hidden xs:table-cell">
                   <div className="flex w-full items-center justify-center text-xl text-darkGreen">
                     {product.deal ? <FaCheck /> : null}

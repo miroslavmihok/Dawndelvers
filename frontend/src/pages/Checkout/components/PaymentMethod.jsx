@@ -49,7 +49,7 @@ function PaymentMethod({ setCurrentPayment }) {
               <div className="flex items-center justify-end gap-3">
                 <span className="flex w-[69px] flex-wrap items-center justify-end gap-1 text-end text-fontLightGray xs:w-full">
                   {`+`}
-                  {formatter(item.fixFee, currency.curSymbol)}
+                  {formatter(item.fixFee, currency.cur)}
                   {`service fee`}
                 </span>
                 <input

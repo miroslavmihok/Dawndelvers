@@ -224,8 +224,8 @@ function CheckoutSummary({
           <h4 className="text-fontLightGray">Total:</h4>
           <h4>
             {state.cartItems.length > 0
-              ? formatter(finalAmount, currency.curSymbol)
-              : formatter(0, currency.curSymbol)}
+              ? formatter(finalAmount, currency.cur)
+              : formatter(0, currency.cur)}
           </h4>
         </div>
         {!isReviewed && (
@@ -285,16 +285,16 @@ function CheckoutSummary({
               <h4 className="text-fontLightGray">Item(s):</h4>
               <h4>
                 {state.cartItems.length > 0
-                  ? formatter(summary.priceExclTax, currency.curSymbol)
-                  : formatter(0, currency.curSymbol)}
+                  ? formatter(summary.priceExclTax, currency.cur)
+                  : formatter(0, currency.cur)}
               </h4>
             </div>
             <div className="flex w-full items-center justify-between">
               <h4 className="text-fontLightGray">+20% Tax:</h4>
               <h4>
                 {state.cartItems.length > 0
-                  ? formatter(summary.taxPrice, currency.curSymbol)
-                  : formatter(0, currency.curSymbol)}
+                  ? formatter(summary.taxPrice, currency.cur)
+                  : formatter(0, currency.cur)}
               </h4>
             </div>
             {!currentPayment && (
@@ -304,8 +304,8 @@ function CheckoutSummary({
                   <h4 className="text-fontLightGray">Total:</h4>
                   <h4>
                     {state.cartItems.length > 0
-                      ? formatter(summary.subtotal, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.subtotal, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
               </>
@@ -317,8 +317,8 @@ function CheckoutSummary({
                   <h4 className="text-fontLightGray">Subtotal:</h4>
                   <h4>
                     {state.cartItems.length > 0
-                      ? formatter(summary.subtotal, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.subtotal, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
                 <div className="flex w-full items-center justify-between">
@@ -326,8 +326,8 @@ function CheckoutSummary({
                   <h4 className="flex gap-1">
                     {"+"}
                     {state.cartItems.length > 0
-                      ? formatter(summary.paymentFee, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.paymentFee, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
                 <hr className="h-[1px] w-full" />
@@ -337,8 +337,8 @@ function CheckoutSummary({
                   </h4>
                   <h4>
                     {state.cartItems.length > 0
-                      ? formatter(summary.totalPrice, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.totalPrice, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
               </>
@@ -350,8 +350,8 @@ function CheckoutSummary({
                   <h4 className="flex gap-1">
                     {"-"}
                     {state.cartItems.length > 0
-                      ? formatter(summary.discount, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.discount, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
                 <hr className="h-[1px] w-full" />
@@ -359,8 +359,8 @@ function CheckoutSummary({
                   <h4 className="text-fontLightGray">Amount to pay:</h4>
                   <h4>
                     {state.cartItems.length > 0
-                      ? formatter(summary.totalWithDiscount, currency.curSymbol)
-                      : formatter(0, currency.curSymbol)}
+                      ? formatter(summary.totalWithDiscount, currency.cur)
+                      : formatter(0, currency.cur)}
                   </h4>
                 </div>
               </>
