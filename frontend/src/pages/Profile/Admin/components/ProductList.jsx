@@ -6,7 +6,6 @@ import { useRemoveProduct } from "../../../../hooks/admin/useRemoveProduct";
 import ErrorMessage from "../../../../components/UI/ErrorMessage";
 import { BeatLoader } from "react-spinners";
 import { formatDate } from "../../../../utils/formatDate";
-import formatter from "../../../../utils/formatter";
 import {
   FaPlus,
   FaRegTrashCan,
@@ -21,7 +20,7 @@ const ProductList = () => {
 
   const { removeProduct, isProductRemoveLoading } = useRemoveProduct();
 
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   const deleteHandler = async (id) => {
     try {

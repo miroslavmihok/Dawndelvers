@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHeaderData } from "../../../../context/headerCtx";
 import useGetAllOrders from "../../../../hooks/admin/useGetAllOrders";
-import formatter from "../../../../utils/formatter";
 import { formatDate } from "../../../../utils/formatDate";
 import { BeatLoader } from "react-spinners";
 import ErrorMessage from "../../../../components/UI/ErrorMessage";
@@ -10,7 +9,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 
 const OrderList = () => {
   const { areOrdersLoading, ordersError, orders } = useGetAllOrders();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   console.log(orders);
 

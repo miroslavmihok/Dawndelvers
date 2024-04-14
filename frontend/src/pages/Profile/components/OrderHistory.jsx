@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useMyOrdersFetch from "../../../hooks/useMyOrdersFetch";
-import formatter from "../../../utils/formatter";
 import { useHeaderData } from "../../../context/headerCtx";
 import { formatDate } from "../../../utils/formatDate";
 import { BeatLoader } from "react-spinners";
@@ -9,7 +8,7 @@ import ErrorMessage from "../../../components/UI/ErrorMessage";
 
 const OrderHistory = () => {
   const { areOrdersLoading, ordersError, orders } = useMyOrdersFetch();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   console.log(orders);
 

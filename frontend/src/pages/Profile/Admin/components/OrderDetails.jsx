@@ -4,7 +4,6 @@ import { useHeaderData } from "../../../../context/headerCtx";
 import useOrderFetch from "../../../../hooks/useOrderFetch";
 import { useUpdateOrder } from "../../../../hooks/admin/useUpdateOrder";
 import ErrorMessage from "../../../../components/UI/ErrorMessage";
-import formatter from "../../../../utils/formatter";
 import { formatDate } from "../../../../utils/formatDate";
 import { toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
@@ -12,7 +11,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 
 const OrderDetails = () => {
   const { url: id } = useParams();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
   const { refetchOrder, isOrderLoading, orderError, order } = useOrderFetch(id);
   const { updateOrder } = useUpdateOrder();
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { useHeaderData } from "../../../context/headerCtx";
-import formatter from "../../../utils/formatter";
 import { FaTrashCan } from "react-icons/fa6";
 
 function CartItem({
@@ -14,7 +13,7 @@ function CartItem({
   dispatch,
   currentPayment,
 }) {
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   const removeProductHandler = (id) => {
     const filteredProduct = cartProducts.find((p) => p.id === id);

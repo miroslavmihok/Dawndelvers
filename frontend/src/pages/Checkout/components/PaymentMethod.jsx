@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import formatter from "../../../utils/formatter";
 import { cartPaymentOptions } from "../../../data/paymentOptions";
 import { useHeaderData } from "../../../context/headerCtx";
 
 function PaymentMethod({ setCurrentPayment }) {
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   useEffect(() => {});
 

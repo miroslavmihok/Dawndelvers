@@ -2,12 +2,13 @@ const products = [
   {
     title: "WoW Gold",
     url: "wowgold",
-    imgSrc: "/assets/products/wow.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712919422/BoostingService/products/wowgold_iurisp.webp",
     game: "World of Warcraft",
     gameUrl: "worldofwarcraft",
     category: "WoW Gold",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "In the world of Warcraft, gold serves as the primary currency, allowing players to purchase items, gear, and services to enhance their characters' abilities and progress. Acquiring gold through quests, looting enemies, or trading with other players is essential for thriving in the game's expansive virtual economy.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,
@@ -59,12 +60,13 @@ const products = [
   {
     title: "Fyrakk Heroic Slain",
     url: "fyrakk-heroic",
-    imgSrc: "/assets/products/wow.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712919798/BoostingService/products/fyrakk_by1ck2.webp",
     game: "World of Warcraft",
     gameUrl: "worldofwarcraft",
     category: "Raids",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "The Fyrakk Raid in World of Warcraft is a formidable challenge where players must band together to defeat powerful foes and overcome treacherous obstacles. As adventurers delve into the depths of Fyrakk's lair, they uncover ancient secrets and vie for valuable treasures hidden within its perilous chambers.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,
@@ -116,12 +118,13 @@ const products = [
   {
     title: "Gold",
     url: "gold",
-    imgSrc: "/assets/products/diablo4.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712919946/BoostingService/products/diablogold_zwq7s1.webp",
     game: "Diablo 4",
     gameUrl: "diablo4",
     category: "Currency",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "In Diablo 4, gold serves as the universal currency that players use to purchase items, upgrade gear, and trade with other players. As adventurers traverse the dark and dangerous world of Sanctuary, amassing gold becomes crucial for surviving the ever-present threats lurking around every corner.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,
@@ -173,12 +176,13 @@ const products = [
   {
     title: "Pickaxe Unlock",
     url: "pickaxe-unlock",
-    imgSrc: "/assets/products/cod.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712920079/BoostingService/products/codpickaxe_wzo42p.webp",
     game: "Call of Duty",
     gameUrl: "callofduty",
     category: "Modern Warfare 2",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "In Call of Duty, the pickaxe is a versatile melee weapon that players can wield with deadly precision in close-quarters combat. With its swift strikes and devastating power, the pickaxe proves to be a formidable tool for dispatching enemies and securing victory on the battlefield.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,
@@ -230,12 +234,13 @@ const products = [
   {
     title: "Ranked Boost",
     url: "ranked-boost",
-    imgSrc: "/assets/products/lol.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712920241/BoostingService/products/lolranked_rtz9dy.webp",
     game: "League of Legends",
     gameUrl: "lol",
     category: "Rank Boost",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "In League of Legends, ranked mode offers players a competitive arena where they can test their skills against opponents of similar proficiency. Climbing the ranked ladder through victories earns players higher ranks and prestigious rewards, while defeat can result in demotion, adding a thrilling dynamic to each match.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,
@@ -287,12 +292,13 @@ const products = [
   {
     title: "Rank Boost",
     url: "rank-boost",
-    imgSrc: "/assets/products/apex.webp",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712920662/BoostingService/products/apexranked_tdiaws.webp",
     game: "Apex Legends",
     gameUrl: "apex",
     category: "Rank Boost",
     description:
-      "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+      "In Apex Legends, ranked mode provides players with a competitive environment where they can showcase their abilities and strive for higher ranks. Climbing the ranks requires teamwork, strategic thinking, and skillful gameplay, offering both challenges and rewards to those who dare to compete.",
     rating: 4.5,
     numReviews: 12,
     priceBeforeDiscount: 5,

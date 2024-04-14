@@ -1,56 +1,68 @@
 export const paymentOptions = [
   {
     title: "Paypal",
-    imgSrc: "/assets/payment/paypal.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917838/BoostingService/payment/paypal_iegpqb.png",
   },
   {
     title: "Stripe",
-    imgSrc: "/assets/payment/stripe.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917841/BoostingService/payment/stripe_ngkdsu.png",
   },
   {
     title: "Apple Pay",
-    imgSrc: "/assets/payment/applepay.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917842/BoostingService/payment/applepay_pxcbfr.png",
   },
   {
     title: "Google Pay",
-    imgSrc: "/assets/payment/googlepay.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917836/BoostingService/payment/googlepay_pk0o9k.png",
   },
   {
     title: "VISA",
-    imgSrc: "/assets/payment/visa.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917834/BoostingService/payment/visa_uwowvr.png",
   },
   {
     title: "Mastercard",
-    imgSrc: "/assets/payment/mastercard.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917835/BoostingService/payment/mastercard_cf9dfx.png",
   },
 ];
 export const cartPaymentOptions = [
   {
     title: "Stripe",
-    imgSrc: "/assets/payment/stripe.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917841/BoostingService/payment/stripe_ngkdsu.png",
     fixFee: 0.56,
     paymentList: [
       {
         title: "Apple Pay",
-        imgSrc: "/assets/payment/applepay.png",
+        imgSrc:
+          "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917842/BoostingService/payment/applepay_pxcbfr.png",
       },
       {
         title: "Google Pay",
-        imgSrc: "/assets/payment/googlepay.png",
+        imgSrc:
+          "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917836/BoostingService/payment/googlepay_pk0o9k.png",
       },
       {
         title: "VISA",
-        imgSrc: "/assets/payment/visa.png",
+        imgSrc:
+          "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917834/BoostingService/payment/visa_uwowvr.png",
       },
       {
         title: "Mastercard",
-        imgSrc: "/assets/payment/mastercard.png",
+        imgSrc:
+          "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917835/BoostingService/payment/mastercard_cf9dfx.png",
       },
     ],
   },
   {
     title: "Paypal",
-    imgSrc: "/assets/payment/paypal.png",
+    imgSrc:
+      "https://res.cloudinary.com/dcuebj65r/image/upload/v1712917838/BoostingService/payment/paypal_iegpqb.png",
     fixFee: 1,
   },
 ];

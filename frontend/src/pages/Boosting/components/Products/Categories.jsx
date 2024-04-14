@@ -35,9 +35,9 @@ function Categories({ currentGameTitle, products }) {
         <button
           className="inline-flex items-center whitespace-nowrap rounded-md border border-transparent bg-sepiaPurple px-3 py-2 font-medium text-fontCoolGray 
         outline-0 transition-all duration-300 ease-in-out hover:bg-lightSepiaPurple hover:text-fontLightGray focus:border-lightPurple focus:bg-darkPurple focus:text-white focus:outline-0 focus:outline-transparent focus:hover:bg-lightPurple"
-          onClick={() => setCurrentCategory("Limited Deal")}
+          onClick={() => setCurrentCategory("Limited Deals")}
         >
-          Limited Deal
+          Limited Deals
         </button>
       )}
       {!isLoading &&

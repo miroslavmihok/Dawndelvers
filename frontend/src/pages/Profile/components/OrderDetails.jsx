@@ -6,14 +6,13 @@ import useOrderFetch from "../../../hooks/useOrderFetch";
 import usePaypalClientId from "../../../hooks/usePaypalClientId";
 import { usePayOrder } from "../../../hooks/usePayOrder";
 import { formatDate } from "../../../utils/formatDate";
-import formatter from "../../../utils/formatter";
 import ErrorMessage from "../../../components/UI/ErrorMessage";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
 const OrderDetails = () => {
   const { id } = useParams();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
   const { refetchOrder, isOrderFetchLoading, orderFetchError, order } =
     useOrderFetch(id);
   const { payOrder, isPaymentLoading, paymentError } = usePayOrder();

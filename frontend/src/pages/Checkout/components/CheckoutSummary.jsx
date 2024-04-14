@@ -5,7 +5,6 @@ import { useCartData } from "../../../context/cartCtx";
 import { useOrder } from "../../../hooks/useOrder";
 import { usePayOrder } from "../../../hooks/usePayOrder";
 import usePaypalClientId from "../../../hooks/usePaypalClientId";
-import formatter from "../../../utils/formatter";
 import { FaChevronDown } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
@@ -21,7 +20,7 @@ function CheckoutSummary({
   setCompletedOrder,
 }) {
   const { state, dispatch } = useCartData();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   const { createOrderInDb, isOrderLoading, orderError, createdOrder } =
     useOrder();

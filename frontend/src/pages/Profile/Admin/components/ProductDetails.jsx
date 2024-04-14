@@ -18,7 +18,7 @@ const schema = z.object({
   url: z
     .string()
     .min(3, { message: "Path name must have at least 3 characters" }),
-  imgSrc: z.string(), //URL
+  imgSrc: z.string().url(),
   category: z
     .string()
     .min(3, { message: "Category must have at least 3 characters" }),

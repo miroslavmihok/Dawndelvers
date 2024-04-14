@@ -5,7 +5,6 @@ import { useCartData } from "../../context/cartCtx";
 import useGameFetch from "../../hooks/useGameFetch";
 import useProductFetch from "../../hooks/useProductFetch";
 import { Filter } from "../../models/Filter";
-import formatter from "../../utils/formatter";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { FaCartShopping, FaCheck } from "react-icons/fa6";
 import { BeatLoader } from "react-spinners";
@@ -14,7 +13,7 @@ import ErrorMessage from "../../components/UI/ErrorMessage";
 function Product() {
   // CONTEXT
   const { gameUrl, productUrl } = useParams();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
   const { dispatch } = useCartData();
 
   // HOOKS
@@ -171,10 +170,8 @@ function Product() {
                     }}
                   >
                     <p>
-                      <b>Note:</b> Lorem, ipsum dolor sit amet consectetur
-                      adipisicing elit. Totam nemo temporibus excepturi est quod
-                      saepe a reprehenderit quisquam necessitatibus
-                      exercitationem?
+                      <b>Note:</b> Delivery time can take up to 15 minutes, but
+                      it depends on the server.
                     </p>
                   </div>
                   <p
@@ -187,29 +184,38 @@ function Product() {
                     Our boosters never ask you for your items back, DO NOT give
                     your items to anyone.
                   </p>
-                  <h3>Some other content</h3>
+                  <h3>Read before you buy:</h3>
                   <ul className="mb-8 ml-6 list-disc">
-                    <li>Bullet point</li>
-                    <li>Bullet point</li>
-                    <li>Bullet point</li>
-                    <li>Bullet point</li>
-                    <li>Bullet point</li>
+                    <li>
+                      We take every precaution to make your account safe -
+                      that's our number one priority!
+                    </li>
+                    <li>
+                      We strongly recommend choosing our selfplay services.
+                    </li>
+                    <li>
+                      Do not discuss the Boosting process in the in-game chat.
+                    </li>
                   </ul>
-                  <h3>Some other information</h3>
+                  <h3>Expertise and Experience</h3>
                   <p className="mb-8">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-                    veritatis maiores non, voluptate veniam vel eos, omnis
-                    minima temporibus cupiditate velit? Vitae possimus modi ab,
-                    quidem dolorem illo tempore dolor quis est nemo cum numquam
-                    temporibus eum voluptatum. At in optio quia, corporis illum
-                    quasi adipisci quidem? Quo minima amet repellat id, sapiente
-                    nesciunt dolore, mollitia officiis neque delectus maxime!
-                    Itaque assumenda nihil velit magni culpa sapiente sit. Eos,
-                    laboriosam assumenda incidunt architecto exercitationem at
-                    laudantium dolorum quisquam, nisi accusantium earum atque
-                    necessitatibus molestias aliquam! Debitis consequatur
-                    quisquam quis sequi, doloribus ducimus ex rerum veritatis,
-                    nemo maxime iste, asperiores id.
+                    Our boosters and coaches are seasoned veterans with
+                    extensive experience in the game, ensuring top-tier guidance
+                    and support for all players seeking to enhance their skills.
+                  </p>
+                  <h3>Customization Options</h3>
+                  <p className="mb-8">
+                    Tailor your boosting or coaching experience to your
+                    preferences, whether it's focusing on specific in-game
+                    objectives, choosing preferred playstyles, or scheduling
+                    sessions at your convenience.
+                  </p>
+                  <h3>Customer support</h3>
+                  <p className="mb-8">
+                    For any inquiries or assistance, feel free to reach out to
+                    our dedicated customer support team at
+                    support@boostingservice.com. We're here to help address any
+                    questions or concerns you may have regarding our services.
                   </p>
                 </div>
                 <section className="border-md min-w-[250px] overflow-hidden rounded-md border-8 border-lightPurple/50 xs:min-w-[400px]">

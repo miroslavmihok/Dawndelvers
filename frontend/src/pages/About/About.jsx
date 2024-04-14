@@ -14,18 +14,16 @@ function About() {
       <h2 className="mb-14">About us</h2>
       <div className="max-w-[800px] text-center">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dolor ea
-          assumenda debitis aperiam, praesentium reprehenderit libero? Quae
-          provident libero, quas aperiam a praesentium asperiores eum repellat
-          corrupti saepe expedita obcaecati culpa. Incidunt perspiciatis porro
-          tempore accusamus et fuga aut libero. Facilis, aliquam. Quis,
-          deserunt. Sit nihil excepturi enim fugit ad nemo temporibus harum
-          inventore nam a facilis ut aspernatur qui laboriosam, expedita id
-          quisquam, error placeat? Consequuntur sequi voluptate mollitia
-          distinctio consequatur eius eveniet, aut quisquam omnis nesciunt sint
-          illum vero fugiat magnam, aperiam earum sunt praesentium minima?
-          Quaerat blanditiis aspernatur ex et iste beatae adipisci iure
-          voluptates ipsa?
+          Located in the beautiful region of Burgenland, Austria, Boosting
+          Service is a premier gaming services provider founded by Miroslav
+          Mihok. At Boosting Service, we specialize in offering top-notch
+          services for boosting and coaching in various popular games. Our
+          expert team is dedicated to helping gamers achieve their goals,
+          whether it's acquiring in-game currency, conquering challenging raids
+          and dungeons, defeating formidable bosses, or obtaining specific
+          in-game items. With our reliable and professional assistance, players
+          can level up their gaming experience and reach new heights of success
+          in their favorite virtual worlds.
         </p>
       </div>
     </div>

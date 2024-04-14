@@ -23,7 +23,7 @@ function FAQ() {
       }}
     >
       <Breadcrumbs />
-      <h2 className="mb-14">FAQ</h2>
+      <h2 className="mb-14">Frequently Asked Questions</h2>
       <div className="flex flex-col items-center justify-center gap-4 pb-8 pt-8 text-black sm:pb-10 md:pb-12 xl:pb-14">
         {questions.map((question, index) => (
           <button
@@ -32,11 +32,11 @@ function FAQ() {
             onClick={() => clickHandler(index)}
           >
             <div className="flex items-center justify-between">
-              <span className="">{question.title}</span>
+              <span className="font-semibold">{question.title}</span>
               <FaAngleDown size={"24px"} />
             </div>
             <div
-              className={`transition-maxHeight duration-300 ease-in-out ${index === currentIndex ? "max-h-[100px]" : "max-h-0 overflow-hidden"}`}
+              className={`transition-maxHeight font-normal duration-300 ease-in-out ${index === currentIndex ? "max-h-[100px]" : "max-h-0 overflow-hidden"}`}
             >
               {question.answer}
             </div>

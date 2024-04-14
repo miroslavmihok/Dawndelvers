@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useCartData } from "../../context/cartCtx";
 import { useHeaderData } from "../../context/headerCtx";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import formatter from "../../utils/formatter";
 import CartItem from "./components/CartItem";
 
 import bg from "../../assets/backgrounds/main-home-rev-2.png";
@@ -12,7 +11,7 @@ import { useAuthData } from "../../context/authCtx";
 function Cart({ displayAuthModalHandler }) {
   const { state, dispatch } = useCartData();
   const { userItem } = useAuthData();
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   return (
     <div

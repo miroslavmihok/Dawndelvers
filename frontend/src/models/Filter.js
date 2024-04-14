@@ -1,7 +1,9 @@
 import React from "react";
-import formatter from "../utils/formatter";
+import { HeaderContext } from "../context/headerCtx";
 
 class Filter extends React.Component {
+  static contextType = HeaderContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -52,6 +54,7 @@ class Filter extends React.Component {
     const { selectedValue } = this.state;
     const { basePrice } = this.props;
     const { currencySymbol } = this.props;
+    const { formatter } = this.context;
 
     return (
       <div className="mb-4 flex flex-col gap-3">
@@ -94,6 +97,7 @@ class Filter extends React.Component {
     const { selectedValues } = this.state;
     const { basePrice } = this.props;
     const { currencySymbol } = this.props;
+    const { formatter } = this.context;
 
     return (
       <div className="mb-4 flex flex-col gap-3">

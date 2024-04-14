@@ -1,10 +1,9 @@
 import React from "react";
-import formatter from "../../../utils/formatter";
 import { useHeaderData } from "../../../context/headerCtx";
 import { FaCheck } from "react-icons/fa6";
 
 function ChosenPaymentMethod({ item, setCurrentPayment, setIsReviewed }) {
-  const { currency } = useHeaderData();
+  const { currency, formatter } = useHeaderData();
 
   const resetHandler = () => {
     setCurrentPayment(null);

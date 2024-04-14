@@ -1,27 +1,28 @@
 export const questions = [
   {
-    title: "Question 1",
+    title: "What payment methods do you accept?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+      "We accept PayPal and Stripe for convenient and secure transactions.",
   },
   {
-    title: "Question 2",
+    title: "How long does it take to complete a boosting or coaching service?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+      "We strive to contact customers within 15 minutes of purchase, though completion time can vary up to 30 minutes depending on server availability and the responsiveness of our boosters and coaches.",
   },
   {
-    title: "Question 3",
+    title: "Is my account safe when using your services?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+      "Yes, we prioritize account safety. While we recommend using our self-play service, if a booster is required to take over, we advise changing your password after the service is completed for added security.",
   },
   {
-    title: "Question 4",
+    title: "Do you offer refunds if I am not satisfied with the service?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+      "For refund inquiries, please contact our customer support team at support@boostingservice.com. We'll work with you to review the specific case and address any concerns you may have.",
   },
   {
-    title: "Question 5",
+    title:
+      "Can I customize my boosting or coaching experience to suit my specific needs?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, illo.",
+      "Absolutely! Each product comes with its own set of filters, allowing you to tailor your experience to fit your individual requirements and preferences.",
   },
 ];
