@@ -81,19 +81,6 @@ const Header = ({ displayAuthModalHandler }) => {
                   userItem={userItem}
                 />
               )}
-              <form name="searchForm" className="hidden w-full px-4 xl:block">
-                <div className="relative flex w-full items-center justify-between text-sepiaGray">
-                  <input
-                    type="search"
-                    name="searchBar"
-                    placeholder="Search"
-                    className="h-[42px] w-full rounded-md border border-[rgba(0,0,0,0)] bg-sepiaPurple py-[12px] pl-[12px] pr-[44px] font-medium outline-0  focus:border-lightPurple"
-                  />
-                  <button className="absolute right-[12px]" type="submit">
-                    <FaMagnifyingGlass size="21px" />
-                  </button>
-                </div>
-              </form>
             </div>
           </div>
           <div className="hidden w-full items-center justify-center xl:flex xl:h-[50%]">
@@ -158,9 +145,6 @@ const Header = ({ displayAuthModalHandler }) => {
           {/* HEADER RIGHT*/}
           {/* three icons < 1280px , two icons > 1280px */}
           <div className="flex w-[50%] items-center justify-end gap-2 sm:w-[30%] xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
-            <button className="block xl:hidden">
-              <FaMagnifyingGlass size="26px" />
-            </button>
             {/* currency and currency dropdown on > 1280px */}
             <div className="relative hidden xl:flex xl:w-full xl:items-center xl:justify-center">
               <button

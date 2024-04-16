@@ -28,10 +28,12 @@ function FAQ() {
           >
             <div className="flex items-center justify-between">
               <span className="">{question.title}</span>
-              <FaAngleDown size={"24px"} />
+              <span className="min-w-[24px]">
+                <FaAngleDown size={24} />
+              </span>
             </div>
             <div
-              className={`transition-maxHeight font-normal duration-300 ease-in-out ${index === currentIndex ? "max-h-[100px]" : "max-h-0 overflow-hidden"}`}
+              className={`transition-maxHeight font-normal duration-300 ease-in-out ${index === currentIndex ? "max-h-[300px]" : "max-h-0 overflow-hidden"}`}
             >
               {question.answer}
             </div>

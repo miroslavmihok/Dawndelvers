@@ -201,7 +201,7 @@ const WorkWithUsComponent = () => {
             <button
               type="submit"
               disabled={isLoading || isSubmitting}
-              className="col-span-1 rounded-md border border-lightPurple bg-transparent px-5 py-3 text-white outline-0 hover:bg-lightPurple focus:border-lightPurple"
+              className="col-span-2 rounded-md border border-lightPurple bg-transparent px-5 py-3 text-white outline-0 hover:bg-lightPurple focus:border-lightPurple sm:col-span-1"
             >
               <span>{isLoading || isSubmitting ? "Sending..." : "Send"}</span>
             </button>

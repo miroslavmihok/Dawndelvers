@@ -10,7 +10,7 @@ function Services() {
         <div
           className="h-full max-w-[500px] rounded-3xl p-6"
           style={{
-            background: `radial-gradient(circle, rgba(7,2,12,0.5) 0%, rgba(7,2,12,1) 100%)`,
+            background: `radial-gradient(rgba(7,2,12,0.65) 0%, rgba(7,2,12,0.75) 100%)`,
           }}
         >
           <div className="flex h-full flex-col items-start justify-between">
@@ -48,7 +48,7 @@ function Services() {
         <div
           className="h-full max-w-[500px] rounded-3xl p-6"
           style={{
-            background: `radial-gradient(circle, rgba(7,2,12,0.5) 0%, rgba(7,2,12,1) 100%)`,
+            background: `radial-gradient(rgba(7,2,12,0.65) 0%, rgba(7,2,12,0.75) 100%)`,
           }}
         >
           <div>
