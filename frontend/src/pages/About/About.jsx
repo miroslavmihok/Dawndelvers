@@ -12,7 +12,7 @@ function About() {
     >
       <Breadcrumbs />
       <h2 className="mb-14">About us</h2>
-      <div className="max-w-[800px] text-center">
+      <div className="max-w-[800px] px-8 text-center lg:px-0">
         <p>
           Located in the beautiful region of Burgenland, Austria, Boosting
           Service is a premier gaming services provider founded by Miroslav

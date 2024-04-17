@@ -17,14 +17,14 @@ function FAQ() {
 
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center"
+      className="mt-[56px] flex min-h-screen flex-col items-center justify-center md:mt-[66px]"
       style={{
         background: `linear-gradient(0deg, rgba(28,16,36,1) 0%, rgba(28,16,36,0) 50%, rgba(28,16,36,1) 100%), url(${bg}) center center / cover no-repeat`,
       }}
     >
       <Breadcrumbs />
       <h2 className="mb-14">Frequently Asked Questions</h2>
-      <div className="flex flex-col items-center justify-center gap-4 pb-8 pt-8 text-black sm:pb-10 md:pb-12 xl:pb-14">
+      <div className="flex flex-col items-center justify-center gap-4 px-8 pb-8 pt-8 text-black sm:pb-10 md:pb-12 lg:px-0 xl:pb-14">
         {questions.map((question, index) => (
           <button
             key={index}
