@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useHeaderData } from "../../../context/headerCtx";
 import { useCartData } from "../../../context/cartCtx";
 import { useOrder } from "../../../hooks/useOrder";
 import { usePayOrder } from "../../../hooks/usePayOrder";
-import usePaypalClientId from "../../../hooks/usePaypalClientId";
+import StripeCheckout from "./StripeCheckout";
+import PaypalCheckout from "./PaypalCheckout";
 import { FaChevronDown } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
@@ -25,8 +25,6 @@ function CheckoutSummary({
   const { createOrderInDb, isOrderLoading, orderError, createdOrder } =
     useOrder();
   const { payOrder, isPaymentLoading, updatedOrder } = usePayOrder();
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-  const { isPaypalLoading, paypalError, paypal } = usePaypalClientId();
 
   const [isDiscountCodeSubmitted, setIsDiscountCodeSubmitted] = useState(false);
   const [detailsShown, setDetailsShown] = useState(false);
@@ -84,34 +82,7 @@ function CheckoutSummary({
     }
   }, [discount, fee, state.totalPrice, currentPayment]);
 
-  //loading paypal
-  useEffect(() => {
-    if (!paypalError && !isPaypalLoading && paypal.clientId) {
-      const loadPayPalScript = async () => {
-        paypalDispatch({
-          type: "resetOptions",
-          value: {
-            "client-id": paypal.clientId,
-            currency: currency.cur,
-          },
-        });
-        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-      };
-      if (createdOrder && !createdOrder.isPaid) {
-        if (!window.paypal) {
-          loadPayPalScript();
-        }
-      }
-    }
-  }, [
-    createdOrder,
-    currency.cur,
-    isPaypalLoading,
-    paypal.clientId,
-    paypalDispatch,
-    paypalError,
-  ]);
-
+  //update the isPaid state to true and completedOrder state to updatedOrder object when updatedOrder's isPaid property returns as true
   useEffect(() => {
     if (updatedOrder.isPaid) {
       setIsPaid(true);
@@ -175,49 +146,15 @@ function CheckoutSummary({
     }
   };
 
-  const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            amount: {
-              value: finalAmount,
-            },
-          },
-        ],
-      })
-      .then((orderId) => {
-        return orderId;
-      });
-  };
-
-  const onApprove = async (data, actions) => {
-    return actions.order.capture().then(async function (details) {
-      try {
-        await payOrder({ id: createdOrder._id, details });
-        toast.success("Payment successful");
-        dispatch({ type: "CLEAR", payload: [] });
-        setIsReviewed(false);
-        setCurrentPayment(null);
-      } catch (error) {
-        toast.error(error?.data?.message || error.message);
-      }
-    });
-  };
-
-  const onError = (error) => {
-    toast.error(error.message);
-  };
-
   return (
-    <section className="flex min-w-full flex-col items-start justify-start gap-2 sm:min-w-[360px]">
+    <section className="flex min-w-full flex-col items-start justify-start gap-2 rounded-lg border border-none bg-darkestPurple bg-opacity-35 p-4 sm:min-w-[360px]">
       <div className="min-h-[36px]">
         <h3>Summary</h3>
       </div>
       <form
         name="checkoutForm"
         id="checkoutForm"
-        className="flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-none bg-darkestPurple bg-opacity-35 p-4"
+        className="flex w-full flex-col items-center justify-center gap-3"
       >
         <div className="flex w-full items-center justify-between">
           <h4 className="text-fontLightGray">Total:</h4>
@@ -380,56 +317,48 @@ function CheckoutSummary({
             </span>
           </button>
         )}
-        {currentPayment &&
-          currentPayment.title === "Stripe" &&
-          isReviewed &&
-          !updatedOrder.isPaid && (
-            <>
-              {!isPaymentLoading || !isPending ? (
-                <button
-                  type="button"
-                  disabled={state.cartItems.length === 0 || isOrderLoading}
-                  className="flex w-[200px] items-center justify-center rounded-md bg-mediumPurple p-[8px] font-semibold hover:bg-lightPurple disabled:cursor-not-allowed disabled:bg-sepiaPurple md:w-full"
-                >
-                  <span>STRIPE</span>
-                </button>
-              ) : (
-                <ClipLoader color="#fff" />
-              )}
-            </>
-          )}
-        {currentPayment &&
-          currentPayment.title === "Paypal" &&
-          isReviewed &&
-          !updatedOrder.isPaid && (
-            <>
-              {!isPaymentLoading || !isPending ? (
-                <PayPalButtons
-                  disabled={state.cartItems.length === 0 || isOrderLoading}
-                  className="paypal-buttons-class w-full"
-                  onApprove={onApprove}
-                  createOrder={createOrder}
-                  onError={onError}
-                  forceReRender={[finalAmount, createdOrder]}
-                  fundingSource="paypal"
-                ></PayPalButtons>
-              ) : (
-                <ClipLoader color="#fff" />
-              )}
-            </>
-          )}
-        {orderError && (
-          <span
-            className="mb-8 w-full border-l-2 border-red-500 p-2"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(255, 75, 75, 0.15) 0%, rgba(255, 75, 75, 0.03))",
-            }}
-          >
-            {orderError}
-          </span>
-        )}
       </form>
+      <StripeCheckout
+        isPaymentLoading={isPaymentLoading}
+        isOrderLoading={isOrderLoading}
+        state={state}
+        payOrder={payOrder}
+        dispatch={dispatch}
+        setIsReviewed={setIsReviewed}
+        setCurrentPayment={setCurrentPayment}
+        createdOrder={createdOrder}
+        currentPayment={currentPayment}
+        finalAmount={finalAmount}
+        currency={currency}
+        isReviewed={isReviewed}
+        updatedOrder={updatedOrder}
+      />
+      <PaypalCheckout
+        isPaymentLoading={isPaymentLoading}
+        isOrderLoading={isOrderLoading}
+        state={state}
+        payOrder={payOrder}
+        dispatch={dispatch}
+        setIsReviewed={setIsReviewed}
+        setCurrentPayment={setCurrentPayment}
+        createdOrder={createdOrder}
+        currentPayment={currentPayment}
+        finalAmount={finalAmount}
+        currency={currency}
+        isReviewed={isReviewed}
+        updatedOrder={updatedOrder}
+      />
+      {orderError && (
+        <span
+          className="mb-8 w-full border-l-2 border-red-500 p-2"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(255, 75, 75, 0.15) 0%, rgba(255, 75, 75, 0.03))",
+          }}
+        >
+          {orderError}
+        </span>
+      )}
     </section>
   );
 }

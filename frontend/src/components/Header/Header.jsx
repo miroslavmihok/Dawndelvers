@@ -4,22 +4,15 @@ import { useHeaderData } from "../../context/headerCtx";
 import { useCartData } from "../../context/cartCtx";
 import { useLogout } from "../../hooks/useLogout";
 import { useAuthData } from "../../context/authCtx";
-import Tooltip from "../UI/Tooltip";
 import Navbar from "./components/Navbar";
 import UserSection from "./components/UserSection";
 import UserMobileSection from "./components/UserMobileSection";
-import {
-  FaBars,
-  FaCartShopping,
-  FaRegUser,
-  FaMagnifyingGlass,
-  FaCaretDown,
-} from "react-icons/fa6";
+import { FaBars, FaCartShopping, FaRegUser } from "react-icons/fa6";
 import Logo from "../../assets/identity/Logo.png";
 import Logoname from "../../assets/identity/Logoname.png";
 
 const Header = ({ displayAuthModalHandler }) => {
-  const { setIsShown, setIsCurrencyVisible, currency } = useHeaderData();
+  const { setIsShown } = useHeaderData();
 
   const { userItem } = useAuthData();
   const { state } = useCartData();
@@ -28,10 +21,6 @@ const Header = ({ displayAuthModalHandler }) => {
 
   const clickHandler = () => {
     setIsShown((showValue) => !showValue);
-  };
-
-  const currencyClickHandler = () => {
-    setIsCurrencyVisible((currencyVisible) => !currencyVisible);
   };
 
   const logoutHandler = () => {
@@ -45,7 +34,7 @@ const Header = ({ displayAuthModalHandler }) => {
       >
         <div className="flex w-full justify-between px-8 py-3 xl:h-full xl:flex-col xl:px-3">
           {/* HEADER LEFT */}
-          <div className="flex w-[50%] items-center justify-start gap-4 sm:w-[70%] xl:h-[25%] xl:w-full xl:flex-col xl:justify-between xl:py-5">
+          <div className="flex w-full items-center justify-between gap-4 xl:h-[25%] xl:w-full xl:flex-col xl:justify-around xl:py-5">
             {/* Logo > 1280px */}
             <div className="flex items-center justify-start gap-4 xl:flex-col xl:justify-center">
               {/* Catalog Btn */}
@@ -54,15 +43,12 @@ const Header = ({ displayAuthModalHandler }) => {
                 className="flex items-center justify-start rounded-sm bg-lightPurple p-[3px] hover:bg-mediumPurple md:rounded-md md:p-[8px] xl:hidden"
               >
                 <FaBars className="size-[26px] xl:mr-2 xl:size-[18px]" />
-                <span className="hidden h-[22px] items-center xl:flex xl:h-[18px]">
-                  Catalog
-                </span>
               </button>
               <Link to="/">
                 <img
                   src={Logo}
                   alt="logo"
-                  className="icon block aspect-square w-[32px] xl:w-[64px]"
+                  className="icon block aspect-square w-[32px] max-w-[32px] xl:w-[64px] xl:max-w-[64px]"
                 />
               </Link>
               {/* Logoname > 1536px */}
@@ -74,14 +60,14 @@ const Header = ({ displayAuthModalHandler }) => {
                 />
               </Link>
             </div>
-            <div className="flex items-center justify-center xl:w-full xl:flex-col xl:gap-4">
-              {userItem && (
+            {userItem && (
+              <div className="hidden items-center justify-center xl:flex xl:w-full xl:flex-col xl:gap-4">
                 <UserSection
                   logoutHandler={logoutHandler}
                   userItem={userItem}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
           <div className="hidden w-full items-center justify-center xl:flex xl:h-[50%]">
             <ul className="menus flex w-full flex-col items-start justify-center text-3xl uppercase leading-8">
@@ -144,24 +130,7 @@ const Header = ({ displayAuthModalHandler }) => {
           </div>
           {/* HEADER RIGHT*/}
           {/* three icons < 1280px , two icons > 1280px */}
-          <div className="flex w-[50%] items-center justify-end gap-2 sm:w-[30%] xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
-            {/* currency and currency dropdown on > 1280px */}
-            <div className="relative hidden xl:flex xl:w-full xl:items-center xl:justify-center">
-              <button
-                className="mx-[12px] hidden xl:block"
-                type="button"
-                onClick={() => currencyClickHandler()}
-              >
-                <div className="flex items-center gap-1">
-                  <div className="flex gap-1 text-fontCoolGray hover:text-white">
-                    <span>{currency.curSymbol}</span>
-                    <span>{currency.cur}</span>
-                  </div>
-                  <FaCaretDown />
-                </div>
-              </button>
-              <Tooltip list={["USD", "EUR"]} />
-            </div>
+          <div className="flex w-fit items-center justify-end gap-2 xl:h-[25%] xl:w-full xl:flex-col xl:gap-4 xl:pb-5">
             {/* user icons on > 1280px */}
             {!userItem && (
               <button
@@ -171,7 +140,6 @@ const Header = ({ displayAuthModalHandler }) => {
                 <span>Login / Sign Up</span>
               </button>
             )}
-            {/* user icon on < 1280px */}
             {!userItem && (
               <button
                 className="mx-3 block xl:hidden"

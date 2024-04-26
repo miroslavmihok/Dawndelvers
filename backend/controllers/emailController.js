@@ -2,6 +2,9 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import WelcomeEmail from "../../dist/WelcomeEmail.js";
 import { resend } from "../server.js";
 
+// @desc    Send Email to User
+// @route   POST /api/emails
+// @access  Public
 const sendEmail = asyncHandler(async (req, res) => {
   const { name, jobType, age, game, discord, email, country, about } = req.body;
   try {

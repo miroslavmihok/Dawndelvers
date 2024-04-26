@@ -10,17 +10,15 @@ const OrderHistory = () => {
   const { areOrdersLoading, ordersError, orders } = useMyOrdersFetch();
   const { currency, formatter } = useHeaderData();
 
-  console.log(orders);
-
   return (
     <div className="flex w-full flex-col gap-3">
       <table>
         <thead className="bg-darkestPurple">
           <tr className="h-[48px] text-center">
-            <th>Order ID</th>
-            <th>Quantity</th>
+            <th className="hidden lg:table-cell">Order ID</th>
+            <th className="hidden lg:table-cell">Quantity</th>
             <th>Created on</th>
-            <th>Status</th>
+            <th className="hidden lg:table-cell">Status</th>
             <th>Payment</th>
             <th>Price</th>
             <th></th>
@@ -48,12 +46,12 @@ const OrderHistory = () => {
                 key={index}
                 className={`h-[48px] text-center font-semibold ${index === 0 || index % 2 === 0 ? "bg-mediumPurple" : "bg-lightPurple"}`}
               >
-                <td>{order._id}</td>
-                <td className="items-center justify-center">
+                <td className="hidden lg:table-cell">{order._id}</td>
+                <td className="hidden items-center justify-center lg:table-cell">
                   {order.orderItems.length}
                 </td>
                 <td>{formatDate(order.createdAt)}</td>
-                <td>
+                <td className="hidden lg:table-cell">
                   {order.isDelivered ? (
                     <span className="rounded-md border-none bg-lightGreen px-[10px] py-[6px] text-darkGreen">
                       Delivered

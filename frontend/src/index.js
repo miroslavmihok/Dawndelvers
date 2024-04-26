@@ -13,25 +13,25 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <DataProvider>
-        <HeaderDataProvider>
-          <CartDataProvider>
-            <GamesDataProvider>
-              <PayPalScriptProvider
-                options={{ clientId: "test", currency: "EUR" }}
-              >
-                <SkeletonTheme baseColor="#403d39" highlightColor="#727272">
-                  <App />
-                </SkeletonTheme>
-              </PayPalScriptProvider>
-            </GamesDataProvider>
-          </CartDataProvider>
-        </HeaderDataProvider>
-      </DataProvider>
-    </AuthContextProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <AuthContextProvider>
+    <DataProvider>
+      <HeaderDataProvider>
+        <CartDataProvider>
+          <GamesDataProvider>
+            <PayPalScriptProvider
+              options={{ clientId: "test", currency: "EUR" }}
+            >
+              <SkeletonTheme baseColor="#403d39" highlightColor="#727272">
+                <App />
+              </SkeletonTheme>
+            </PayPalScriptProvider>
+          </GamesDataProvider>
+        </CartDataProvider>
+      </HeaderDataProvider>
+    </DataProvider>
+  </AuthContextProvider>,
+  // </React.StrictMode>,
 );
 
 reportWebVitals();

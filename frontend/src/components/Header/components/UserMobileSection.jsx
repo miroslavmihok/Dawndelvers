@@ -41,7 +41,7 @@ function UserMobileSection({ logoutHandler, userItem }) {
           onClick={() => setIsUserClicked((prevValue) => !prevValue)}
         >
           {/* setIsUserClicked((prevValue) => !prevValue) */}
-          <div className="flex items-center justify-center gap-1">
+          <div className="flex w-[52px] items-center justify-center gap-1 md:w-[62px]">
             <img
               src={Avatar}
               alt="user icon"

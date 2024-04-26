@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import React, { createContext, useContext, useState } from "react";
 
 export const HeaderContext = createContext();
 
@@ -16,30 +15,9 @@ export function HeaderDataProvider({ children }) {
     curSymbol: "€",
   });
   const [showDialog, setShowDialog] = useState(false);
-  const [currentRate, setCurrentRate] = useState(1);
-
-  useEffect(() => {
-    const fetchExchangeRates = async () => {
-      try {
-        const response = await axios.get(
-          process.env.REACT_APP_RATES_URL +
-            `?apikey=${process.env.REACT_APP_RATES_API_KEY}&base_currency=EUR&currencies=USD`,
-        );
-
-        setCurrentRate(response.data.data["USD"]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchExchangeRates();
-  }, []);
 
   const formatter = (value, currencySymbol) => {
     let changedValue = value;
-
-    if (currency.cur === "USD") {
-      changedValue = changedValue * currentRate;
-    }
 
     return new Intl.NumberFormat("de-DE", {
       style: "currency",

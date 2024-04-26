@@ -4,18 +4,22 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 import cors from "cors";
 import connectDB from "./config/db.js";
+import Stripe from "stripe";
 import { Resend } from "resend";
 import productRoutes from "./routes/productRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import emailRoutes from "./routes/emailRoutes.js";
+import stripeRoutes from "./routes/stripeRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 const port = process.env.PORT || 5000;
 
-connectDB(); //connecting to mongoDB
+connectDB();
 
 export const resend = new Resend(process.env.RESEND_KEY);
+
+export const stripe = new Stripe(process.env.STRIPE_CLIENT_SECRET);
 
 const app = express();
 
@@ -41,6 +45,7 @@ app.use("/api/games", gameRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/emails", emailRoutes);
+app.use("/api/stripe", stripeRoutes);
 
 app.get("/api/config/paypal", (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })

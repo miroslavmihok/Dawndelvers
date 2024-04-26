@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHeaderData } from "../../../context/headerCtx";
 import useOrderFetch from "../../../hooks/useOrderFetch";
 import usePaypalClientId from "../../../hooks/usePaypalClientId";
@@ -9,6 +10,7 @@ import { formatDate } from "../../../utils/formatDate";
 import ErrorMessage from "../../../components/UI/ErrorMessage";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { FaChevronLeft } from "react-icons/fa6";
 
 const OrderDetails = () => {
   const { id } = useParams();
@@ -86,13 +88,25 @@ const OrderDetails = () => {
       {orderFetchError && <ErrorMessage msg={orderFetchError} />}
       {order && !isOrderFetchLoading && order.orderItems && (
         <div className="flex w-full flex-col items-start justify-start gap-5">
-          <section className="flex w-full items-center justify-start gap-5">
-            <h2>ID: </h2>
-            <h2>{order._id}</h2>
+          <div className="flex w-full justify-start">
+            <Link
+              to={"/profile/orders"}
+              className="flex w-fit items-center justify-center rounded-md border-none bg-mediumPurple px-3 py-2 font-semibold hover:bg-lightPurple disabled:cursor-not-allowed disabled:bg-sepiaPurple"
+            >
+              <div className="flex items-center gap-3">
+                <FaChevronLeft />
+                <span>Back</span>
+              </div>
+            </Link>
+          </div>
+          <section className="flex w-full items-center justify-center gap-5">
+            <h2 className="text-wrap" style={{ wordBreak: "break-all" }}>
+              ID: {order._id}
+            </h2>
           </section>
           <section
             className="flex w-full
-            max-w-[260px] items-center justify-between text-lg"
+            items-center justify-between text-lg sm:max-w-[260px]"
           >
             <span className="font-semibold">Created on: </span>
             <span>{formatDate(order.createdAt)}</span>

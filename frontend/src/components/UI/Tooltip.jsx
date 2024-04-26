@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useHeaderData } from "../../context/headerCtx";
 import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
-function Tooltip({ list }) {
+function Tooltip({ list, currencyRef }) {
   const { isCurrencyVisible, setIsCurrencyVisible, setIsCurrency } =
     useHeaderData();
   const [{ options }, dispatch] = usePayPalScriptReducer();
@@ -11,7 +11,12 @@ function Tooltip({ list }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target) &&
+        event.button === 0
+        // && !currencyRef.current.contains(event.target)
+      ) {
         setIsCurrencyVisible(false);
       }
     };
@@ -19,9 +24,9 @@ function Tooltip({ list }) {
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("onmousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [wrapperRef, setIsCurrencyVisible]);
+  }, [wrapperRef, setIsCurrencyVisible, currencyRef]);
 
   const clickHandler = (item) => {
     setIsCurrencyVisible(false);

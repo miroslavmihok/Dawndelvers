@@ -38,8 +38,12 @@ function UserSection({ logoutHandler, userItem }) {
       <div className="relative hidden xl:flex xl:w-full xl:items-center xl:justify-center">
         <button
           ref={buttonRef}
+          className="flex items-center justify-center gap-3"
           onClick={() => setIsUserClicked((prevValue) => !prevValue)}
         >
+          <div>
+            <span className="text-xl">Hello, {userItem.name}</span>
+          </div>
           <div className="flex items-center justify-center gap-1">
             <img
               src={Avatar}

@@ -17,7 +17,7 @@ function Checkout() {
   return (
     <>
       <div
-        className="mt-[56px] flex max-h-screen w-full flex-col items-center justify-start bg-darkPurple pt-8 md:mt-[66px] xl:mt-0 xl:min-h-[800px]"
+        className="mt-[56px] flex min-h-screen w-full flex-col items-center justify-start bg-darkPurple pt-8 md:mt-[66px] xl:mt-0"
         style={{
           background: `linear-gradient(0deg, rgba(28,16,36,1) 0%, rgba(28,16,36,0) 50%, rgba(28,16,36,1) 100%), url(${bg}) center center / cover no-repeat`,
         }}
