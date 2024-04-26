@@ -34,7 +34,7 @@ const Header = ({ displayAuthModalHandler }) => {
       >
         <div className="flex w-full justify-between px-8 py-3 xl:h-full xl:flex-col xl:px-3">
           {/* HEADER LEFT */}
-          <div className="flex w-full items-center justify-between gap-4 xl:h-[25%] xl:w-full xl:flex-col xl:justify-around xl:py-5">
+          <div className="flex w-full items-center justify-start gap-4 xl:h-[25%] xl:w-full xl:flex-col xl:justify-start xl:py-5">
             {/* Logo > 1280px */}
             <div className="flex items-center justify-start gap-4 xl:flex-col xl:justify-center">
               {/* Catalog Btn */}

@@ -26,23 +26,23 @@ export const footerMenu = [
   },
   {
     heading: "Legal",
-    url: "/legal",
+    url: "/",
     links: [
       {
         title: "Terms and conditions",
-        url: "/terms",
+        url: "/",
       },
       {
         title: "Privacy policy",
-        url: "/privacy",
+        url: "/",
       },
       {
         title: "Refund policy",
-        url: "/refund",
+        url: "/",
       },
       {
         title: "Cookies policy",
-        url: "/cookies",
+        url: "/",
       },
     ],
   },
