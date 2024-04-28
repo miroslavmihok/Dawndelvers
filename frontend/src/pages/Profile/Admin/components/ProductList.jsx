@@ -95,7 +95,7 @@ const ProductList = () => {
                 <td>
                   <div className="flex w-full items-center justify-center">
                     <Link
-                      to={`/admin/profile/productlist/details/${product.url}`}
+                      to={`/admin/profile/productlist/details/${product._id}`}
                       className="flex w-fit items-center justify-center rounded-md border-none bg-darkGrey/70 px-2 py-2 hover:bg-lightGrey hover:text-black"
                     >
                       <FaRegPenToSquare />

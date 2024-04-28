@@ -59,14 +59,14 @@ const OrderDetails = () => {
                   key={i}
                   className={`grid w-full grid-cols-4 border-b border-white sm:grid-cols-10 ${i === 0 ? "border-t" : ""}`}
                 >
-                  <span className="py-2 pr-3 sm:col-span-2">
+                  <span className="flex items-center py-2 pr-3 sm:col-span-2">
                     {p.product.title}
                   </span>
-                  <ul className="col-span-2 flex flex-wrap gap-x-2 px-3 py-2 sm:col-span-7">
+                  <ul className="col-span-2 flex flex-wrap gap-x-2 px-3 py-2 sm:col-span-6">
                     {Object.entries(p.filters).map(
                       ([filterName, filterValue], index, array) => (
                         <React.Fragment key={index}>
-                          <li className="flex flex-wrap gap-2">
+                          <li className="flex flex-wrap items-center gap-2">
                             {Array.isArray(filterValue)
                               ? filterValue.join(", ")
                               : filterValue}
@@ -82,7 +82,7 @@ const OrderDetails = () => {
                       ),
                     )}
                   </ul>
-                  <span className="px-3 py-2 pr-0 text-right">
+                  <span className="flex items-center justify-end px-3 py-2 pr-0 text-right sm:col-span-2">
                     {formatter(p.price, currency.cur)}
                   </span>
                 </div>

@@ -43,15 +43,15 @@ const getSpecificProduct = asyncHandler(async (req, res) => {
 });
 
 // @desc    Fetch Product by its id
-// @route   GET /api/products/details/:url
+// @route   GET /api/products/details/:id
 // @access  Private/Admin
 const getSingleProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findOne({ url: req.params.url });
+  const product = await Product.findOne({ _id: req.params.id });
   if (product) {
     return res.json(product);
   } else {
     res.status(404);
-    throw new Error(`No product found with this url`);
+    throw new Error(`No product found with this id`);
   }
 });
 
@@ -126,7 +126,7 @@ const addProduct = asyncHandler(async (req, res) => {
   ) {
     res.status(400);
     throw Error("All fields must be filled");
-  } else if (productExists) {
+  } else if (productExists && productExists.gameUrl === gameUrl) {
     res.status(400);
     throw new Error("Product with this url path name already exists");
   } else {

@@ -16,7 +16,7 @@ router
   .get(getProducts)
   .post(protect, admin, addProduct)
   .put(protect, admin, updateProduct);
-router.route("/details/:url").get(protect, admin, getSingleProduct);
+router.route("/details/:id").get(protect, admin, getSingleProduct);
 router.route("/delete/:id").delete(protect, admin, deleteProduct);
 router.route("/:gameUrl").get(getProductsByGame);
 router.route("/:gameUrl/:productUrl").get(getSpecificProduct);

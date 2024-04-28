@@ -56,7 +56,6 @@ function Games() {
               slidesPerView: 4,
             },
           }}
-          loop={true}
           freeMode={true}
           navigation
         >

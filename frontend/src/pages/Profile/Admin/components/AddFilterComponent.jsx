@@ -129,6 +129,7 @@ const AddFilterComponent = ({ filters, setFilters }) => {
             </div>
             <div className="flex w-full flex-col items-center justify-center sm:w-fit">
               <button
+                type="button"
                 onClick={() => handleRemoveFilter(i)}
                 className="rounded-md border border-sepiaGray bg-transparent px-2 py-1 hover:bg-sepiaGray hover:text-lightGrey"
               >

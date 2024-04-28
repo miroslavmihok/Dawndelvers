@@ -43,7 +43,7 @@ const StripeCheckout = ({
     if (currentPayment && currentPayment.title === "Stripe") {
       loadStripeWithKey();
     }
-  }, [currentPayment]);
+  }, [currentPayment, state]);
 
   useEffect(() => {
     const createPaymentIntent = async () => {
@@ -61,10 +61,14 @@ const StripeCheckout = ({
         toast.error(error?.data?.message || error.message);
       }
     };
-    if (currentPayment && currentPayment.title === "Stripe") {
+    if (
+      currentPayment &&
+      currentPayment.title === "Stripe" &&
+      state.cartItems.length > 0
+    ) {
       createPaymentIntent();
     }
-  }, [currency.cur, finalAmount, currentPayment]);
+  }, [currency.cur, finalAmount, currentPayment, state]);
 
   return (
     <>
