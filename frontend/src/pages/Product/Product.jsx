@@ -26,7 +26,7 @@ function Product() {
   const [selectedFilters, setSelectedFilters] = useState({});
   const [basePrice, setBasePrice] = useState(0);
   const [price, setPrice] = useState(0);
-  const [isAddButtonClicked, setIsAddButtonClicked] = useState();
+  const [isAddButtonClicked, setIsAddButtonClicked] = useState(false);
 
   useEffect(() => {
     if (!isProductLoading && product && product.filters) {

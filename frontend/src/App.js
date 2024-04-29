@@ -42,9 +42,9 @@ const App = () => {
         <div className="z-10 flex-1 xl:ml-[300px]">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/products/:gameUrl" element={<Boosting />} />
+            <Route path="/products?/:gameUrl?" element={<Boosting />} />
             <Route
-              path="/products/:gameUrl/:productUrl"
+              path="/products/:gameUrl?/:productUrl?"
               element={<Product />}
             />
             <Route path="/about" element={<About />} />

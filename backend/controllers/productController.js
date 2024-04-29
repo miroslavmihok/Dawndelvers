@@ -1,5 +1,5 @@
-import asyncHandler from "../middleware/asyncHandler.js";
-import Product from "../models/productModel.js";
+import asyncHandler from '../middleware/asyncHandler.js';
+import Product from '../models/productModel.js';
 
 // @desc    Fetch all Products
 // @route   GET /api/products
@@ -47,6 +47,7 @@ const getSpecificProduct = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const getSingleProduct = asyncHandler(async (req, res) => {
   const product = await Product.findOne({ _id: req.params.id });
+
   if (product) {
     return res.json(product);
   } else {
@@ -87,7 +88,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error('Product not found');
   }
 });
 
@@ -125,10 +126,10 @@ const addProduct = asyncHandler(async (req, res) => {
     !filters
   ) {
     res.status(400);
-    throw Error("All fields must be filled");
+    throw Error('All fields must be filled');
   } else if (productExists && productExists.gameUrl === gameUrl) {
     res.status(400);
-    throw new Error("Product with this url path name already exists");
+    throw new Error('Product with this url path name already exists');
   } else {
     const product = new Product({
       user: req.user._id,
@@ -162,10 +163,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await Product.deleteOne({ _id: product._id });
-    res.status(200).json({ message: "Product deleted" });
+    res.status(200).json({ message: 'Product deleted' });
   } else {
     res.status(404);
-    throw new Error("Resource not found");
+    throw new Error('Resource not found');
   }
 });
 
